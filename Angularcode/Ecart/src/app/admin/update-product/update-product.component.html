@@ -1,0 +1,29 @@
+<div class="update-product">
+    <h2>Edit Product</h2>
+  
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+      <label>Name</label>
+      <input formControlName="name" />
+  
+      <label>Category</label>
+      <input formControlName="category" />
+  
+      <label>Description</label>
+      <textarea formControlName="description"></textarea>
+  
+      <label>Price</label>
+      <input formControlName="price" type="number" />
+  
+      <label>Quantity</label>
+      <input formControlName="quantity" type="number" />
+  
+      <label>Update Image (optional)</label>
+      <input type="file" (change)="onFileSelected($event)" />
+  
+      <button type="submit" [disabled]="productForm.invalid">Update</button>
+    </form>
+  
+    <p *ngIf="successMessage" class="success">{{ successMessage }}</p>
+    <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+  </div>
+  

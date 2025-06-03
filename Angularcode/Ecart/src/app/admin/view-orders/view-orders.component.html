@@ -1,0 +1,36 @@
+<div class="order-list">
+    <h2>All Orders</h2>
+  
+    <table>
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Customer</th>
+          <th>Total (₹)</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Update</th>
+        </tr>
+      </thead>
+  
+      <tbody>
+        <tr *ngFor="let o of orders">
+          <td>{{ o.id }}</td>
+          <td>{{ o.customer?.name }}<br /><small>{{ o.customer?.email }}</small></td>
+          <td>{{ o.totalAmount }}</td>
+          <td>{{ o.orderDate | date:'medium' }}</td>
+          <td>
+            <strong [ngClass]="o.status.toLowerCase()">{{ o.status }}</strong>
+          </td>
+          <td>
+            <!-- <select [value]="o.status" (change)="updateStatus(o.id, $event.target.value)"> -->
+              <!-- <option *ngFor="let s of statusOptions" [value]="s">{{ s }}</option>
+            </select> -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <p *ngIf="error" class="error">{{ error }}</p>
+  </div>
+  

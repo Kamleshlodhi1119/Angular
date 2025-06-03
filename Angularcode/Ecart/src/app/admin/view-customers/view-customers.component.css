@@ -1,0 +1,32 @@
+.customer-list {
+    padding: 1rem;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 0.5rem;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .active {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .inactive {
+    color: red;
+    font-weight: bold;
+  }
+  
+  button {
+    margin-right: 0.5rem;
+  }
+  
+  .error {
+    color: red;
+  }
+  

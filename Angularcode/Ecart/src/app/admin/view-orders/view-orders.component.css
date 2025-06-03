@@ -1,0 +1,23 @@
+.order-list {
+    padding: 1rem;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 0.5rem;
+    border-bottom: 1px solid #ccc;
+    vertical-align: top;
+  }
+  
+  select {
+    padding: 0.3rem;
+  }
+  
+  .error {
+    color: red;
+  }
+  

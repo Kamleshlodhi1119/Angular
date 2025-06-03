@@ -1,0 +1,31 @@
+<app-header></app-header>
+<div class="register-container">
+    <h2>Customer Register</h2>
+  
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <label>Name</label>
+      <input formControlName="name" type="text" />
+  
+      <label>Email</label>
+      <input formControlName="email" type="email" />
+  
+      <label>Password</label>
+      <input formControlName="password" type="password" />
+  
+      <label>Phone</label>
+      <input formControlName="phoneNumber" type="text" />
+  
+      <label>Address</label>
+      <input formControlName="address1" type="text" />
+      <input formControlName="city" type="text" placeholder="City" />
+      <input formControlName="state" type="text" placeholder="State" />
+      <input formControlName="zipCode" type="text" placeholder="Zip" />
+      <input formControlName="country" type="text" />
+  
+      <button type="submit" [disabled]="registerForm.invalid">Register</button>
+  
+      <p *ngIf="successMessage" class="success">{{ successMessage }}</p>
+      <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+    </form>
+  </div>
+  

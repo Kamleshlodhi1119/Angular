@@ -1,0 +1,38 @@
+import { Component, OnInit } from '@angular/core';
+import { OrderService } from '../../shared/services/order.service';
+import { CommonModule } from '@angular/common';
+import { ProductCardComponent } from '../../components/product-card/product-card.component';
+import { OrderItemComponent } from '../../components/order-item/order-item.component';
+
+@Component({
+  selector: 'app-view-orders',
+ 
+  templateUrl: './view-orders.component.html',
+  styleUrls: ['./view-orders.component.css']
+})
+export class ViewOrdersComponent implements OnInit {
+  orders: any[] = [];
+  error: string = '';
+
+  statusOptions = ['CONFIRMED', 'SHIPPED', 'DELIVERED', 'CANCELLED'];
+
+  constructor(private orderService: OrderService) {}
+
+  ngOnInit(): void {
+    this.loadOrders();
+  }
+
+  loadOrders(): void {
+    this.orderService.getAllOrders().subscribe({
+      next: (data) => this.orders = data,
+      error: () => this.error = 'Failed to load orders.'
+    });
+  }
+
+  updateStatus(orderId: number, status: string): void {
+    this.orderService.updateOrderStatus(orderId, status).subscribe({
+      next: () => this.loadOrders(),
+      error: () => alert('Failed to update order status')
+    });
+  }
+}

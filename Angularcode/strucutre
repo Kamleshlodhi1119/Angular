@@ -1,0 +1,172 @@
+src/
+├── app/
+│   ├── admin/
+│   │   ├── add-product/
+│   │   │   ├── add-product.component.html
+│   │   │   ├── add-product.component.ts
+│   │   │   ├── add-product.component.css
+│   │   │   └── add-product.component.spec.ts
+│   │   ├── update-product/
+│   │   ├── view-products/
+│   │   ├── view-customers/
+│   │   ├── view-orders/
+│   │   ├── view-feedbacks/
+│   │   ├── admin-dashboard/
+│   │   └── admin-login/
+│   ├── components/
+│   │   ├── header/
+│   │   ├── footer/
+│   │   ├── product-card/
+│   │   ├── cart-item/
+│   │   ├── order-item/
+│   │   └── feedback-item/
+│   ├── user/
+│   │   ├── auth/
+│   │   │   ├── login/
+│   │   │   └── register/
+│   │   ├── home/
+│   │   ├── products/
+│   │   ├── cart/
+│   │   ├── orders/
+│   │   ├── profile/
+│   │   ├── checkout/
+│   │   └── feedback/
+│   ├── shared/
+│   │   ├── services/
+│   │   │   ├── auth.service.ts
+│   │   │   ├── product.service.ts
+│   │   │   ├── cart.service.ts
+│   │   │   ├── order.service.ts
+│   │   │   └── feedback.service.ts
+│   │   ├── guards/
+│   │   │   ├── auth.guard.ts
+│   │   │   └── admin.guard.ts
+│   │   ├── models/
+│   │   │   ├── product.model.ts
+│   │   │   ├── cart.model.ts
+│   │   │   ├── order.model.ts
+│   │   │   └── user.model.ts
+│   │   ├── interceptors/
+│   │   │   └── auth.interceptor.ts
+│   │   └── helpers/
+│   │       └── utils.ts
+│   ├── app-routing.module.ts
+│   ├── app.component.html
+│   ├── app.component.ts
+│   └── app.module.ts
+├── assets/
+│   ├── images/
+│   └── styles/
+│       └── global.css
+├── environments/
+└── index.html
+
+
+
+
+
+
+
+# Create the project
+ng new ecart-frontend --routing --style=css
+
+# Move into the project folder
+cd ecart-frontend
+
+# Add Angular Material (optional, recommended for styling)
+ng add @angular/material
+
+# Create folders based on your structure
+mkdir -p src/app/{admin/{add-product,update-product,view-products,view-customers,view-orders,view-feedbacks,admin-dashboard,admin-login},components/{header,footer,product-card,cart-item,order-item,feedback-item},user/{auth/{login,register},home,products,cart,orders,profile,checkout,feedback},shared/{services,guards,models,interceptors,helpers}}
+
+
+; In app.module.ts:
+
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
+
+@NgModule({
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ]
+})
+
+
+
+// src/app/app-routing.module.ts
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './shared/guards/auth.guard';
+import { AdminGuard } from './shared/guards/admin.guard';
+
+// Import all components used in routes here
+import { LoginComponent } from './user/auth/login/login.component';
+import { RegisterComponent } from './user/auth/register/register.component';
+import { HomeComponent } from './user/home/home.component';
+import { ProductsComponent } from './user/products/products.component';
+import { CartComponent } from './user/cart/cart.component';
+import { CheckoutComponent } from './user/checkout/checkout.component';
+import { OrdersComponent } from './user/orders/orders.component';
+import { ProfileComponent } from './user/profile/profile.component';
+import { FeedbackComponent } from './user/feedback/feedback.component';
+import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
+import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
+import { ViewCustomersComponent } from './admin/view-customers/view-customers.component';
+import { ViewOrdersComponent } from './admin/view-orders/view-orders.component';
+import { ViewFeedbacksComponent } from './admin/view-feedbacks/view-feedbacks.component';
+import { ViewProductsComponent } from './admin/view-products/view-products.component';
+import { AddProductComponent } from './admin/add-product/add-product.component';
+import { UpdateProductComponent } from './admin/update-product/update-product.component';
+
+const routes: Routes = [
+  { path: '', redirectTo: 'user/home', pathMatch: 'full' },
+
+  // Customer routes
+  { path: 'user/auth/login', component: LoginComponent },
+  { path: 'user/auth/register', component: RegisterComponent },
+  { path: 'user/home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'user/products', component: ProductsComponent, canActivate: [AuthGuard] },
+  { path: 'user/cart', component: CartComponent, canActivate: [AuthGuard] },
+  { path: 'user/checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
+  { path: 'user/orders', component: OrdersComponent, canActivate: [AuthGuard] },
+  { path: 'user/profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'user/feedback', component: FeedbackComponent, canActivate: [AuthGuard] },
+
+  // Admin routes
+  { path: 'admin/admin-login', component: AdminLoginComponent },
+  { path: 'admin/dashboard', component: AdminDashboardComponent, canActivate: [AdminGuard] },
+  { path: 'admin/view-customers', component: ViewCustomersComponent, canActivate: [AdminGuard] },
+  { path: 'admin/view-orders', component: ViewOrdersComponent, canActivate: [AdminGuard] },
+  { path: 'admin/view-feedbacks', component: ViewFeedbacksComponent, canActivate: [AdminGuard] },
+  { path: 'admin/view-products', component: ViewProductsComponent, canActivate: [AdminGuard] },
+  { path: 'admin/add-product', component: AddProductComponent, canActivate: [AdminGuard] },
+  { path: 'admin/update-product/:id', component: UpdateProductComponent, canActivate: [AdminGuard] },
+
+  { path: '**', redirectTo: 'user/home' }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule {}
+
+
+
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+@NgModule({
+  declarations: [
+    // All user components...
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule {}

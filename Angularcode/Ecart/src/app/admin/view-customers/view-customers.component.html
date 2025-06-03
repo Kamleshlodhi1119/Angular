@@ -1,0 +1,35 @@
+<div class="customer-list">
+    <h2>Manage Customers</h2>
+  
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+  
+      <tbody>
+        <tr *ngFor="let c of customers">
+          <td>{{ c.name }}</td>
+          <td>{{ c.email }}</td>
+          <td>{{ c.phoneNumber }}</td>
+          <td>
+            <span [ngClass]="{ active: c.active, inactive: !c.active }">
+              {{ c.active ? 'Active' : 'Blocked' }}
+            </span>
+          </td>
+          <td>
+            <button (click)="toggleStatus(c.id)">Toggle</button>
+            <button (click)="deleteCustomer(c.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <p *ngIf="error" class="error">{{ error }}</p>
+  </div>
+  

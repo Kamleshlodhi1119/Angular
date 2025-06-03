@@ -1,0 +1,12 @@
+<div class="order-card">
+    <h4>Order #{{ order.id }} ({{ order.status }})</h4>
+    <p>Total: ₹{{ order.totalAmount }}</p>
+    <p>Date: {{ order.orderDate | date:'medium' }}</p>
+  
+    <ul>
+      <li *ngFor="let item of order.items">
+        {{ item.product.name }} - Qty: {{ item.quantity }} - ₹{{ item.price }}
+      </li>
+    </ul>
+  </div>
+  

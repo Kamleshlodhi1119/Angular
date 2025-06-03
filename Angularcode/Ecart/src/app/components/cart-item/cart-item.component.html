@@ -1,0 +1,10 @@
+<div class="cart-item">
+    <img [src]="'http://localhost:8080' + item.product.imageUrl" />
+    <div class="details">
+      <h3>{{ item.product.name }}</h3>
+      <p>Price: ₹{{ item.product.price }}</p>
+      <!-- <input type="number" [value]="item.quantity" (change)="updateStatus(o.id, ($event.target as HTMLSelectElement).value)" /> -->
+      <!-- <button (click)="remove.emit(item.product.id)">Remove</button> -->
+    </div>
+  </div>
+  

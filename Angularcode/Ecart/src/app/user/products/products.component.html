@@ -1,0 +1,6 @@
+<app-header></app-header>
+<input [(ngModel)]="query" placeholder="Search">
+<button (click)="search()">Search</button>
+<div *ngIf="products.length">
+  <app-product-card *ngFor="let p of products" [product]="p"></app-product-card>
+</div>

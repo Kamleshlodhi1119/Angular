@@ -1,0 +1,19 @@
+.feedback-list {
+    padding: 1rem;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 0.5rem;
+    border-bottom: 1px solid #ccc;
+    vertical-align: top;
+  }
+  
+  .error {
+    color: red;
+  }
+  

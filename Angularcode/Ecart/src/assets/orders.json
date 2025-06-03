@@ -1,0 +1,42 @@
+[
+    {
+        "orderId": "ORD1001",
+        "orderDate": "2025-04-28",
+        "totalPrice": 7998,
+        "status": "Confirmed",
+        "products": [
+            {
+                "productId": "1",
+                "name": "Wireless Headphones",
+                "category": "Electronics",
+                "price": 2999,
+                "description": "Noise-cancelling over-ear headphones with 30 hours of battery life.",
+                "imageUrl": "assets/images/headphones.jpeg"
+            },
+            {
+                "productId": "2",
+                "name": "Smartwatch",
+                "category": "Electronics",
+                "price": 4999,
+                "description": "Track your fitness and notifications in style.",
+                "imageUrl": "assets/images/smartwatch.jpeg"
+            }
+        ]
+    },
+    {
+        "orderId": "ORD1002",
+        "orderDate": "2025-04-30",
+        "totalPrice": 1999,
+        "status": "Delivered",
+        "products": [
+            {
+                "productId": "3",
+                "name": "Bluetooth Speaker",
+                "category": "Audio",
+                "price": 1999,
+                "description": "Portable speaker with deep bass and 10-hour battery.",
+                "imageUrl": "assets/images/bluetoothspeakers.jpeg"
+            }
+        ]
+    }
+]

@@ -1,0 +1,35 @@
+<!-- <div class="home-container">
+    <h2>Available Products</h2>
+  
+    <div *ngIf="products.length === 0 && !error">No products available.</div>
+  
+    <div class="product-grid">
+      <div class="product-card" *ngFor="let p of products">
+        <img [src]="'http://localhost:8080' + p.imageUrl" alt="{{ p.name }}" />
+        <h3>{{ p.name }}</h3>
+        <p>₹{{ p.price }}</p>
+        <button>Add to Cart</button>
+      </div>
+    </div>
+  
+    <p *ngIf="error" class="error">{{ error }}</p>
+  </div>
+   -->
+   <app-header></app-header>
+   <div class="home-container">
+    <h2>Available Products</h2>
+  
+    <div *ngIf="products.length === 0 && !error">No products available.</div>
+  
+    <div class="product-grid">
+      <app-product-card
+        *ngFor="let p of products"
+        [product]="p"
+        (addToCart)="handleAddToCart($event)">
+      </app-product-card>
+    </div>
+  
+    <p *ngIf="error" class="error">{{ error }}</p>
+    
+  </div>
+  

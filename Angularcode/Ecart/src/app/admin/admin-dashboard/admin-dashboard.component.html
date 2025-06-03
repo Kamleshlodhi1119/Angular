@@ -1,0 +1,21 @@
+<app-admin-header></app-admin-header>
+<div class="dashboard-container">
+    <h2>Admin Dashboard</h2>
+  
+    <div class="summary">
+      <div class="card">Total Customers: {{ summary.totalCustomers }}</div>
+      <div class="card">Total Products: {{ summary.totalProducts }}</div>
+      <div class="card">Total Orders: {{ summary.totalOrders }}</div>
+      <div class="card">Total Revenue: ₹{{ summary.totalRevenue }}</div>
+    </div>
+  
+    <h3>Top Selling Products</h3>
+    <ul>
+      <li *ngFor="let p of topProducts">
+        {{ p.product }} - Sold: {{ p.totalSold }}
+      </li>
+    </ul>
+  
+    <p *ngIf="error" class="error">{{ error }}</p>
+  </div>
+  

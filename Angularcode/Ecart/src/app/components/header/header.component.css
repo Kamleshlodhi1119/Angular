@@ -1,0 +1,17 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    background: #1976d2;
+    color: white;
+  }
+  
+  nav a, nav button {
+    margin-left: 1rem;
+    color: white;
+    text-decoration: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+  

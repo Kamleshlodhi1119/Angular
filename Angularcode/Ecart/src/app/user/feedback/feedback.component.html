@@ -1,0 +1,8 @@
+<app-header></app-header>
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <input formControlName="productId" placeholder="Product ID">
+    <input type="number" formControlName="rating" min="1" max="5">
+    <textarea formControlName="comment" placeholder="Write feedback"></textarea>
+    <button type="submit">Submit</button>
+  </form>
+  

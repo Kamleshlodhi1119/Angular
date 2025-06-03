@@ -1,0 +1,20 @@
+.cart-item {
+    display: flex;
+    margin-bottom: 1rem;
+  }
+  
+  img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin-right: 1rem;
+  }
+  
+  .details {
+    flex-grow: 1;
+  }
+  
+  input {
+    width: 60px;
+  }
+  

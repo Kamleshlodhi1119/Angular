@@ -1,0 +1,27 @@
+<div class="feedback-list">
+    <h2>Customer Feedback</h2>
+  
+    <div *ngIf="feedbacks.length === 0 && !error">No feedbacks found.</div>
+  
+    <table *ngIf="feedbacks.length > 0">
+      <thead>
+        <tr>
+          <th>Customer</th>
+          <th>Product</th>
+          <th>Rating</th>
+          <th>Comment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let fb of feedbacks">
+          <td>{{ fb.customer?.name }}</td>
+          <td>{{ fb.product?.name }}</td>
+          <td>{{ fb.rating }}</td>
+          <td>{{ fb.comment }}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <p *ngIf="error" class="error">{{ error }}</p>
+  </div>
+  

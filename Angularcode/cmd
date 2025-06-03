@@ -1,0 +1,4 @@
+curl -X POST http://localhost:8080/user/registration ^ -H "Content-Type: application/json" ^ -d "{\"name\":\"kamlesh\",\"email\":\"kamlesh@gmail.com\",\"number\":\"1852321709\",\ \"address\":\"nal\",\"password\":\"kamlesh@123\"}"
+
+
+curl -X GET http://localhost:8080/api/products/additems -H "Content-Type: application/json" -d "{\"name\":\"Kids Stretch Jeans\",\"description\":\"Comfortable stretch jeans for children\",\"price\":24.99,\"quantity\":50,\"category\":\"Kids\",\"active\":true,\"imageUrl\":\"/images/kids-jeans.jpg\"}"

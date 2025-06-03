@@ -1,0 +1,35 @@
+<div class="product-list">
+    <h2>Manage Products</h2>
+  
+    <table>
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Price (₹)</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+  
+      <tbody>
+        <tr *ngFor="let p of products">
+          <td><img [src]="'http://localhost:8080' + p.imageUrl" width="50" /></td>
+          <td>{{ p.name }}</td>
+          <td>{{ p.price }}</td>
+          <td>
+            <span [ngClass]="{ active: p.active, inactive: !p.active }">
+              {{ p.active ? 'Active' : 'Inactive' }}
+            </span>
+          </td>
+          <td>
+            <button (click)="toggleStatus(p.id)">Toggle</button>
+            <button (click)="editProduct(p.id)">Edit</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <p *ngIf="error" class="error">{{ error }}</p>
+  </div>
+  

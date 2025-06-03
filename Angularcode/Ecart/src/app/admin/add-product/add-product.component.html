@@ -1,0 +1,33 @@
+<div class="add-product-container">
+    <h2>Add New Product</h2>
+  
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+      <label>Name</label>
+      <input formControlName="name" type="text" />
+  
+      <label>Category</label>
+      <input formControlName="category" type="text" />
+  
+      <label>Description</label>
+      <textarea formControlName="description"></textarea>
+  
+      <label>Price</label>
+      <input formControlName="price" type="number" />
+  
+      <label>Quantity</label>
+      <input formControlName="quantity" type="number" />
+  
+      <label>Upload Image</label>
+      <input type="file" (change)="onFileSelected($event)" />
+  
+      <button type="submit" [disabled]="productForm.invalid">Add Product</button>
+    </form>
+  
+    <p *ngIf="successMessage" class="success">{{ successMessage }}</p>
+    <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+  </div>
+
+
+  <app-view-customers></app-view-customers>
+  <app-update-product></app-update-product>
+  

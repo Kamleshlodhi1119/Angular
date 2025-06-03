@@ -1,0 +1,16 @@
+<app-header></app-header>
+<div class="login-container">
+    <h2>Customer Login</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <label>Email</label>
+      <input formControlName="email" type="email" />
+  
+      <label>Password</label>
+      <input formControlName="password" type="password" />
+  
+      <button type="submit" [disabled]="loginForm.invalid">Login</button>
+  
+      <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+    </form>
+  </div>
+  
