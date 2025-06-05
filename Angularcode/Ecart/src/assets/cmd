@@ -2,3 +2,9 @@ curl -X POST http://localhost:8080/user/registration ^ -H "Content-Type: applica
 
 
 curl -X GET http://localhost:8080/api/products/additems -H "Content-Type: application/json" -d "{\"name\":\"Kids Stretch Jeans\",\"description\":\"Comfortable stretch jeans for children\",\"price\":24.99,\"quantity\":50,\"category\":\"Kids\",\"active\":true,\"imageUrl\":\"/images/kids-jeans.jpg\"}"
+
+curl -X POST "http://localhost:8080/cart/add" -H "Content-Type: application/json" -d "{\"productId\": 3, \"customerId\": 38, \"customerEmail\": \"k@gmail.com\", \"quantity\": 2, \"name\": \"towel\", \"description\": \"this is demo product\", \"price\": 130.0, \"category\": \"fashion\"}"
+
+E:\eclipse-workspace\Ecart
+
+curl -X POST "http://localhost:8080/cart/update/quantity" -H "Content-Type: application/json" -d "{\"productId\": 3, \"customerEmail\": \"k@gmail.com\", \"quantity\": 2}"

@@ -30,33 +30,65 @@ import { CartItem } from 'src/app/shared/models/cart.model';
   //   remove(id: number) { this.cartService.removeItem(id); }
   //   change(id: number, qty: number) { this.cartService.updateQuantity(id, qty); }
   // }
-  export class CartComponent {
-    items: CartItem[] = [];
-    total = 0;
+//   export class CartComponent {
+//     items: CartItem[] = [];
+//     total = 0;
   
-    constructor(private cartService: CartService) {}
+//     constructor(private cartService: CartService) {}
   
-    ngOnInit() {
-      const email = 'k@gmail.com'; // ⚠️ Replace with logged-in user email
-      this.cartService.getCartItems(email).subscribe(data => {
-        this.items = data;
-        this.total = this.items.reduce((t, i) => t + i.quantity * i.price, 0);
-      });
-    }
+//     ngOnInit() {
+//       const email = 'k@gmail.com'; // ⚠️ Replace with logged-in user email
+//       this.cartService.getCartItems(email).subscribe(data => {
+//         this.items = data;
+//         this.total = this.items.reduce((t, i) => t + i.quantity * i.price, 0);
+//       });
+//     }
   
-    remove(id: number) {
-      this.cartService.deleteCartItem(id).subscribe(() => {
-        this.items = this.items.filter(i => i.id !== id);
-        this.total = this.items.reduce((t, i) => t + i.quantity * i.price, 0);
-      });
-    }
+//     remove(id: number) {
+//       this.cartService.deleteCartItem(id).subscribe(() => {
+//         this.items = this.items.filter(i => i.id !== id);
+//         this.total = this.items.reduce((t, i) => t + i.quantity * i.price, 0);
+//       });
+//     }
   
-    change(id: number, qty: number) {
-      this.cartService.updateCartItem(id, qty).subscribe(updated => {
-        const item = this.items.find(i => i.id === updated.id);
-        if (item) item.quantity = updated.quantity;
-        this.total = this.items.reduce((t, i) => t + i.quantity * i.price, 0);
-      });
-    }
+//     change(id: number, qty: number) {
+//       this.cartService.updateCartItem(id, qty).subscribe(updated => {
+//         const item = this.items.find(i => i.id === updated.id);
+//         if (item) item.quantity = updated.quantity;
+//         this.total = this.items.reduce((t, i) => t + i.quantity * i.price, 0);
+//       });
+//     }
+//   }
+export class CartComponent {
+  items: CartItem[] = [];
+  total = 0;
+
+  constructor(private cartService: CartService) {}
+
+  ngOnInit() {
+    const email = 'k@gmail.com'; // Ideally from auth service
+    this.cartService.getCartItems(email).subscribe(data => {
+      this.items = data;
+      this.calculateTotal();
+    });
   }
-  
+
+  remove({ productId, customerEmail }: { productId: number; customerEmail: string }) {
+    this.cartService.deleteCartItemByProduct(productId, customerEmail,0).subscribe(() => {
+      this.items = this.items.filter(i => i.productId !== productId);
+      this.calculateTotal();
+    });
+  }
+
+  change({ productId, customerEmail, quantity }: { productId: number; customerEmail: string; quantity: number }) {
+    this.cartService.updateCartItemQuantity(productId, customerEmail, quantity).subscribe(updated => {
+      const item = this.items.find(i => i.productId === productId);
+      if (item) item.quantity = updated.quantity;
+      this.calculateTotal();
+    });
+  }
+
+  private calculateTotal() {
+    this.total = this.items.reduce((t, i) => t + i.quantity * i.price, 0);
+  }
+}

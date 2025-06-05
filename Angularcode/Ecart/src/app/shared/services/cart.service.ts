@@ -54,6 +54,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CartService {
+  getItems //   removeItem(productId: number): void {
+    () {
+    throw new Error('Method not implemented.');
+  }
+  clearCart() {
+    throw new Error('Method not implemented.');
+  }
   private baseUrl = 'http://localhost:8080/cart';
 
   constructor(private http: HttpClient) {}
@@ -66,7 +73,31 @@ export class CartService {
   /** Get all cart items for a user */
   getCartItems(email: string): Observable<CartItem[]> {
     return this.http.get<CartItem[]>(`${this.baseUrl}/getcart/${email}`);
+  
   }
+
+/** Update cart item quantity by productId and email */
+updateCartItemQuantity(productId: number, email: string, quantity: number): Observable<CartItem> {
+  return this.http.post<CartItem>(
+    `http://localhost:8080/cart/update/quantity`,
+    { productId, customerEmail: email, quantity }
+  );
+}
+
+/** Delete cart item by productId and email */
+
+deleteCartItemByProduct(productId: number, email: string,quantity: number): Observable<void> {
+  return this.http.post<void>(
+    `http://localhost:8080/cart/update/quantity`,
+    { productId, customerEmail: email, quantity }
+  );
+}
+
+
+
+
+
+
 
   /** Update cart item quantity */
   updateCartItem(id: number, quantity: number): Observable<CartItem> {

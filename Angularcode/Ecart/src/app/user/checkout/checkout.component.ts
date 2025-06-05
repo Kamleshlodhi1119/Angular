@@ -10,15 +10,6 @@ import { CartService } from '../../shared/services/cart.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
-// @Component({
-//   selector: 'app-checkout',
-//   imports: [],
-//   templateUrl: './checkout.component.html',
-//   styleUrl: './checkout.component.css'
-// })
-// export class CheckoutComponent {
-
-// }
 
 @Component({ selector: 'app-checkout',
  
@@ -27,41 +18,41 @@ import { Router } from '@angular/router';
   }
   )
 
+export class CheckoutComponent {
+  form = this.fb.group({ address1: '', city: '', state: '', zipCode: '' });
+  constructor(private fb: FormBuilder, private cart: CartService, private orders: OrderService, private router: Router) {}
+  placeOrder() {
+    const order = { items: this.cart.getItems(), ...this.form.value };
+    this.orders.placeOrder(order).subscribe(() => { this.cart.clearCart(); this.router.navigate(['/user/orders']); });
+  }
+}
+
 // export class CheckoutComponent {
-//   form = this.fb.group({ address1: '', city: '', state: '', zipCode: '' });
-//   constructor(private fb: FormBuilder, private cart: CartService, private orders: OrderService, private router: Router) {}
+//   form: FormGroup;
+
+//   constructor(
+//     private fb: FormBuilder,
+//     private cart: CartService,
+//     private orders: OrderService,
+//     private router: Router
+//   ) {
+//     this.form = this.fb.group({
+//       address1: '',
+//       city: '',
+//       state: '',
+//       zipCode: ''
+//     });
+//   }
+
 //   placeOrder() {
-//     const order = { items: this.cart.getItems(), ...this.form.value };
-//     this.orders.placeOrder(order).subscribe(() => { this.cart.clearCart(); this.router.navigate(['/user/orders']); });
+//     const order = {
+//       items: this.cart.getItems(),
+//       ...this.form.value
+//     };
+
+//     this.orders.placeOrder(order).subscribe(() => {
+//       this.cart.clearCart();
+//       this.router.navigate(['/user/orders']);
+//     });
 //   }
 // }
-
-export class CheckoutComponent {
-  form: FormGroup;
-
-  constructor(
-    private fb: FormBuilder,
-    private cart: CartService,
-    private orders: OrderService,
-    private router: Router
-  ) {
-    this.form = this.fb.group({
-      address1: '',
-      city: '',
-      state: '',
-      zipCode: ''
-    });
-  }
-
-  // placeOrder() {
-  //   const order = {
-  //     items: this.cart.getItems(),
-  //     ...this.form.value
-  //   };
-
-  //   this.orders.placeOrder(order).subscribe(() => {
-  //     this.cart.clearCart();
-  //     this.router.navigate(['/user/orders']);
-  //   });
-  // }
-}

@@ -1,5 +1,13 @@
-<app-header></app-header>
+<!-- <app-header></app-header>
 <div *ngFor="let item of items">
     <app-cart-item [item]="item" (remove)="remove($event)" (quantityChange)="change($event.productId, $event.quantity)"></app-cart-item>
   </div>
-  <p>Total: ₹{{ total }}</p>
+  <p>Total: ₹{{ total }}</p> -->
+  <div *ngFor="let item of items">
+  <app-cart-item
+    [item]="item"
+    (remove)="remove($event)"
+    (quantityChange)="change($event)"
+  ></app-cart-item>
+</div>
+<p>Total: ₹{{ total }}</p>
