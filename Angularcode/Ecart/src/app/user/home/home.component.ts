@@ -59,7 +59,7 @@ export class HomeComponent implements OnInit {
   
     this.cartService.addToCart(cartItem).subscribe({
       next: () => alert('Added to cart'),
-      error: () => alert('Failed to add to cart')
+      error: () => alert('Product Already In Cart')
     });
   }
   

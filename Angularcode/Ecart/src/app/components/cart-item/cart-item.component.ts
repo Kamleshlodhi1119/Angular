@@ -61,7 +61,7 @@ export class CartItemComponent {
     }
   }
   removeitem() {
-    const newQty = this.item.quantity - 1;
+    const newQty = - 1;
     if (newQty <= 0) {
       this.remove.emit({
         productId: this.item.productId,

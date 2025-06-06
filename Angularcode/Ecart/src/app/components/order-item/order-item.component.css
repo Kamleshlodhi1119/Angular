@@ -1,7 +1,21 @@
-.order-card {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 1rem;
-    margin-bottom: 1rem;
-  }
-  
+.order-item {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+/* Emphasize the product name */
+.order-item p:first-child {
+  font-weight: bold;
+  font-size: 1.05rem;
+  color: #222;
+}
+
+/* Other item details */
+.order-item p {
+  margin: 4px 0;
+  color: #444;
+  font-size: 0.95rem;
+}

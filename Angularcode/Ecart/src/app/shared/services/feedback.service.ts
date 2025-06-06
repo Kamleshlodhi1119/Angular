@@ -15,7 +15,7 @@ export class FeedbackService {
   }
 
   submitFeedback(feedback: any) {
-    return this.http.post('/api/feedback/submit', feedback, { withCredentials: true });
+    return this.http.post('http://localhost:8080/api/feedback/submit', feedback, { withCredentials: true });
   }
 
   getUserFeedbacks() {

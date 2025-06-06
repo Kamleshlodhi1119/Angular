@@ -11,24 +11,24 @@ export class OrderService {
   constructor(private http: HttpClient) {}
 
   getAllOrders(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/all`);
+    return this.http.get<any[]>(`http://localhost:8080/api/orders/all`);
   }
 
   updateOrderStatus(orderId: number, status: string): Observable<any> {
-    return this.http.put(`${this.baseUrl}/${orderId}/status`, { status });
+    return this.http.put(`http://localhost:8080/api/orders/${orderId}/status`, { status });
   }
 
 
   placeOrder(order: any) {
-    return this.http.post('/api/orders/place', order, { withCredentials: true });
+    return this.http.post('http://localhost:8080/api/orders/place', order, { withCredentials: true });
   }
 
   // getUserOrders() {
-  //   return this.http.get('/api/orders/user', { withCredentials: true });
+  //   return this.http.get<any[]>('http://localhost:8080/api/orders/customer/38', { withCredentials: true });
   // }
 
   getUserOrders(): Observable<any[]> {
-    return this.http.get<any[]>('/api/orders/user', { withCredentials: true });
+    return this.http.get<any[]>('http://localhost:8080/api/orders/customer/38', { withCredentials: true });
   }
   
 }

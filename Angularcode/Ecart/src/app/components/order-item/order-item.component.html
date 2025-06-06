@@ -1,4 +1,4 @@
-<div class="order-card">
+<!-- <div class="order-card">
     <h4>Order #{{ order.id }} ({{ order.status }})</h4>
     <p>Total: ₹{{ order.totalAmount }}</p>
     <p>Date: {{ order.orderDate | date:'medium' }}</p>
@@ -8,5 +8,13 @@
         {{ item.product.name }} - Qty: {{ item.quantity }} - ₹{{ item.price }}
       </li>
     </ul>
+  </div>
+   -->
+   <div class="order-item" *ngIf="product">
+    <p><strong>{{ product.name }}</strong></p>
+    <p>Category: {{ product.category }}</p>
+    <p>Quantity: {{ item.quantity }}</p>
+    <p>Unit Price: ₹{{ product.price }}</p>
+    <p>Subtotal: ₹{{ item.quantity * product.price }}</p>
   </div>
   

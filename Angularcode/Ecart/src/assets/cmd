@@ -8,3 +8,4 @@ curl -X POST "http://localhost:8080/cart/add" -H "Content-Type: application/json
 E:\eclipse-workspace\Ecart
 
 curl -X POST "http://localhost:8080/cart/update/quantity" -H "Content-Type: application/json" -d "{\"productId\": 3, \"customerEmail\": \"k@gmail.com\", \"quantity\": 2}"
+curl -X POST "http://localhost:8080/api/orders" \ -H "Content-Type: application/json" \ -d "{\"customerId\": 38, \"paymentMethod\": \"CASH_ON_DELIVERY\", \"status\": \"CONFIRMED\", \"orderDate\": \"2025-06-06T10:00:00\", \"deliveryDate\": \"2025-06-11T10:00:00\", \"items\": [{\"productId\": 10, \"quantity\": 1}, {\"productId\": 12, \"quantity\": 1}, {\"productId\": 9, \"quantity\": 1}, {\"productId\": 8, \"quantity\": 1}]}"

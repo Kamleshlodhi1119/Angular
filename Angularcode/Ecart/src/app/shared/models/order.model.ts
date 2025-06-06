@@ -1,6 +1,7 @@
 import { Product } from './product.model';
 
 export interface OrderItem {
+  productId(productId: any): unknown;
   product: Product;
   quantity: number;
   price: number;

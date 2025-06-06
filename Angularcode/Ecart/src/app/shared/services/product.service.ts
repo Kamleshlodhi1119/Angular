@@ -30,9 +30,10 @@ export class ProductService {
   }
   
 
-  getProductById(productId: number): Observable<any> {
-    return this.http.get(`http://localhost:8080/api/products/${productId}`);
+  getProductById(productId: number): Observable<Product> {
+    return this.http.get<Product>(`http://localhost:8080/api/products/${productId}`);
   }
+  
   
 
   // getProductById(productId: number): Observable<any> {
