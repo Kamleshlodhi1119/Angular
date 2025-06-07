@@ -1,9 +1,10 @@
-<app-header></app-header>
-<form [formGroup]="form" (ngSubmit)="placeOrder()">
-    <input formControlName="address1" placeholder="Address">
-    <input formControlName="city" placeholder="City">
-    <input formControlName="state" placeholder="State">
-    <input formControlName="zipCode" placeholder="ZIP Code">
-    <button type="submit">Place Order</button>
-  </form>
-  
+<!-- <app-header></app-header> -->
+<app-cart></app-cart>
+<form [formGroup]="form" (ngSubmit)="placeOrder()" class="order-form">
+  <input formControlName="address1" placeholder="Address">
+  <input formControlName="city" placeholder="City">
+  <input formControlName="state" placeholder="State">
+  <input formControlName="zipCode" placeholder="ZIP Code">
+  <button type="submit">Place Order</button>
+</form>
+

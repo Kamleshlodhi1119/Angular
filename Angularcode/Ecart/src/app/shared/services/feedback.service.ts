@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Product } from '../models/product.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,14 +15,20 @@ export class FeedbackService {
     return this.http.get<any[]>(`${this.baseUrl}/all`);
   }
 
-  submitFeedback(feedback: any) {
-    return this.http.post('http://localhost:8080/api/feedback/submit', feedback, { withCredentials: true });
-  }
+  // submitFeedback(feedback: any) {
+  //   return this.http.post('http://localhost:8080/api/feedback/submit', feedback, { withCredentials: true });
+  // }
 
   getUserFeedbacks() {
-    return this.http.get('/api/feedback/user', { withCredentials: true });
+    return this.http.get('http://localhost:8080/api/feedback/38', { withCredentials: true });
  
   }
-
+  submitFeedback(feedback: any): Observable<any> {
+    return this.http.post(`http://localhost:8080/api/feedback/add`, feedback);
+  }
+  
+  getProductById(productId: number): Observable<Product> {
+    return this.http.get<Product>(`http://localhost:8080/api/products/${productId}`);
+    }
   
 }

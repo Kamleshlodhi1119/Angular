@@ -20,13 +20,19 @@ export class OrderService {
 
 
   placeOrder(order: any) {
-    return this.http.post('http://localhost:8080/api/orders/place', order, { withCredentials: true });
+    return this.http.post('http://localhost:8080/api/orders', order, { withCredentials: true });
   }
 
   // getUserOrders() {
   //   return this.http.get<any[]>('http://localhost:8080/api/orders/customer/38', { withCredentials: true });
   // }
 
+  getOrdersByCustomer(customerId: number): Observable<any[]> {
+    return this.http.get<any[]>(`http://localhost:8080/api/orders/customer/${customerId}`);
+    // return this.http.get<any[]>(`http://localhost:8080/api/orders/customer/38`);
+  }
+
+  
   getUserOrders(): Observable<any[]> {
     return this.http.get<any[]>('http://localhost:8080/api/orders/customer/38', { withCredentials: true });
   }

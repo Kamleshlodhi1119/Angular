@@ -1,50 +1,3 @@
-// import { Injectable } from '@angular/core';
-// import { Product } from '../models/product.model';
-// import { CartItem } from '../models/cart.model';
-
-// // @Injectable({
-// //   providedIn: 'root'
-// // })
-// // export class CartService {
-
-// //   constructor() { }
-// // }
-
-// // src/app/shared/services/cart.service.ts
-// @Injectable({ providedIn: 'root' })
-
-// export class CartService {
-  
-//   private items: CartItem[] = [];
-
-//   getItems(): CartItem[] {
-//     return this.items;
-//   }
-
-//   addItem(product: Product): void {
-//     const item = this.items.find(i => i.product.id === product.id);
-//     if (item) item.quantity += 1;
-//     else this.items.push({ product, quantity: 1 });
-//   }
-//   addToCart(product: Product): void {
-//     const item = this.items.find(i => i.product.id === product.id);
-//     if (item) item.quantity += 1;
-//     else this.items.push({ product, quantity: 1 });
-//   }
-  
-//   updateQuantity(productId: number, qty: number): void {
-//     const item = this.items.find(i => i.product.id === productId);
-//     if (item) item.quantity = qty;
-//   }
-
-//   removeItem(productId: number): void {
-//     this.items = this.items.filter(i => i.product.id !== productId);
-//   }
-
-//   clearCart(): void {
-//     this.items = [];
-//   }
-// }
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CartItem } from '../models/cart.model';
@@ -93,29 +46,8 @@ deleteCartItemByProduct(productId: number, email: string,quantity: number): Obse
   );
 }
 
-
-
-
-
-
-
-  /** Update cart item quantity */
-  updateCartItem(id: number, quantity: number): Observable<CartItem> {
-    return this.http.put<CartItem>(`${this.baseUrl}/update/${id}?quantity=${quantity}`, {});
-  }
-
-  /** Increase quantity */
-  increaseQuantity(id: number, increment: number): Observable<CartItem> {
-    return this.http.put<CartItem>(`${this.baseUrl}/increase/${id}?increment=${increment}`, {});
-  }
-
-  /** Decrease quantity */
-  decreaseQuantity(id: number, decrement: number): Observable<CartItem> {
-    return this.http.put<CartItem>(`${this.baseUrl}/decrease/${id}?decrement=${decrement}`, {});
-  }
-
   /** Delete cart item */
-  deleteCartItem(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/delete/${id}`);
-  }
+  // deleteCartItem(id: number): Observable<void> {
+  //   return this.http.delete<void>(`http://localhost:8080/cart/delete/${id}`);
+  // }
 }

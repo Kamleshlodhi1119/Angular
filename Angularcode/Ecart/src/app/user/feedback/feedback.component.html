@@ -1,8 +1,54 @@
-<app-header></app-header>
-<form [formGroup]="form" (ngSubmit)="submit()">
-    <input formControlName="productId" placeholder="Product ID">
-    <input type="number" formControlName="rating" min="1" max="5">
-    <textarea formControlName="comment" placeholder="Write feedback"></textarea>
+<!-- <app-header></app-header><h2>Delivered Products - Feedback</h2>
+
+<ul>
+  <li *ngFor="let product of deliveredProducts">
+    <strong>Product ID:</strong> {{ product.productId }}<br />
+    <strong>Delivered on:</strong> {{ product.orderDate | date:'short' }}
+    <button (click)="openFeedback(product.productId)">Give Feedback</button>
+  </li>
+</ul>
+
+<div *ngIf="showForm" class="feedback-form">
+  <h3>Submit Feedback</h3>
+  <form [formGroup]="feedbackForm" (ngSubmit)="submitFeedback()">
+    <label>Rating:</label>
+    <input type="number" formControlName="rating" min="1" max="5" required />
+    
+    <label>Description:</label>
+    <textarea formControlName="description"></textarea>
+    
     <button type="submit">Submit</button>
   </form>
-  
+</div> -->
+
+<app-header></app-header>
+<h2>Delivered Products - Feedback</h2>
+
+<div *ngFor="let product of deliveredProducts" class="product-card">
+  <img [src]="'http://localhost:8080' + product.image" alt="{{ product.name }}" width="100" />
+  <h3>{{ product.name }}</h3>
+  <p>{{ product.description }}</p>
+  <p><strong>Price:</strong> ₹{{ product.price }}</p>
+  <button (click)="openFeedbackForm(product.id)">Give Feedback</button>
+</div>
+
+<!-- Feedback Form -->
+<!-- Feedback Modal -->
+<div *ngIf="showForm" class="modal-overlay" (click)="closeForm()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h4>Give Feedback for Product ID: {{ selectedProductId }}</h4>
+    <form [formGroup]="feedbackForm" (ngSubmit)="submitFeedback()">
+      <label>Rating:</label>
+      <input type="number" formControlName="rating" min="1" max="5" required />
+
+      <label>Description:</label>
+      <textarea formControlName="description" required></textarea>
+
+      <div class="modal-buttons">
+        <button type="submit">Submit</button>
+        <button type="button" (click)="closeForm()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+

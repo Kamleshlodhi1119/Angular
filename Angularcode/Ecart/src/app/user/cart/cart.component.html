@@ -3,6 +3,8 @@
     <app-cart-item [item]="item" (remove)="remove($event)" (quantityChange)="change($event.productId, $event.quantity)"></app-cart-item>
   </div>
   <p>Total: ₹{{ total }}</p> -->
+
+  <app-header></app-header>
   <div *ngFor="let item of items">
   <app-cart-item
     [item]="item"
@@ -10,4 +12,9 @@
     (quantityChange)="change($event)"
   ></app-cart-item>
 </div>
-<p>Total: ₹{{ total }}</p>
+
+<div class="cart-footer">
+  <h3>Total: ₹{{ total }}</h3>
+  <button class="checkout-btn" (click)="goToCheckout()">Proceed to Checkout</button>
+</div>
+<app-footer></app-footer>
