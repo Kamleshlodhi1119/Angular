@@ -1,8 +1,117 @@
 .footer {
-    text-align: center;
-    padding: 1rem;
-    background-color: #f2f2f2;
-    margin-top: 2rem;
-    font-size: 0.9rem;
+  background-color: #0f172a;
+  color: white;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', sans-serif;
+
+  .footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: auto;
   }
-  
+
+  .footer-column {
+    h4 {
+      font-weight: bold;
+      margin-bottom: 16px;
+      font-size: 16px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      li {
+        margin: 8px 0;
+        font-size: 14px;
+        color: #cbd5e1;
+
+        .badge {
+          background-color: #f59e0b;
+          color: black;
+          border-radius: 8px;
+          padding: 2px 6px;
+          /* margin-left: 6px; */
+          font-size: 11px;
+        }
+      }
+    }
+  }
+
+  .logo-section {
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+
+      .icon {
+        margin-right: 10px;
+        font-size: 30px;
+      }
+    }
+
+    .copyright {
+      margin-top: 24px;
+      font-size: 12px;
+      color: #94a3b8;
+      max-width: 250px;
+      line-height: 1.4;
+    }
+  }
+
+  .newsletter {
+    h4 {
+      margin-bottom: 12px;
+    }
+
+    .subscribe-form {
+      display: flex;
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+
+      input {
+        flex: 1;
+        padding: 12px 10px;
+        border: none;
+        font-size: 14px;
+        color: black;
+        outline: none;
+      }
+
+      button {
+        padding: 12px 7px;
+        background-color: #f59e0b;
+        border: none;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 14px;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  .footer-bottom {
+    text-align: right;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #1e293b;
+
+    .social-icons {
+      i {
+        font-size: 18px;
+        margin: 0 8px;
+        cursor: pointer;
+        color: #cbd5e1;
+        transition: color 0.3s;
+
+        &:hover {
+          color: white;
+        }
+      }
+    }
+  }
+}

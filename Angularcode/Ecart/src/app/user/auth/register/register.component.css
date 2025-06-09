@@ -1,6 +1,22 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background: #0f172a;
+  color: white;
+}
+
+nav a, nav button {
+  margin-left: 1rem;
+  color: white;
+  text-decoration: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
 .register-container {
     max-width: 500px;
-    margin: auto;
+    margin: 40px 30%;
     padding: 2rem;
     border: 1px solid #ccc;
     border-radius: 8px;

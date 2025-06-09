@@ -1,4 +1,13 @@
-<app-header></app-header>
+<header class="header">
+  <h1>Ecart</h1>
+  <nav>
+    <a routerLink="/home">Home</a>
+    <a routerLink="/user/auth/login">Login</a>
+    <a routerLink="/user/auth/register">register</a>
+    <!-- <button (click)="logout()">Logout</button> -->
+  </nav>
+</header>
+
 <div class="login-container">
     <h2>Customer Login</h2>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
@@ -13,4 +22,6 @@
       <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
     </form>
   </div>
+
+  <app-footer></app-footer>
   

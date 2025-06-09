@@ -1,25 +1,70 @@
-import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ProductCardComponent } from '../../components/product-card/product-card.component';
-import { OrderItemComponent } from '../../components/order-item/order-item.component';
+// import { Component, OnInit } from '@angular/core';
+
+// import { HttpClient } from '@angular/common/http';
 
 // @Component({
 //   selector: 'app-profile',
-//   imports: [],
 //   templateUrl: './profile.component.html',
-//   styleUrl: './profile.component.css'
+//   styleUrls: ['./profile.component.css']
 // })
-// export class ProfileComponent {
+// export class ProfileComponent implements OnInit {
+//   customerId = 38;
+//   customer: any = null;
 
+//   constructor(private http: HttpClient) {}
+
+//   ngOnInit(): void {
+//     const url = `http://localhost:8080/api/auth/customers/${this.customerId}`;
+//     this.http.get(url).subscribe({
+//       next: (data) => {
+//         this.customer = data;
+//         // If profile image is not included, you could manually add a fallback
+//         this.customer.profileImageUrl = 'assets/default-profile.png';
+//       },
+//       error: (err) => console.error('Error loading customer data', err)
+//     });
+//   }
 // }
-@Component({ 
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+@Component({
   selector: 'app-profile',
-  templateUrl: './profile.component.html', 
-  styleUrls: ['./profile.component.css'] })
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css']
+})
 export class ProfileComponent implements OnInit {
-  profile: any;
+  customerId = 38;
+  customer: any = null;
+  isEditMode = false;
+
   constructor(private http: HttpClient) {}
-  ngOnInit() { this.http.get('http://localhost:8080/api/customers/profile', { withCredentials: true }).subscribe(p => this.profile = p); }
+
+  ngOnInit(): void {
+    const url = `http://localhost:8080/api/auth/customers/${this.customerId}`;
+    this.http.get(url).subscribe({
+      next: (data) => {
+        this.customer = data;
+        this.customer.profileImageUrl = this.customer.profileImageUrl || 'assets/default-profile.png';
+      },
+      error: (err) => console.error('Error loading customer data', err)
+    });
+  }
+
+  toggleEdit() {
+    this.isEditMode = !this.isEditMode;
+  }
+
+  onSubmit() {
+    if (!this.isEditMode) return;
+
+    const updateUrl = `http://localhost:8080/api/auth/customers/update/${this.customerId}`;
+    this.http.put(updateUrl, this.customer).subscribe({
+      next: (response) => {
+        console.log('Customer updated:', response);
+        this.isEditMode = false;
+      },
+      error: (err) => console.error('Update failed', err)
+    });
+  }
 }

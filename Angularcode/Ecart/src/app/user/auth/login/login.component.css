@@ -1,6 +1,22 @@
-.login-container {
-    max-width: 400px;
-    margin: auto;
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background: #0f172a;
+  color: white;
+}
+
+nav a, nav button {
+  margin-left: 1rem;
+  color: white;
+  text-decoration: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.login-container {margin-top: 30px;
+    max-width: 500px;
+    margin: 30px 30%;
     padding: 2rem;
     border: 1px solid #ccc;
     border-radius: 8px;

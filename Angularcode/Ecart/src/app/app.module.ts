@@ -42,6 +42,7 @@ import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
 import { NavBarComponent } from './user/nav-bar/nav-bar.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
+import { ProfileComponent } from './user/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard
     CheckoutComponent,
     OrdersComponent,
     ProductsComponent,
+    ProfileComponent,
     FeedbackComponent,
     OrderItemComponent,
     
