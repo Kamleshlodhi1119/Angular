@@ -1,4 +1,4 @@
-<div class="feedback-list">
+<app-admin-header></app-admin-header><div class="feedback-list">
     <h2>Customer Feedback</h2>
   
     <div *ngIf="feedbacks.length === 0 && !error">No feedbacks found.</div>
@@ -10,6 +10,7 @@
           <th>Product</th>
           <th>Rating</th>
           <th>Comment</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -18,10 +19,12 @@
           <td>{{ fb.product?.name }}</td>
           <td>{{ fb.rating }}</td>
           <td>{{ fb.comment }}</td>
+          <td><button (click)="deleteFeedback(fb.customer.id, fb.product.id)">Delete</button></td>
+
         </tr>
       </tbody>
     </table>
   
     <p *ngIf="error" class="error">{{ error }}</p>
   </div>
-  
+  <app-footer></app-footer>

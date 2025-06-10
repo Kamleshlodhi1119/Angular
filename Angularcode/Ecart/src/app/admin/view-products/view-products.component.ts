@@ -39,6 +39,6 @@ export class ViewProductsComponent implements OnInit {
   }
 
   editProduct(productId: number): void {
-    this.router.navigate(['/admin/update-product', productId]);
+    this.router.navigate(['products/update/', productId]);
   }
 }

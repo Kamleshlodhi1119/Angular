@@ -58,7 +58,7 @@ export class AdminLoginComponent {
       this.authService.adminLogin(this.loginForm.value).subscribe({
         next: (response) => {
           console.log('Login response:', response);
-          this.router.navigate(['/admin/dashboard']);
+          this.router.navigate(['/dashboard']);
         },
         error: (err) => {
           console.error('Login error:', err);

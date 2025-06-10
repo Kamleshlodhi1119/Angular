@@ -36,15 +36,15 @@ const routes: Routes = [
   { path: 'user/auth/register', component: RegisterComponent },
   { path: 'user/nav-bar', component: NavBarComponent },
 
-  { path: 'admin/admin-login', component: AdminLoginComponent },
-  { path: 'admin/admin-header', component: AdminHeaderComponent },
-  { path: 'admin/dashboard', component: AdminDashboardComponent },
-  { path: 'admin/customers', component: ViewCustomersComponent },
-  { path: 'admin/orders', component: ViewOrdersComponent },
-  { path: 'admin/feedbacks', component: ViewFeedbacksComponent },
-  { path: 'admin/products', component: ViewProductsComponent },
-  { path: 'admin/products/add', component: AddProductComponent },
-  { path: 'admin/products/update/:id', component: UpdateProductComponent }
+  { path: 'admin-login', component: AdminLoginComponent },
+  { path: 'admin-header', component: AdminHeaderComponent },
+  { path: 'dashboard', component: AdminDashboardComponent },
+  { path: 'customers', component: ViewCustomersComponent },
+  { path: 'orders', component: ViewOrdersComponent },
+  { path: 'feedbacks', component: ViewFeedbacksComponent },
+  { path: 'products', component: ViewProductsComponent },
+  { path: 'products/add', component: AddProductComponent },
+  { path: 'products/update/:id', component: UpdateProductComponent }
 ];
 
 @NgModule({

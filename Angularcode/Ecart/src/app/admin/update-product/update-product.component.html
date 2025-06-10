@@ -1,4 +1,4 @@
-<div class="update-product">
+<app-admin-header></app-admin-header><div class="update-product">
     <h2>Edit Product</h2>
   
     <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
@@ -27,3 +27,4 @@
     <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
   </div>
   
+  <app-footer></app-footer>

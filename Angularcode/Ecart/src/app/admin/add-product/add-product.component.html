@@ -1,4 +1,4 @@
-<div class="add-product-container">
+<app-admin-header></app-admin-header><div class="add-product-container">
     <h2>Add New Product</h2>
   
     <form [formGroup]="productForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
@@ -28,6 +28,7 @@
   </div>
 
 
-  <app-view-customers></app-view-customers>
-  <app-update-product></app-update-product>
+  <!-- <app-view-customers></app-view-customers>
+  <app-update-product></app-update-product> -->
+  <app-footer></app-footer>
   

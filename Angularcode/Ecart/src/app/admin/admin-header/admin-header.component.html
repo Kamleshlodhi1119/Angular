@@ -1,9 +1,13 @@
-<nav>
-<button routerLink="/admin/login">Admin Login</button>
-<button routerLink="/admin/dashboard">Dashboard</button>
-<button routerLink="/admin/add-product">Add Product</button>
-<button routerLink="/admin/view-products">View Products</button>
-<button routerLink="/admin/view-orders">View Orders</button>
-<button routerLink="/admin/view-customers">View Customers</button>
-<button routerLink="/admin/view-feedbacks">View Feedbacks</button>
-</nav>
+<header class="header">
+    <h1>Ecart</h1>
+    <nav>
+        <a routerLink="/admin-login">Admin Login</a>
+        <a routerLink="/dashboard">Dashboard</a>
+        <a routerLink="/add-product">Add Product</a>
+        <a routerLink="/products">View Products</a>
+        <a routerLink="/view-orders">View Orders</a>
+        <a routerLink="/customers">View Customers</a>
+        <a routerLink="/feedbacks">View Feedbacks</a>
+        <button (click)="logout()">Logout</button>
+    </nav>
+</header>
