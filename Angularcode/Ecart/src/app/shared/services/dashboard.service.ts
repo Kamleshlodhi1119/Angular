@@ -15,6 +15,6 @@ export class DashboardService {
   }
 
   getTopProducts(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/top-products`);
+    return this.http.get<any[]>(`http://localhost:8080/api/products/allitems`);
   }
 }
