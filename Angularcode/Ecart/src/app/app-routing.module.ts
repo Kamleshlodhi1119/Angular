@@ -81,17 +81,35 @@ import { AdminHeaderComponent } from './admin/admin-header/admin-header.componen
 
 // Guards
 import { AdminGuard } from './shared/guards/admin.guard';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
+  //  { path: 'user/auth/login', component: LoginComponent },
+  // { path: 'customer/profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  // { path: 'home', component: HomeComponent },
+  // { path: 'products', component: ProductsComponent },
+  // { path: 'cart', component: CartComponent },
+  // { path: 'orders', component: OrdersComponent },
+  // { path: 'profile', component: ProfileComponent },
+  // { path: 'checkout', component: CheckoutComponent },
+  // { path: 'feedback', component: FeedbackComponent },
+  // { path: 'user/auth/login', component: LoginComponent },
+  // { path: 'user/auth/register', component: RegisterComponent },
+  // { path: 'user/nav-bar', component: NavBarComponent },
+   // Publicly accessible
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'products', component: ProductsComponent },
-  { path: 'cart', component: CartComponent },
-  { path: 'orders', component: OrdersComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'checkout', component: CheckoutComponent },
-  { path: 'feedback', component: FeedbackComponent },
   { path: 'user/auth/login', component: LoginComponent },
   { path: 'user/auth/register', component: RegisterComponent },
+
+  // User-protected routes
+  { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
+  { path: 'orders', component: OrdersComponent, canActivate: [AuthGuard] },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
+  { path: 'feedback', component: FeedbackComponent, canActivate: [AuthGuard] },
+  { path: 'customer/profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'user/nav-bar', component: NavBarComponent },
 
   // Admin Auth

@@ -1,30 +1,3 @@
-// import { Component, OnInit } from '@angular/core';
-
-// import { HttpClient } from '@angular/common/http';
-
-// @Component({
-//   selector: 'app-profile',
-//   templateUrl: './profile.component.html',
-//   styleUrls: ['./profile.component.css']
-// })
-// export class ProfileComponent implements OnInit {
-//   customerId = 38;
-//   customer: any = null;
-
-//   constructor(private http: HttpClient) {}
-
-//   ngOnInit(): void {
-//     const url = `http://localhost:8080/api/auth/customers/${this.customerId}`;
-//     this.http.get(url).subscribe({
-//       next: (data) => {
-//         this.customer = data;
-//         // If profile image is not included, you could manually add a fallback
-//         this.customer.profileImageUrl = 'assets/default-profile.png';
-//       },
-//       error: (err) => console.error('Error loading customer data', err)
-//     });
-//   }
-// }
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 

@@ -3,25 +3,23 @@
   <nav>
     <a routerLink="/home">Home</a>
     <a routerLink="/user/auth/login">Login</a>
-    <a routerLink="/user/auth/register">register</a>
-    <!-- <button (click)="logout()">Logout</button> -->
+    <a routerLink="/user/auth/register">Register</a>
   </nav>
 </header>
 
 <div class="login-container">
-    <h2>Customer Login</h2>
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <label>Email</label>
-      <input formControlName="email" type="email" />
-  
-      <label>Password</label>
-      <input formControlName="password" type="password" />
-  
-      <button type="submit" [disabled]="loginForm.invalid">Login</button>
-  
-      <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
-    </form>
-  </div>
+  <h2>Customer Login</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <label>Email</label>
+    <input formControlName="email" type="email" />
 
-  <app-footer></app-footer>
-  
+    <label>Password</label>
+    <input formControlName="password" type="password" />
+
+    <button type="submit" [disabled]="loginForm.invalid">Login</button>
+
+    <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+  </form>
+</div>
+
+<app-footer></app-footer>
