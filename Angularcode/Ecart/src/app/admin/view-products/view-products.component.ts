@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../shared/services/product.service';
 import { Product } from '../../shared/models/product.model';
-// import { Router, RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
-// import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ProductCardComponent } from '../../components/product-card/product-card.component';
-import { OrderItemComponent } from '../../components/order-item/order-item.component';
 import { Router } from '@angular/router';
 
 @Component({

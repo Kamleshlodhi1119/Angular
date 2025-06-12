@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 export class AdminHeaderComponent {
    constructor(public authService: AuthService, private router: Router) {}
   logout(): void {
-    this.authService.customerLogout().subscribe(() => {
+    this.authService.adminLogout().subscribe(() => {
       this.router.navigate(['/admin-login']);
     });
   }

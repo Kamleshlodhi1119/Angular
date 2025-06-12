@@ -1,13 +1,11 @@
+// File: src/app/shared/guards/admin.guard.ts
 import { Injectable } from '@angular/core';
-// import { CanActivate, Router } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { catchError, map } from 'rxjs/operators';
-import { CanActivate, Router } from '@angular/router';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class AdminGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -15,11 +13,11 @@ export class AdminGuard implements CanActivate {
     return this.authService.isAdminAuthenticated().pipe(
       map(authenticated => {
         if (authenticated) return true;
-        this.router.navigate(['/admin/login']);
+        this.router.navigate(['/admin/admin-login']);
         return false;
       }),
       catchError(() => {
-        this.router.navigate(['/admin/login']);
+        this.router.navigate(['/admin/admin-login']);
         return of(false);
       })
     );

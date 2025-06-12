@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from '../../shared/services/customer.service';
-import { CommonModule } from '@angular/common';
-// import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// import { RouterModule } from '@angular/router';
-import { ProductCardComponent } from '../../components/product-card/product-card.component';
-import { OrderItemComponent } from '../../components/order-item/order-item.component';
 
 @Component({
   selector: 'app-view-customers',

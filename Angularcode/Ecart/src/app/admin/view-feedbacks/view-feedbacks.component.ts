@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FeedbackService } from '../../shared/services/feedback.service';
-import { CommonModule } from '@angular/common';
-import { ProductCardComponent } from '../../components/product-card/product-card.component';
-import { OrderItemComponent } from '../../components/order-item/order-item.component';
 import { HttpClient } from '@angular/common/http';
 
 @Component({

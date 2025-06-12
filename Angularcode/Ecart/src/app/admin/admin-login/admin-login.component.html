@@ -1,4 +1,7 @@
-<div class="login-container">
+<app-admin-header></app-admin-header><pre>
+
+    
+</pre><div class="login-container">
     <h2>Admin Login</h2>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <label>Email</label>
@@ -14,4 +17,8 @@
       <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
     </form>
   </div>
-  
+  <pre>
+
+
+  </pre>
+  <app-footer></app-footer>
