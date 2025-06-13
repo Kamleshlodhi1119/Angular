@@ -7,6 +7,7 @@
       <thead>
         <tr>
           <th>Customer</th>
+          <th>Email</th>
           <th>Product</th>
           <th>Rating</th>
           <th>Comment</th>
@@ -16,9 +17,10 @@
       <tbody>
         <tr *ngFor="let fb of feedbacks">
           <td>{{ fb.customer?.name }}</td>
+          <td>{{ fb.customer?.email }}</td>
           <td>{{ fb.product?.name }}</td>
           <td>{{ fb.rating }}</td>
-          <td>{{ fb.comment }}</td>
+          <td>{{ fb.description }}</td>
           <td><button (click)="deleteFeedback(fb.customer.id, fb.product.id)">Delete</button></td>
 
         </tr>

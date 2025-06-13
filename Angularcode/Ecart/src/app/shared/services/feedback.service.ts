@@ -15,20 +15,15 @@ export class FeedbackService {
     return this.http.get<any[]>(`${this.baseUrl}/all`);
   }
 
-  // submitFeedback(feedback: any) {
-  //   return this.http.post('http://localhost:8080/api/feedback/submit', feedback, { withCredentials: true });
-  // }
+  getUserFeedbacks(customerId: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${customerId}`, { withCredentials: true });
+  }
 
-  getUserFeedbacks() {
-    return this.http.get('http://localhost:8080/api/feedback/38', { withCredentials: true });
- 
-  }
   submitFeedback(feedback: any): Observable<any> {
-    return this.http.post(`http://localhost:8080/api/feedback/add`, feedback);
+    return this.http.post(`${this.baseUrl}/add`, feedback);
   }
-  
+
   getProductById(productId: number): Observable<Product> {
     return this.http.get<Product>(`http://localhost:8080/api/products/${productId}`);
-    }
-  
+  }
 }

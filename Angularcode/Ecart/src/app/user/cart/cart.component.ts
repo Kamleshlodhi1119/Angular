@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { CartService } from '../../shared/services/cart.service';
 import { CartItem } from 'src/app/shared/models/cart.model';
 import { Router } from '@angular/router';
+import { UserSessionService } from 'src/app/shared/services/user-session.service';
+
 
 @Component({
   selector: 'app-cart',
@@ -14,14 +16,23 @@ export class CartComponent {
   total = 0;
 
  // constructor(private cartService: CartService) { }
- constructor(
+constructor(
   private cartService: CartService,
-  private router: Router // ✅ added here
+  private router: Router,
+  private userSession: UserSessionService // ✅ inject user session service
 ) {}
 
 
+
   ngOnInit() {
-    const email = 'k@gmail.com'; // Ideally from auth service
+    // const email = 'k@gmail.com'; // Ideally from auth service
+    const email = this.userSession.getUserEmail(); // ✅ dynamically get current user email
+
+  if (!email) {
+    console.error('User not logged in');
+    this.router.navigate(['/login']); // Or handle it gracefully
+    return;
+  }
     this.cartService.getCartItems(email).subscribe(data => {
       this.items = data;
       this.calculateTotal();

@@ -1,4 +1,5 @@
 export interface User {
+  profileImageUrl: string;
     id: number;
   name: string;
   email: string;

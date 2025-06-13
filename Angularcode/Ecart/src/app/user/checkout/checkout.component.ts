@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { CartService } from '../../shared/services/cart.service';
 import { OrderService } from '../../shared/services/order.service';
 import { CartItem } from '../../shared/models/cart.model';
+import { UserSessionService } from 'src/app/shared/services/user-session.service';
 
 @Component({
   selector: 'app-checkout',
@@ -14,15 +15,14 @@ import { CartItem } from '../../shared/models/cart.model';
 })
 export class CheckoutComponent implements OnInit {
   form: FormGroup;
-  customerId: number = 38; // 🔁 Replace this with dynamic user ID (e.g., from AuthService)
-  customerEmail: string = 'k@gmail.com'; // 🔁 Replace this too
   cartItems: CartItem[] = [];
 
   constructor(
     private fb: FormBuilder,
     private cart: CartService,
     private orders: OrderService,
-    private router: Router
+    private router: Router,
+    private userSession: UserSessionService // ✅ inject user session
   ) {
     this.form = this.fb.group({
       address1: '',
@@ -33,19 +33,34 @@ export class CheckoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.cart.getCartItems(this.customerEmail).subscribe(items => {
+    const email = this.userSession.getUserEmail();
+    const userid=this.userSession.getUserId();
+    if (!email) {
+      alert('User not logged in!');
+      this.router.navigate(['/login']);
+      return;
+    }
+
+    this.cart.getCartItems(email).subscribe(items => {
       this.cartItems = items;
     });
   }
 
   placeOrder(): void {
+    const user = this.userSession.getUser();
+    if (!user) {
+      alert('User session expired. Please login again.');
+      this.router.navigate(['/login']);
+      return;
+    }
+
     if (this.cartItems.length === 0) {
       alert('Cart is empty!');
       return;
     }
 
     const orderPayload = {
-      customerId: this.customerId,
+      customerId: user.id, // ✅ dynamic ID
       paymentMethod: 'CASH_ON_DELIVERY',
       status: 'CONFIRMED',
       orderDate: new Date().toISOString(),

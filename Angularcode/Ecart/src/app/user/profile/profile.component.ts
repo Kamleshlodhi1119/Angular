@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { UserSessionService } from 'src/app/shared/services/user-session.service';
 
 @Component({
   selector: 'app-profile',
@@ -7,14 +8,16 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  customerId = 38;
+  // customerId = 38;
   customer: any = null;
   isEditMode = false;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,  private userSession: UserSessionService // ✅ inject user session service
+) {}
 
   ngOnInit(): void {
-    const url = `http://localhost:8080/api/auth/customers/${this.customerId}`;
+    const costomerId=this.userSession.getUserId();
+    const url = `http://localhost:8080/api/auth/customers/${costomerId}`;
     this.http.get(url).subscribe({
       next: (data) => {
         this.customer = data;
@@ -30,8 +33,8 @@ export class ProfileComponent implements OnInit {
 
   onSubmit() {
     if (!this.isEditMode) return;
-
-    const updateUrl = `http://localhost:8080/api/auth/customers/update/${this.customerId}`;
+    const costomerId=this.userSession.getUserId();
+    const updateUrl = `http://localhost:8080/api/auth/customers/update/${costomerId}`;
     this.http.put(updateUrl, this.customer).subscribe({
       next: (response) => {
         console.log('Customer updated:', response);

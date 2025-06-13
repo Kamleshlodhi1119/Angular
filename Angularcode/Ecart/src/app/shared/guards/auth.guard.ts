@@ -1,39 +1,32 @@
-// // src/app/shared/guards/auth.guard.ts
-// import { Injectable } from '@angular/core';
-// // import { CanActivate, Router } from '@angular/router';
-// import { Observable } from 'rxjs';
-// import { tap } from 'rxjs/operators';
-// import { AuthService } from '../services/auth.service';
-// import { CanActivate, Router } from '@angular/router';
-
-// @Injectable({ providedIn: 'root' })
-
-//   constructor(private auth: AuthService, private router: Router) {}
-
-//   canActivate(): Observable<boolean> {
-//     return this.auth.isCustomerAuthenticated().pipe(
-//       tap(authenticated => {
-//         if (!authenticated) this.router.navigate(['/user/auth/login']);
-//       })
-//     );
-//   }
-// }
-
 import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { CanActivate, Router, UrlTree } from '@angular/router';
+import { Observable, of } from 'rxjs';
 import { AuthService } from '../services/auth.service';
+import { map, catchError, switchMap } from 'rxjs/operators';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthGuard implements CanActivate {
-  constructor(private auth: AuthService, private router: Router) {}
 
-  canActivate(): Observable<boolean> {
-    return this.auth.isCustomerAuthenticated().pipe(
-      tap(authenticated => {
-        if (!authenticated) this.router.navigate(['/user/auth/login']);
-      })
+  constructor(private authService: AuthService, private router: Router) {}
+
+  canActivate(): Observable<boolean | UrlTree> {
+    // If currentUser is already set, skip session check
+    if (this.authService.currentUser) {
+      return of(true);
+    }
+
+    // Otherwise, validate session from backend
+    return this.authService.checkSession().pipe(
+      switchMap(user => {
+        if (user) {
+          return of(true);
+        } else {
+          return of(this.router.createUrlTree(['/login']));
+        }
+      }),
+      catchError(() => of(this.router.createUrlTree(['/login'])))
     );
   }
 }

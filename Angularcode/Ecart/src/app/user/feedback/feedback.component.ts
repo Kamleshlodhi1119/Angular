@@ -1,75 +1,10 @@
-// import { Component, OnInit } from '@angular/core';
-// import { FormBuilder, FormGroup } from '@angular/forms';
-// import { FeedbackService } from '../../shared/services/feedback.service';
-// import { OrderService } from '../../shared/services/order.service';
-
-// @Component({
-//   selector: 'app-feedback',
-//   templateUrl: './feedback.component.html',
-//   styleUrls: ['./feedback.component.css']
-// })
-// export class FeedbackComponent implements OnInit {
-//   deliveredProducts: any[] = [];
-//   feedbackForm!: FormGroup;
-//   showForm = false;
-//   selectedProductId!: number;
-//   customerId = 38; // Ideally from AuthService
-
-//   constructor(
-//     private orderService: OrderService,
-//     private feedbackService: FeedbackService,
-//     private fb: FormBuilder
-//   ) {}
-
-//   ngOnInit(): void {
-//     this.feedbackForm = this.fb.group({
-//       rating: [5],
-//       description: ['']
-//     });
-
-//     this.orderService.getOrdersByCustomer(this.customerId).subscribe(orders => {
-//       this.deliveredProducts = [];
-//       orders
-//         .filter((order: any) => order.status === 'CONFIRMED')
-//         .forEach((order: any) => {
-//           order.items.forEach((item: any) => {
-//             this.deliveredProducts.push({
-//               productId: item.productId,
-//               orderDate: order.orderDate
-//             });
-//           });
-//         });
-//     });
-//   }
-
-//   openFeedback(productId: number) {
-//     this.selectedProductId = productId;
-//     this.showForm = true;
-//   }
-
-//   submitFeedback() {
-//     const payload = {
-//       productId: this.selectedProductId,
-//       customerId: this.customerId,
-//       rating: this.feedbackForm.value.rating,
-//       description: this.feedbackForm.value.description
-//     };
-
-//     this.feedbackService.submitFeedback(payload).subscribe(() => {
-//       alert('Feedback submitted successfully!');
-//       this.feedbackForm.reset();
-//       this.showForm = false;
-//     });
-//   }
-// }
-
-
-
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../../shared/services/order.service';
 import { ProductService } from '../../shared/services/product.service';
 import { FeedbackService } from '../../shared/services/feedback.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { UserSessionService } from 'src/app/shared/services/user-session.service';
+import { User } from 'src/app/shared/models/user.model';
 
 @Component({
   selector: 'app-feedback',
@@ -81,13 +16,14 @@ export class FeedbackComponent implements OnInit {
   selectedProductId!: number;
   feedbackForm!: FormGroup;
   showForm = false;
-  customerId = 38; // 🔁 Replace with dynamic auth logic if available
+  currentUser: User | null = null;
 
   constructor(
     private orderService: OrderService,
     private productService: ProductService,
     private feedbackService: FeedbackService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private userSession: UserSessionService // ✅ Inject user session service
   ) {}
 
   ngOnInit(): void {
@@ -96,16 +32,22 @@ export class FeedbackComponent implements OnInit {
       description: ['']
     });
 
-    this.loadDeliveredProductDetails();
+    this.currentUser = this.userSession.getCustomer(); // ✅ get user from session
+
+    if (this.currentUser) {
+      this.loadDeliveredProductDetails(this.currentUser.id); // ✅ pass dynamic id
+    } else {
+      console.error('No customer is currently logged in.');
+    }
   }
 
   closeForm(): void {
     this.showForm = false;
     this.feedbackForm.reset();
   }
-  
-  loadDeliveredProductDetails(): void {
-    this.orderService.getOrdersByCustomer(this.customerId).subscribe(orders => {
+
+  loadDeliveredProductDetails(customerId: number): void {
+    this.orderService.getOrdersByCustomer(customerId).subscribe(orders => {
       const productIds = new Set<number>();
       orders
         .filter(order => order.status === 'CONFIRMED')
@@ -128,8 +70,13 @@ export class FeedbackComponent implements OnInit {
   }
 
   submitFeedback(): void {
+    if (!this.currentUser) {
+      alert('User not logged in');
+      return;
+    }
+
     const feedback = {
-      customerId: this.customerId,
+      customerId: this.currentUser.id, // ✅ dynamic ID
       productId: this.selectedProductId,
       ...this.feedbackForm.value
     };
