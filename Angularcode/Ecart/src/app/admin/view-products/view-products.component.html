@@ -14,7 +14,7 @@
   
       <tbody>
         <tr *ngFor="let p of products">
-          <td><img [src]="'http://localhost:8080' + p.imageUrl" width="50" /></td>
+   <img [src]="'http://localhost:8080/products/'+ p.id + '.jpg'" alt="Product Image"/>
           <td>{{ p.name }}</td>
           <td>{{ p.price }}</td>
           <td>
@@ -25,6 +25,7 @@
           <td>
             <button (click)="toggleStatus(p.id)">Toggle</button>
             <button (click)="editProduct(p.id)">Edit</button>
+            <button (click)="deleteProduct(p.id)">Delete</button>
           </td>
         </tr>
       </tbody>

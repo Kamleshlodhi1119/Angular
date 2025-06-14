@@ -6,6 +6,9 @@
 </div> -->
 
 <div class="product-card">
+  <!-- <img [src]="'http://localhost:8080' + product.imageUrl" alt="{{ product.name }}" /> -->
+   <img [src]="'http://localhost:8080/products/'+ product.id + '.jpg'" alt="Product Image" />
+
   <h3>{{ product.name }}</h3>
   <p>{{ product.description }}</p>
   <p>Price: ₹{{ product.price }}</p>

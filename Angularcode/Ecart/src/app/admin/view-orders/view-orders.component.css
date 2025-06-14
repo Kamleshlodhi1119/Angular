@@ -1,23 +1,38 @@
 .order-list {
-    padding: 1rem;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  th, td {
-    padding: 0.5rem;
-    border-bottom: 1px solid #ccc;
-    vertical-align: top;
-  }
-  
-  select {
-    padding: 0.3rem;
-  }
-  
-  .error {
-    color: red;
-  }
-  
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.order-list h2 {
+  text-align: center;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+strong.delivered {
+  color: green;
+}
+
+strong.pending {
+  color: orange;
+}

@@ -1,37 +1,15 @@
-<!-- <app-header></app-header><h2>Delivered Products - Feedback</h2>
-
-<ul>
-  <li *ngFor="let product of deliveredProducts">
-    <strong>Product ID:</strong> {{ product.productId }}<br />
-    <strong>Delivered on:</strong> {{ product.orderDate | date:'short' }}
-    <button (click)="openFeedback(product.productId)">Give Feedback</button>
-  </li>
-</ul>
-
-<div *ngIf="showForm" class="feedback-form">
-  <h3>Submit Feedback</h3>
-  <form [formGroup]="feedbackForm" (ngSubmit)="submitFeedback()">
-    <label>Rating:</label>
-    <input type="number" formControlName="rating" min="1" max="5" required />
-    
-    <label>Description:</label>
-    <textarea formControlName="description"></textarea>
-    
-    <button type="submit">Submit</button>
-  </form>
-</div> -->
 
 <app-header></app-header>
 <h2>Delivered Products - Feedback</h2>
-
-<div *ngFor="let product of deliveredProducts" class="product-card">
-  <img [src]="'http://localhost:8080' + product.image" alt="{{ product.name }}" width="100" />
+<div class="product-card">
+<div *ngFor="let product of deliveredProducts" class="product-card1">
+   <img [src]="'http://localhost:8080/products/'+ product.id + '.jpg'" alt="Product Image" width="50"/>
   <h3>{{ product.name }}</h3>
   <p>{{ product.description }}</p>
   <p><strong>Price:</strong> ₹{{ product.price }}</p>
   <button (click)="openFeedbackForm(product.id)">Give Feedback</button>
 </div>
-
+</div>
 <!-- Feedback Form -->
 <!-- Feedback Modal -->
 <div *ngIf="showForm" class="modal-overlay" (click)="closeForm()">

@@ -1,23 +1,51 @@
 .dashboard-container {
-    padding: 2rem;
-  }
-  
-  .summary {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 1rem;
-    margin-bottom: 2rem;
-  }
-  
-  .card {
-    background-color: #1976d2;
-    color: white;
-    padding: 1.2rem;
-    border-radius: 8px;
-    font-weight: bold;
-  }
-  
-  .error {
-    color: red;
-  }
-  
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  color: var(--text-color);
+}
+
+.dashboard-container h2,
+.dashboard-container h3 {
+  text-align: center;
+  color: var(--primary-color);
+}
+
+.summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-around;
+  margin: 30px 0;
+}
+
+.card {
+  flex: 1 1 200px;
+  padding: 20px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: bold;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  background-color: var(--primary-dark-color);
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  padding: 10px;
+  background: var(--input-bg);
+  border-radius: 8px;
+  margin-bottom: 10px;
+}

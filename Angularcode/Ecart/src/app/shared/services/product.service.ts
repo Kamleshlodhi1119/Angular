@@ -27,6 +27,8 @@ export class ProductService {
     const formData = new FormData();
     formData.append('image', file);
     return this.http.post(`http://localhost:8080/api/products/${productId}/upload-image`, formData);
+    // return this.http.post(`http://localhost:8080/api/products/2/upload-image`, formData);
+
   }
   
 
@@ -48,6 +50,10 @@ export class ProductService {
     });
   }
   
+deleteProduct(productId: number): Observable<any> {
+  return this.http.delete(`http://localhost:8080/api/products/delete/${productId}`);
+}
+
 
   getActiveProducts(): Observable<Product[]> {
     return this.http.get<Product[]>('http://localhost:8080/api/products');

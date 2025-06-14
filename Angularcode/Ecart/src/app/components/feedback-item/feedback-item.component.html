@@ -1,4 +1,6 @@
 <div class="feedback-item">
+     <img [src]="'http://localhost:8080/products/'+ feedback.product.id + '.jpg'" alt="Product Image" width="50"/>
+
     <h4>{{ feedback.product.name }}</h4>
     <p><strong>{{ feedback.customer.name }}</strong> rated {{ feedback.rating }}/5</p>
     <p>{{ feedback.comment }}</p>

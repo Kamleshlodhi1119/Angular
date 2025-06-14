@@ -36,4 +36,10 @@ export class ViewProductsComponent implements OnInit {
   editProduct(productId: number): void {
     this.router.navigate(['products/update/', productId]);
   }
+   deleteProduct(productId: number): void {
+     this.productService.deleteProduct(productId).subscribe({
+      next: () => this.loadProducts(),
+      error: () => alert('Failed to Delete product.')
+    });
+  }
 }
