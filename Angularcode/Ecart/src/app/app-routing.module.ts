@@ -27,6 +27,7 @@ import { AdminHeaderComponent } from './admin/admin-header/admin-header.componen
 // Guards
 import { AdminGuard } from './shared/guards/admin.guard';
 import { AuthGuard } from './shared/guards/auth.guard';
+import { SingleProductComponent } from './components/single-product/single-product.component';
 
 const routes: Routes = [
 
@@ -34,6 +35,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'products', component: ProductsComponent },
+  { path: 'product/:productId', component: SingleProductComponent },
   { path: 'user/auth/login', component: LoginComponent },
   { path: 'user/auth/register', component: RegisterComponent },
 

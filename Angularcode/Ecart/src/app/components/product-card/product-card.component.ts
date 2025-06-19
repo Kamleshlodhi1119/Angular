@@ -1,28 +1,9 @@
-// import { Component, Input, Output, EventEmitter } from '@angular/core';
-// import { Product } from '../../shared/models/product.model';
-
-// @Component({
-//   selector: 'app-product-card',
-//   templateUrl: './product-card.component.html',
-//   styleUrls: ['./product-card.component.css']
-// })
-// export class ProductCardComponent {
-//   @Input() product!: Product;
-//   @Output() addToCart = new EventEmitter<Product>();
-
-//   // onAddToCartClick() {
-//   //   this.addToCart.emit(this.product);
-//   // }
-//   onAddToCartClick() {
-//     console.log('Button clicked for:', this.product);
-//     this.addToCart.emit(this.product);
-//   }
-  
-// }
-
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 import { CartItem } from 'src/app/shared/models/cart.model';
 import { Product } from 'src/app/shared/models/product.model';
+import { CartService } from 'src/app/shared/services/cart.service';
+import { UserSessionService } from 'src/app/shared/services/user-session.service';
 
 @Component({
   selector: 'app-product-card',
@@ -32,27 +13,50 @@ import { Product } from 'src/app/shared/models/product.model';
 export class ProductCardComponent {
   @Input() product!: Product;
   @Output() addToCart = new EventEmitter<Product>();
-  cartService: any;
+
+  constructor(
+    private router: Router,
+    private cartService: CartService,
+    private userSession: UserSessionService
+  ) {}
 
   onAddToCart() {
-    this.addToCart.emit(this.product);
-  }
-  handleAddToCart(product: Product) {
+   const email = this.userSession.getUserEmail();
+
+    if (!email) {
+      alert('User email not found. Please login again.');
+      return;
+    }
+    const customerId = this.getCustomerId(); // Replace with actual logic
+
     const cartItem: CartItem = {
-      productId: product.id,
-      customerId: 38, // ❗ Replace with actual logged-in user ID
-      customerEmail: 'k@gmail.com', // ❗ Replace with dynamic email
+      productId: this.product.id,
+      customerId: customerId,
+      customerEmail: email,
       quantity: 1,
-      name: product.name,
-      description: product.description,
-      price: product.price,
-      category: product.category
+      name: this.product.name,
+      description: this.product.description,
+      price: this.product.price,
+      category: this.product.category
     };
-  
+
     this.cartService.addToCart(cartItem).subscribe({
-      next: () => alert('Added to cart'),
-      error: () => alert('Failed to add to cart')
+      next: () => alert('✅ Product added to cart'),
+      error: () => alert('❌ Failed to add product to cart')
     });
   }
-  
+
+  viewProduct() {
+    this.router.navigate(['/product', this.product.id]);
+  }
+
+  addToWishlist() {
+    console.log('Added to wishlist:', this.product.id);
+    // Wishlist logic can go here
+  }
+
+  private getCustomerId(): number {
+    // Placeholder: Replace with actual logic from user session or auth service
+    return 101; // for example
+  }
 }

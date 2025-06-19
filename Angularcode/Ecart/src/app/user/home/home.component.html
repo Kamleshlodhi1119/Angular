@@ -1,20 +1,64 @@
+<app-header></app-header>
 
-   <app-header></app-header>
-   <div class="home-container">
-    <h2>Available Products</h2>
+<!-- Start Main Banner Area -->
+<section class="home-slides-three hero-banner owl-carousel owl-theme">
   
-    <div *ngIf="products.length === 0 && !error">No products available.</div>
-  
-    <div class="product-grid">
-      <app-product-card
-        *ngFor="let p of products"
-        [product]="p"
-        (addToCart)="handleAddToCart($event)">
-      </app-product-card>
+  <!-- Slide 1 -->
+  <div class="container">
+    <div class="main-banner-content">
+      <span class="sub-title">Limited Time Offer!</span>
+      <h1>Winter–Spring!</h1>
+      <p>Take 20% Off ‘Sale Must-Haves'</p>
+      <div class="btn-box">
+        <a href="#" class="default-btn">Shop Women's</a>
+        <a href="#" class="optional-btn">Shop Men's</a>
+      </div>
     </div>
-  
-    <p *ngIf="error" class="error">{{ error }}</p>
-    
+    <div class="banner-image">
+      <div class="circle"></div>
+      <img src="../../../assets/images/banner/banner-img2.png" alt="Hero Model">
+    </div>
   </div>
-  
-  <app-footer></app-footer>
+
+  <!-- Slide 2 -->
+  <div class="container">
+    <div class="main-banner-content">
+      <span class="sub-title">Exclusive Offer!</span>
+      <h1>Summer–Fashion!</h1>
+      <p>Leap year offer ‘Sale Must-Haves'</p>
+      <div class="btn-box">
+        <a href="#" class="default-btn">Shop Women's</a>
+        <a href="#" class="optional-btn">Shop Men's</a>
+      </div>
+    </div>
+    <div class="banner-image">
+      <div class="circle"></div>
+      <img src="../../../assets/images/banner/banner-img1.png" alt="Fashion Model" >
+    </div>
+  </div>
+
+</section>
+<!-- End Main Banner Area -->
+
+<!-- Product Listing -->
+<div class="home-container">
+  <h2>Available Products</h2>
+
+  <div *ngIf="products.length === 0 && !error">No products available.</div>
+
+  <div class="product-grid">
+    <app-product-card
+      *ngFor="let p of products"
+      [product]="p"
+      (addToCart)="handleAddToCart($event)">
+    </app-product-card>
+  </div>
+
+  <p *ngIf="error" class="error">{{ error }}</p>
+</div>
+
+
+<div class="discount-section">
+  <img src="../../../assets/images/banner/add.jpg" alt="">
+</div>
+<app-footer></app-footer>

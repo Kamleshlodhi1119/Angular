@@ -1,0 +1,69 @@
+<app-header></app-header>
+<pre>
+
+
+</pre><div class="product-details">
+  <div class="image-gallery">
+    <div class="main-image">
+     <img [src]="'http://localhost:8080/products/' + product.id + '.jpg'" alt="{{ product.name }}" />
+    </div>
+    <div class="thumbnails">
+     <img [src]="'http://localhost:8080/products/' + product.id + '.jpg'" alt="{{ product.name }}" />    </div>
+  </div>
+
+  <div class="details-section">
+    <span class="badge">CONSTRUCTION</span>
+    <div class="rating">★ ★ ★ ★ ☆ <span>{{ product?.reviews }} Reviews</span></div>
+    <div class="rating"><span>{{ product?.category }}</span></div>
+    <h2>{{ product?.name }}</h2>
+    <div class="price">
+      <span class="original">$30.35</span>
+      <span class="sale">${{ product?.price }}</span>
+    </div>
+    <p class="short-desc">
+       <span class="sale">${{ product?.description }}</span>
+     <br> Priyoshop has brought you the Hijab 3 Pieces Combo Pack PS23. It is a completely modern design and you feel comfortable to put on this hijab. Buy it at the best price.
+    </p>
+
+    <div class="quantity-section">
+      <button (click)="decrement()">−</button>
+      <span>{{ quantity }}</span>
+      <button (click)="increment()">+</button>
+    </div>
+
+    <!-- <button class="add-cart-btn"  (addToCart)="handleAddToCart()">ADD TO CART</button> -->
+    <button class="add-cart-btn" (click)="handleAddToCart(product)">ADD TO CART</button>
+
+
+    <div class="product-meta">
+      <p><strong>SKU:</strong> {{ product?.sku }}</p>
+      <p><strong>Categories:</strong> {{ product?.categoryList?.join(', ') }}</p>
+      <p><strong>Tags:</strong> {{ product?.tags?.join(', ') }}</p>
+    </div>
+
+    <div class="social">
+      <span>Share:</span>
+      <i class="fa fa-facebook"></i>
+      <i class="fa fa-twitter"></i>
+      <i class="fa fa-instagram"></i>
+      <i class="fa fa-linkedin"></i>
+    </div>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="active">DESCRIPTION</button>
+  <button>ADDITIONAL INFORMATION</button>
+  <button>REVIEWS (3)</button>
+
+  <div class="tab-content">
+    <p>
+      In marketing a product is an object or system made available for consumer use. Products are often referred to as merchandise...
+    </p>
+  </div>
+</div>
+<pre>
+
+
+</pre>
+<app-footer></app-footer>

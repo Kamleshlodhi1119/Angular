@@ -1,10 +1,49 @@
-<!-- <app-header></app-header> -->
-<app-cart></app-cart>
-<form [formGroup]="form" (ngSubmit)="placeOrder()" class="order-form">
+<!-- <app-cart></app-cart> -->
+<app-header></app-header>
+
+<pre>
+
+
+</pre>
+<div class="cart-page">
+  <!-- Product List Section -->
+  <div class="cart-container">
+    <h2 class="cart-title">Shopping Bag</h2>
+    <p class="cart-subtitle">{{ items.length }} items in your bag.</p>
+  <h3>Cart Total</h3>
+    <div class="summary">
+      <div><span>Cart Subtotal:</span><span>₹{{ total }}</span></div>
+      <div><span>Shipping:</span><span>Free</span></div>
+      <div class="total"><span>Grand Total:</span><span>₹{{ total }}</span></div>
+    </div>
+    <button class="checkout-btn" (click)="goToCheckout()">Proceed to Checkout</button>
+    <!-- <div *ngFor="let item of items">
+      <app-cart-item
+        [item]="item"
+        (remove)="remove($event)"
+        (quantityChange)="change($event)"
+      ></app-cart-item>
+    </div> -->
+  </div>
+
+  <!-- Checkout Summary Section -->
+  <div class="checkout-section">
+  <form [formGroup]="form" (ngSubmit)="placeOrder()" class="order-form">
   <input formControlName="address1" placeholder="Address">
   <input formControlName="city" placeholder="City">
   <input formControlName="state" placeholder="State">
   <input formControlName="zipCode" placeholder="ZIP Code">
   <button type="submit">Place Order</button>
 </form>
+  </div>
+</div>
+<!-- 
+<app-footer></app-footer> -->
+<pre>
 
+  
+</pre>
+
+
+
+<app-footer></app-footer>

@@ -129,6 +129,7 @@ import { AdminHeaderComponent } from './admin/admin-header/admin-header.componen
 
 // Interceptors
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
+import { SingleProductComponent } from './components/single-product/single-product.component';
 
 @NgModule({
   declarations: [
@@ -156,7 +157,8 @@ import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
     ViewOrdersComponent,
     ViewProductsComponent,
     UpdateProductComponent,
-    AdminHeaderComponent
+    AdminHeaderComponent,
+    SingleProductComponent
   ],
   imports: [
     BrowserModule,

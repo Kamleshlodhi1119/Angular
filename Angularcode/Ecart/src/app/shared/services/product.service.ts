@@ -23,14 +23,22 @@ export class ProductService {
     return this.http.post('http://localhost:8080/api/products/additems', productData);
   }
   
-  uploadImage(productId: number, file: File): Observable<any> {
-    const formData = new FormData();
-    formData.append('image', file);
-    return this.http.post(`http://localhost:8080/api/products/${productId}/upload-image`, formData);
-    // return this.http.post(`http://localhost:8080/api/products/2/upload-image`, formData);
+  // uploadImage(productId: number, file: File): Observable<any> {
+  //   const formData = new FormData();
+  //   formData.append('image', file);
+  //   return this.http.post(`http://localhost:8080/api/products/${productId}/upload-image`, formData);
+  //    responseType: 'text'
+  //   // return this.http.post(`http://localhost:8080/api/products/2/upload-image`, formData);
 
-  }
+  // }
   
+uploadImage(productId: number, file: File): Observable<any> {
+  const formData = new FormData();
+  formData.append('image', file);
+  return this.http.post(`http://localhost:8080/api/products/${productId}/upload-image`, formData, {
+    responseType: 'text'  // ← tell Angular not to parse JSON
+  });
+}
 
   getProductById(productId: number): Observable<Product> {
     return this.http.get<Product>(`http://localhost:8080/api/products/${productId}`);

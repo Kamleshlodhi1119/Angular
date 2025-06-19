@@ -1,16 +1,21 @@
-<!-- cart-item.component.html -->
 <div class="cart-item">
-     <img [src]="'http://localhost:8080/products/'+ item.id + '.jpg'" alt="Product Image" class="product-image" />
-  <div class="details">
-    <h3 class="name">{{ item.name }}</h3>
-    <p class="price">Price: ₹{{ item.price }}</p>
-
-    <div class="quantity-controls">
-      <button (click)="decrementQuantity()">-</button>
-      <span>{{ item.quantity }}</span>
-      <button (click)="incrementQuantity()">+</button>
+  <div class="item-left">
+    <img [src]="'http://localhost:8080/products/' + item.productId + '.jpg'" alt="Product Image" class="product-image" />
+    <div class="item-details">
+      <h3 class="name">{{ item.name }}</h3>
+      <p class="extra-details">Color: Blue &nbsp;&nbsp; Size: 42</p> 
     </div>
-
-    <button class="remove-button" (click)="removeitem()">Remove</button>
   </div>
+
+  <div class="price">₹{{ item.price }}</div>
+
+  <div class="quantity-controls">
+    <button (click)="decrementQuantity()">-</button>
+    <span>{{ item.quantity }}</span>
+    <button (click)="incrementQuantity()">+</button>
+  </div>
+
+  <div class="total-price">₹{{ item.price * item.quantity }}</div>
+
+  <button class="remove-button" (click)="removeitem()">Remove</button>
 </div>

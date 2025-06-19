@@ -16,13 +16,19 @@ import { UserSessionService } from 'src/app/shared/services/user-session.service
 export class CheckoutComponent implements OnInit {
   form: FormGroup;
   cartItems: CartItem[] = [];
+  items: CartItem[] = [];
+  total = 0;
 
-  constructor(
-    private fb: FormBuilder,
-    private cart: CartService,
-    private orders: OrderService,
-    private router: Router,
-    private userSession: UserSessionService // ✅ inject user session
+ // constructor(private cartService: CartService) { }
+constructor(
+  private cartService: CartService,
+  private router: Router,
+  private userSession: UserSessionService, 
+  private fb: FormBuilder,
+  private cart: CartService,
+  private orders: OrderService,
+  // private router: Router,
+  // private userSession: UserSessionService // ✅ inject user session
   ) {
     this.form = this.fb.group({
       address1: '',
@@ -32,8 +38,22 @@ export class CheckoutComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    const email = this.userSession.getUserEmail();
+
+  ngOnInit() {
+    // const email = 'k@gmail.com'; // Ideally from auth service
+    const email = this.userSession.getUserEmail(); // ✅ dynamically get current user email
+
+  if (!email) {
+    console.error('User not logged in');
+    this.router.navigate(['/login']); // Or handle it gracefully
+    return;
+  }
+    this.cartService.getCartItems(email).subscribe(data => {
+      this.items = data;
+      this.calculateTotal();
+    });
+
+    // const email = this.userSession.getUserEmail();
     const userid=this.userSession.getUserId();
     if (!email) {
       alert('User not logged in!');
@@ -45,6 +65,34 @@ export class CheckoutComponent implements OnInit {
       this.cartItems = items;
     });
   }
+
+  remove({ productId, customerEmail }: { productId: number; customerEmail: string }) {
+    this.cartService.deleteCartItemByProduct(productId, customerEmail, 0).subscribe(() => {
+      this.items = this.items.filter(i => i.productId !== productId);
+      this.calculateTotal();
+    });
+  }
+
+  change({ productId, customerEmail, quantity }: { productId: number; customerEmail: string; quantity: number }) {
+    this.cartService.updateCartItemQuantity(productId, customerEmail, quantity).subscribe(updated => {
+      const item = this.items.find(i => i.productId === productId);
+      if (item) item.quantity = updated.quantity;
+      this.calculateTotal();
+    });
+  }
+
+  private calculateTotal() {
+    this.total = this.items.reduce((t, i) => t + i.quantity * i.price, 0);
+  }
+
+
+
+  goToCheckout() {
+    this.router.navigate(['/checkout']);  // 🔁 Match this with your routing path
+  }
+
+
+ 
 
   placeOrder(): void {
     const user = this.userSession.getUser();

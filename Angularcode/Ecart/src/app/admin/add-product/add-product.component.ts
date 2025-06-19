@@ -46,7 +46,10 @@ export class AddProductComponent {
                 this.successMessage = 'Product created successfully with image!';
                 this.productForm.reset();
               },
-              error: () => this.errorMessage = 'Image upload failed'
+              error: (err) => {
+  console.error(err);
+  this.errorMessage = err?.error || 'Image upload failed';
+              }
             });
           } else {
             this.successMessage = 'Product created successfully (no image)';

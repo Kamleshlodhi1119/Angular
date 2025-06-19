@@ -1,7 +1,8 @@
 <app-header></app-header><div class="dashboard-layout">
     <!-- SIDEBAR -->
     <nav class="sidebar">
-      <div class="logo">YourLogo</div>
+      <div class="logo"> <img class="avatar" src="../../../assets/images/instagram/7.jpg">{{ customer?.name }}</div>
+      
       <ul class="nav-list">
         <li class="active"><i class="icon-dashboard"></i> Dashboard</li>
         <!-- <li><i class="icon-lab"></i> Lab Test</li>
@@ -19,16 +20,16 @@
   
     <!-- MAIN CONTENT -->
     <main class="main-content">
-      <header class="top-bar">
+      <!-- <header class="top-bar">
         <h1>Welcome, {{ customer?.name }}.</h1>
-        <!-- <span class="date">{{ 'EEEE, dd MMMM yyyy' }}</span> -->
+        <span class="date">{{ 'EEEE, dd MMMM yyyy' }}</span>
         <div class="search-wrap">
           <input type="text" placeholder="Search…" />
           <i class="icon-search"></i>
         </div>
         <i class="icon-bell"></i>
         <img class="avatar" src="../../../assets/img/Cardigan.jpg" alt="avatar">
-      </header>
+      </header> -->
   
       <section class="profile-card">
         <div class="card-header">

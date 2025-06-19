@@ -1,15 +1,90 @@
-<header class="header">
-    <h1>Ecart</h1>
-    <nav>
-      <a routerLink="/home">Home</a>
-      <a routerLink="/cart">Cart</a>
-      <a routerLink="/orders">Orders</a>
-      <a routerLink="/profile">Profile</a>
-      <a routerLink="/feedback">Feedback</a>
-      <a routerLink="/user/auth/login">Login</a>
-      <a routerLink="/user/auth/register">register</a>
-      <a routerLink="/admin/admin-login">Admin</a>
-      <button (click)="logout()">Logout</button>
-    </nav>
-  </header>
-  
+<!-- Top Bar -->
+<div class="top-bar">
+  <div class="top-left">
+
+    <a routerLink="/user/auth/login">Login</a> |
+    <a routerLink="/user/auth/register">register</a>
+  </div>
+  <div class="top-right">
+    <a href="#"><i class="fab fa-facebook-f"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-dribbble"></i></a>
+    <a href="#"><i class="fab fa-behance"></i></a>
+    <a href="#"><i class="fas fa-rss"></i></a>
+  </div>
+</div>
+
+<!-- Main Header -->
+<header class="main-header">
+  <div class="logo"> <img src="assets/logo.png" alt="Logo"> </div>
+  <nav class="main-nav">
+    <ul class="menu">
+      <li> <a routerLink="/home">Home</a></li>
+      <li class="has-mega-menu">
+        <a routerLink="/cart">Cart</a>
+        <div class="mega-menu">
+          <div>
+             <h4>Welcome, {{ customer?.name }}.</h4>
+            <!-- <img class="avatar" src="../../../assets/img/Cardigan.jpg" alt="avatar"> -->
+            <!-- <h4>SHAREES</h4> -->
+            <a href="#">Sharee 01</a>
+            <a href="#">Sharee 02</a>
+            <a href="#">Sharee 03</a>
+            <a href="#">Sharee 04</a>
+            <a href="#">Sharee 05</a>
+          </div>
+          <div>
+            <h4>LAHENGA</h4>
+            <a href="#">Lahenga 01</a>
+            <a href="#">Lahenga 02</a>
+            <a href="#">Lahenga 03</a>
+            <a href="#">Lahenga 04</a>
+            <a href="#">Lahenga 05</a>
+          </div>
+          <div>
+            <h4>SANDELS</h4>
+            <a href="#">Sandel 01</a>
+            <a href="#">Sandel 02</a>
+            <a href="#">Sandel 03</a>
+            <a href="#">Sandel 04</a>
+            <a href="#">Sandel 05</a>
+          </div>
+        </div>
+      </li>
+      <li>
+        <a routerLink="/orders">Orders</a>
+      </li>
+      <li>
+        <a routerLink="/profile">Profile</a>
+      </li>
+      <li>
+        <a routerLink="/feedback">Feedback</a>
+      </li>
+      <li>
+        <a routerLink="/admin/admin-login">Admin</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="search-cart">
+    <input type="text" placeholder="Search anything">
+    <i class="fas fa-search"></i>
+    <span class="currency">USD</span>
+    <span class="cart"><i class="fas fa-shopping-cart"></i> <sup>2</sup></span>
+   <ul class="menu1">
+       <li class="has-mega-menu">
+        
+         <img class="avatar" src="../../../assets/images/icon/undraw_pic-profile_nr49.png" alt="avatar">
+        <div class="mega-menu1">
+          <div>
+             <h4>{{ customer?.name }}</h4><br>
+             <button  (click)="logout()">Logout</button>
+           
+             </div>
+                    
+        </div>
+      </li>
+     
+    </ul>
+  </div>
+</header>

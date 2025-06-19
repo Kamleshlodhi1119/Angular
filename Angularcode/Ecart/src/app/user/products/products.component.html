@@ -1,8 +1,29 @@
 <app-header></app-header>
-<input [(ngModel)]="query" placeholder="Search">
-<button (click)="search()">Search</button>
-<div *ngIf="products.length">
-  <app-product-card *ngFor="let p of products" [product]="p"></app-product-card>
-</div>
+
+<section class="product-section">
+  <h5 class="featured-label">Featured Products</h5>
+  <h2 class="product-title">OUR PRODUCTS</h2>
+
+  <div class="product-categories">
+    <button class="category-btn">All Products</button>
+    <button class="category-btn">Vegetable</button>
+    <button class="category-btn">Fruit</button>
+    <button class="category-btn">Fruit Juice</button>
+    <button class="category-btn">Dried</button>
+    <button class="category-btn">Other</button>
+  </div>
+
+  <div class="search-bar">
+    <input [(ngModel)]="query" placeholder="Search..." />
+    <button (click)="search()">Search</button>
+  </div>
+
+  <div class="product-grid" *ngIf="products.length">
+    <app-product-card
+      *ngFor="let p of products"
+      [product]="p"
+    ></app-product-card>
+  </div>
+</section>
 
 <app-footer></app-footer>

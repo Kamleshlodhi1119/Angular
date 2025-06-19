@@ -1,16 +1,18 @@
-<!-- <div class="product-card">
-  <img [src]="'http://localhost:8080' + product.imageUrl" alt="{{ product.name }}" />
-  <h3>{{ product.name }}</h3>
-  <p>₹{{ product.price }}</p>
-  <button (click)="onAddToCartClick()">Add to Cart</button>
-</div> -->
-
 <div class="product-card">
-  <!-- <img [src]="'http://localhost:8080' + product.imageUrl" alt="{{ product.name }}" /> -->
-   <img [src]="'http://localhost:8080/products/'+ product.id + '.jpg'" alt="Product Image" />
-
+  <div class="image-container">
+    <img [src]="'http://localhost:8080/products/' + product.id + '.jpg'" alt="{{ product.name }}" />
+    <div class="overlay">
+      <button class="icon-btn" (click)="viewProduct()">
+        <i class="fa fa-search"></i>
+      </button>
+      <button class="icon-btn" (click)="onAddToCart()">
+        <i class="fa fa-shopping-cart"></i>
+      </button>
+      <button class="icon-btn" (click)="addToWishlist()">
+        <i class="fa fa-heart"></i>
+      </button>
+    </div>
+  </div>
   <h3>{{ product.name }}</h3>
-  <p>{{ product.description }}</p>
-  <p>Price: ₹{{ product.price }}</p>
-  <button (click)="onAddToCart()">Add to Cart</button>
+  <p class="price">{{ product.price }}$</p>
 </div>

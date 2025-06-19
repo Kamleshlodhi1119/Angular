@@ -144,7 +144,7 @@ Feedback Form
   margin-top: 4px;
   margin-bottom: 12px;
   padding: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid #212121;
   border-radius: 4px;
   box-sizing: border-box;
 }
@@ -225,9 +225,9 @@ h2 {
 }
 
 /* Buttons */
-button {
-  background-color: var(--color-primary);
-  color: white;
+.feedback-btn {
+  background-color: black;
+  color:white;
   border: none;
   padding: 10px 15px;
   border-radius: 5px;
@@ -281,7 +281,7 @@ button:hover {
   width: 100%;
   padding: 10px;
   margin-top: 5px;
-  border: 1px solid var(--color-light);
+  border: 1px solid black;
   border-radius: 5px;
   font-size: 14px;
 }

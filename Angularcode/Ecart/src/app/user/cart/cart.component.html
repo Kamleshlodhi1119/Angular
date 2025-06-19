@@ -1,20 +1,35 @@
-<!-- <app-header></app-header>
-<div *ngFor="let item of items">
-    <app-cart-item [item]="item" (remove)="remove($event)" (quantityChange)="change($event.productId, $event.quantity)"></app-cart-item>
+<app-header></app-header>
+<pre>
+
+
+</pre>
+<div class="cart-page">
+  <!-- Product List Section -->
+  <div class="cart-container">
+    <h2 class="cart-title">Shopping Bag</h2>
+    <p class="cart-subtitle">{{ items.length }} items in your bag.</p>
+
+    <div *ngFor="let item of items">
+      <app-cart-item
+        [item]="item"
+        (remove)="remove($event)"
+        (quantityChange)="change($event)"
+      ></app-cart-item>
+    </div>
   </div>
-  <p>Total: ₹{{ total }}</p> -->
 
-  <app-header></app-header>
-  <div *ngFor="let item of items">
-  <app-cart-item
-    [item]="item"
-    (remove)="remove($event)"
-    (quantityChange)="change($event)"
-  ></app-cart-item>
+  <!-- Checkout Summary Section -->
+  <div class="checkout-section">
+    <h3>Cart Total</h3>
+    <div class="summary">
+      <div><span>Cart Subtotal:</span><span>₹{{ total }}</span></div>
+      <div><span>Shipping:</span><span>Free</span></div>
+      <div class="total"><span>Grand Total:</span><span>₹{{ total }}</span></div>
+    </div>
+    <button class="checkout-btn" (click)="goToCheckout()">Proceed to Checkout</button>
+  </div>
 </div>
-
-<div class="cart-footer">
-  <h3>Total: ₹{{ total }}</h3>
-  <button class="checkout-btn" (click)="goToCheckout()">Proceed to Checkout</button>
-</div>
+<pre>
+  
+</pre>
 <app-footer></app-footer>
