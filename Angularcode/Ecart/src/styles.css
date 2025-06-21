@@ -1,4 +1,4 @@
-:root {
+/* :root {
   --primary-color: #4a90e2;
   --secondary-color: #50e3c2;
   --accent-color: #f5a623;
@@ -11,224 +11,31 @@
   --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   --font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
-
-
-  /* ----new color schems---------------- */
-  --background-color:#f4f4f4;
-
-
+  
+  --input-bg: #f4f4f4;
+  --card-bg: #fff;
+  --label-color: #555;
+  --primary-dark-color: #3b6fb2;
 }
 
-
-.banner-image .circle {
-    width: 470px;
-    height: 470px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.6);
-    z-index: -1;
-    position: absolute;
-    left: 0;
-    top: 5%;
-    right: 0;
-    margin: 0 auto;
-}
+ */
 :root {
-  /* --primary-color: #2a9d8f; */
-  --primary-dark-color: #21867a;
-  --card-bg: #ffffff;
-  /* --text-color: #333333; */
-  --label-color: #444444;
-  --input-bg: #f2f2f2;
-}
+  --primary-color: #c5a159;       /* Metallic Gold */
+  --accent-color: #d9b24c;        /* Warm Gold */
+  --text-color: #3d3d3d;          /* Dark Gray */
+  --color-dark: #000000;          /* Ivory background */
+  --color-light: #ffffff;         /* White content backgrounds */
+  --color-border: #e0d9c8;        /* Subtle border */
+  --color-error: #d9534f;         /* Bootstrap Red */
+  --shadow: 0 6px 18px rgba(197, 161, 89, 0.15);
+  --font: 'Poppins', sans-serif;
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: var(--font);
-}
 
-body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  line-height: 1.6;
-  /* padding: 20px; */
-}
+  
+  /* supportive */
+  --color-primary:#c5a159;
+  --error-color:red;
 
-h1, h2, h3 {
-  color: var(--primary-color);
-  margin-bottom: 15px;
 }
 
 
-
-
-
-/* /// this is  just for demo */
-
-/* Reset & Basics */
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-/* Top Bar */
-.top-bar {
-    background: #000;
-    color: #fff;
-    font-size: 14px;
-    padding: 8px 0;
-}
-.top-bar .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* Header */
-.header {
-    background: #fff;
-    border-bottom: 1px solid #eee;
-}
-.header .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 15px 0;
-}
-.header .logo {
-    font-size: 26px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-}
-.header .logo img {
-    height: 32px;
-    margin-right: 8px;
-}
-.header nav ul {
-    display: flex;
-    list-style: none;
-}
-.header nav ul li {
-    margin: 0 15px;
-}
-.header nav ul li a {
-    font-size: 15px;
-    font-weight: 500;
-    color: #111;
-    position: relative;
-}
-.header nav ul li a:hover {
-    color: #e91e63;
-}
-
-/* Hero Slider */
-.home-slides-three {
-    position: relative;
-}
-.hero-banner {
-    background: #f3f3f3;
-    /* top-padding: 80px 0; */
-    padding-top: 80px;
-}
-.hero-banner .container {
-    display: flex;
-    /* flex-wrap: wrap; */
-    align-items: center;
-    flex-direction: row;
-    justify-content: space-around;
-    overflow: hidden;
-}
-.main-banner-content {
-    max-width: 500px;
-}
-.main-banner-content .sub-title {
-    color: #e91e63;
-    font-weight: 600;
-    font-size: 16px;
-    margin-bottom: 12px;
-}
-.main-banner-content h1 {
-    font-size: 48px;
-    font-weight: 700;
-    margin-bottom: 15px;
-}
-.main-banner-content p {
-    font-size: 16px;
-    color: #333;
-    margin-bottom: 25px;
-}
-.btn-box {
-    display: flex;
-    gap: 15px;
-}
-.default-btn,
-.optional-btn {
-    padding: 12px 25px;
-    font-size: 14px;
-    font-weight: 600;
-    text-transform: uppercase;
-    border: none;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-}
-.default-btn {
-    background-color: #e91e63;
-    color: #fff;
-    border: 1px  solid rgba(0, 0, 0, 0);
-}
-.default-btn:hover {
-    background-color: #c2185c00;
-    color: #000;
-    border: 1px solid black;
-}
-.optional-btn {
-    background-color: transparent;
-    color: #111;
-    border: 2px solid #111;
-}
-.optional-btn:hover {
-    background-color: #111;
-    color: #fff;
-}
-
-/* Banner Image */
-.banner-image {
-    position: relative;
-    text-align: center;
-}
-.banner-image .circle {
-    width: 400px;
-    height: 400px;
-    background-color: #fff;
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 0;
-}
-.banner-image img {
-    position: relative;
-    max-width: 100%;
-    z-index: 1;
-}
-
-/* Owl Carousel Overwrites */
-.owl-carousel .owl-item img {
-    display: inline-block;
-    width: auto;
-}
-.owl-carousel .owl-nav.disabled,
-.owl-carousel .owl-dots.disabled {
-    display: none !important;
-}
-
-
-.discount-section img{
-    /* display: flex; */
-    max-width: 100%;
-}
-/* demo end here */

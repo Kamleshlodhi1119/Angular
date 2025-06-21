@@ -30,12 +30,26 @@ constructor(
   // private router: Router,
   // private userSession: UserSessionService // ✅ inject user session
   ) {
+    // this.form = this.fb.group({
+    //   address1: '',
+    //   city: '',
+    //   state: '',
+    //   zipCode: ''
     this.form = this.fb.group({
-      address1: '',
-      city: '',
-      state: '',
-      zipCode: ''
-    });
+  firstName: '',
+  lastName: '',
+  email: '',
+  phone: '',
+  address1: '',
+  address2: '',
+  city: '',
+  state: '',
+  zipCode: '',
+  country: '',
+  paymentMethod: 'CASH_ON_DELIVERY'
+});
+
+    // });
   }
 
 

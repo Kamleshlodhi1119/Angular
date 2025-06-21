@@ -1,18 +1,121 @@
-.header {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem;
-    background: #0f172a;
-    color: white;
-  }
-  
-  nav a, nav button {
-    margin-left: 1rem;
-    color: white;
-    text-decoration: none;
-    border: none;
-    background: none;
-    cursor: pointer;
-  }
+.top-bar {
+  background-color: var(--text-color);
+  color: var(--bg-color);
+  padding: 5px 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
 
+.avatar {
+  max-width: 50px;
+  align-self: center;
+  overflow: hidden;
+}
 
+.top-bar a {
+  color: var(--bg-color);
+  margin: 0 5px;
+  text-decoration: none;
+}
+
+.main-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 15px 20px;
+  background-color: #fff;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.logo img {
+  height: 40px;
+}
+
+.main-nav .menu,
+.menu1 {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li,
+.menu1 li {
+  position: relative;
+  margin: 0 15px;
+}
+
+.menu li a {
+  text-decoration: none;
+  font-weight: bold;
+  color: var(--text-color);
+  padding: 10px;
+  display: block;
+}
+
+.menu li:hover > a {
+  color: var(--accent-color);
+}
+
+.has-mega-menu:hover .mega-menu,
+.has-mega-menu:hover .mega-menu1 {
+  display: flex;
+}
+
+.mega-menu,
+.mega-menu1 {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--bg-color);
+  display: none;
+  box-shadow: var(--shadow);
+  padding: 20px;
+  z-index: 999;
+  justify-content: space-around;
+  width: auto;
+  overflow: hidden;
+}
+
+.mega-menu div {
+  flex: 1;
+}
+
+.mega-menu h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid var(--text-color);
+  display: inline-block;
+}
+
+.mega-menu a {
+  display: block;
+  padding: 4px 0;
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.search-cart {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-cart input {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.search-cart i,
+.currency,
+.cart {
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+.cart sup {
+  color: var(--error-color);
+}

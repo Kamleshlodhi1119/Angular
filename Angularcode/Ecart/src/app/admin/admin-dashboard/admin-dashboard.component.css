@@ -1,10 +1,12 @@
+
+/* Dashboard Component */
 .dashboard-container {
   max-width: 1000px;
   margin: 40px auto;
   padding: 30px;
   background-color: var(--card-bg);
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow);
   color: var(--text-color);
 }
 
@@ -26,7 +28,7 @@
   flex: 1 1 200px;
   padding: 20px;
   background-color: var(--primary-color);
-  color: white;
+  color: var(--header-text);
   border-radius: 10px;
   text-align: center;
   font-weight: bold;
@@ -49,3 +51,4 @@ li {
   border-radius: 8px;
   margin-bottom: 10px;
 }
+

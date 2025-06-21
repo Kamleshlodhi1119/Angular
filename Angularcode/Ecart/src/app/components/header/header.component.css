@@ -1,18 +1,20 @@
-  .top-bar {
-  background-color: #2c2c2c;
-  color: #fff;
+.top-bar {
+  background-color: var(--text-color);
+  color: var(--bg-color);
   padding: 5px 20px;
   display: flex;
   justify-content: space-between;
   font-size: 14px;
 }
-.avatar{
+
+.avatar {
   max-width: 50px;
-  align-self: center;;
+  align-self: center;
   overflow: hidden;
 }
+
 .top-bar a {
-  color: #fff;
+  color: var(--bg-color);
   margin: 0 5px;
   text-decoration: none;
 }
@@ -30,73 +32,51 @@
   height: 40px;
 }
 
-.main-nav .menu {
+.main-nav .menu,
+.menu1 {
   display: flex;
   list-style: none;
   margin: 0;
   padding: 0;
 }
-.menu1{
- display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
 
-.menu li {
-  position: relative;
-  margin: 0 15px;
-}
+.menu li,
 .menu1 li {
   position: relative;
   margin: 0 15px;
 }
+
 .menu li a {
   text-decoration: none;
   font-weight: bold;
-  color: #333;
+  color: var(--text-color);
   padding: 10px;
   display: block;
 }
 
 .menu li:hover > a {
-  color: #d10024;
+  color: var(--accent-color);
 }
 
-.has-mega-menu:hover .mega-menu {
-  display: flex;
-}
-
-.mega-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: #fff;
-  width: 700px;
-  display: none;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  z-index: 999;
-  justify-content: space-around;
-}
+.has-mega-menu:hover .mega-menu,
 .has-mega-menu:hover .mega-menu1 {
   display: flex;
 }
 
+.mega-menu,
 .mega-menu1 {
   position: absolute;
   top: 100%;
   left: 0;
-  background: #fff;
-  width: auto;
+  background: var(--bg-color);
   display: none;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow);
   padding: 20px;
   z-index: 999;
   justify-content: space-around;
+  width: auto;
   overflow: hidden;
 }
-
 
 .mega-menu div {
   flex: 1;
@@ -105,14 +85,14 @@
 .mega-menu h4 {
   font-size: 16px;
   margin-bottom: 10px;
-  border-bottom: 2px solid #000;
+  border-bottom: 2px solid var(--text-color);
   display: inline-block;
 }
 
 .mega-menu a {
   display: block;
   padding: 4px 0;
-  color: #444;
+  color: var(--text-color);
   text-decoration: none;
   font-size: 14px;
 }
@@ -133,9 +113,9 @@
 .currency,
 .cart {
   cursor: pointer;
-  color: #333;
+  color: var(--text-color);
 }
 
 .cart sup {
-  color: red;
+  color: var(--error-color);
 }

@@ -1,10 +1,12 @@
+
+/* Customer List Component */
 .customer-list {
   max-width: 1000px;
   margin: 40px auto;
   background: var(--card-bg);
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow);
 }
 
 .customer-list h2 {
@@ -20,7 +22,7 @@ table {
 
 thead {
   background-color: var(--primary-color);
-  color: white;
+  color: var(--header-text);
 }
 
 th, td {
@@ -34,15 +36,21 @@ button {
   padding: 6px 10px;
   border: none;
   background-color: var(--primary-color);
-  color: white;
+  color: var(--header-text);
   border-radius: 6px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--primary-dark-color);
 }
 
 .active {
-  color: green;
+  color: var(--success-color);
 }
 
 .inactive {
-  color: red;
+  color: var(--error-color);
 }
+

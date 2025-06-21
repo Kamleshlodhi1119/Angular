@@ -1,39 +1,547 @@
-.home-container {
-    padding: 2rem;
-    text-align: center;
-  }
-  
-  .product-grid {
-    /* display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem; */
+:root {
+  --primary-color: #e91e63;
+  --accent-color: #8bc34a;
+  --bg-color: #f4f4f4;
+  --text-color: #333;
+  --label-color: #555;
+  --card-bg: #fff;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --font: 'Segoe UI', sans-serif;
+}
 
-    display: flex;
-    justify-content: center;
+/* Base Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font);
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  padding: 20px;
+}
+
+h1, h2, h3 {
+  color: var(--primary-color);
+  margin-bottom: 15px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ------------------- Home Container ------------------- */
+.home-container {
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Product Grid */
+.product-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* Product Card */
+.product-card {
+  background: var(--card-bg);
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem;
+  width: 250px;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease;
+}
+.product-card:hover {
+  transform: translateY(-4px);
+}
+
+.product-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* Product Button */
+.product-card button {
+  margin-top: 0.5rem;
+  padding: 0.4rem 1rem;
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+}
+.product-card button:hover {
+  background-color: #7cb342;
+}
+
+/* ------------------- Hero Banner ------------------- */
+.hero-banner {
+  background: #f3f3f3;
+  padding-top: 80px;
+}
+
+.hero-banner .container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+.main-banner-content {
+  max-width: 500px;
+  text-align: left;
+}
+
+.main-banner-content .sub-title {
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.main-banner-content h1 {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.main-banner-content p {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+/* Buttons */
+.btn-box {
+  display: flex;
+  gap: 15px;
+}
+
+.default-btn,
+.optional-btn {
+  padding: 12px 25px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.default-btn {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.default-btn:hover {
+  background-color: transparent;
+  color: #000;
+  border: 1px solid #000;
+}
+
+.optional-btn {
+  background-color: transparent;
+  color: #111;
+  border: 2px solid #111;
+}
+
+.optional-btn:hover {
+  background-color: #111;
+  color: #fff;
+}
+
+/* ------------------- Banner Image ------------------- */
+.banner-image {
+  position: relative;
+  text-align: center;
+}
+
+.banner-image .circle {
+  width: 400px;
+  height: 400px;
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+.banner-image img {
+  position: relative;
+  max-width: 100%;
+  z-index: 1;
+}
+
+/* ------------------- Top Bar ------------------- */
+.top-bar {
+  background: #000;
+  color: #fff;
+  font-size: 14px;
+  padding: 8px 0;
+}
+
+.top-bar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ------------------- Header ------------------- */
+.header {
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.header .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 0;
+}
+
+.header .logo {
+  font-size: 26px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.header .logo img {
+  height: 32px;
+  margin-right: 8px;
+}
+
+.header nav ul {
+  display: flex;
+  list-style: none;
+}
+
+.header nav ul li {
+  margin: 0 15px;
+}
+
+.header nav ul li a {
+  font-size: 15px;
+  font-weight: 500;
+  color: #111;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.header nav ul li a:hover {
+  color: var(--primary-color);
+}
+
+/* ------------------- Carousel Overrides ------------------- */
+.owl-carousel .owl-item img {
+  display: inline-block;
+  width: auto;
+}
+
+.owl-carousel .owl-nav.disabled,
+.owl-carousel .owl-dots.disabled {
+  display: none !important;
+}
+
+/* ------------------- Discount Section ------------------- */
+.discount-section img {
+  max-width: 100%;
+}
+/* Root Theme Variables (in global styles) assumed:
+:root {
+  --primary: #6C5DD3;
+  --secondary: #FF6B6B;
+  --text-dark: #333;
+  --text-light: #777;
+  --bg-light: #f9f9f9;
+  --white: #fff;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+*/
+
+.home-container {
+  padding: 40px 20px;
+  background-color: var(--bg-light);
+}
+
+.home-container h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+.product-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+/* ============== Category Section ============== */
+.category-section {
+  padding: 60px 20px;
+  background: var(--white);
+  text-align: center;
+}
+
+.category-section .section-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--primary);
+}
+
+.category-grid {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.category-card {
+  width: 220px;
+  background: var(--bg-light);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+}
+
+.category-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.category-card h3 {
+  margin: 1rem;
+  font-size: 1.2rem;
+  color: var(--text-dark);
+}
+
+/* ============== Features Section ============== */
+.features-section {
+  background: var(--bg-light);
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.features-grid {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.feature-box {
+  background: var(--white);
+  padding: 30px 20px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  width: 260px;
+  transition: transform 0.3s;
+}
+
+.feature-box:hover {
+  transform: scale(1.05);
+}
+
+.feature-box img {
+  width: 50px;
+  margin-bottom: 1rem;
+}
+
+.feature-box h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+.feature-box p {
+  color: var(--text-light);
+  font-size: 0.95rem;
+}
+
+/* ============== Testimonials Section ============== */
+.testimonial-section {
+  padding: 60px 20px;
+  background-color: var(--white);
+  text-align: center;
+}
+
+.testimonial-section .section-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--primary);
+}
+
+.testimonial-card {
+  background-color: var(--bg-light);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  max-width: 500px;
+  margin: 0 auto 2rem;
+}
+
+.testimonial-card p {
+  font-size: 1rem;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.testimonial-card h4 {
+  font-weight: bold;
+  color: var(--secondary);
+}
+
+/* ============== Blog Section ============== */
+.blog-section {
+  padding: 60px 20px;
+  background-color: var(--bg-light);
+  text-align: center;
+}
+
+.blog-section .section-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--primary);
+}
+
+.blog-grid {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.blog-card {
+  width: 300px;
+  background: var(--white);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  text-align: left;
+  transition: transform 0.3s;
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+}
+
+.blog-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.blog-card h3 {
+  font-size: 1.2rem;
+  margin: 1rem;
+  color: var(--primary);
+}
+
+.blog-card p {
+  font-size: 0.95rem;
+  margin: 0 1rem 1rem;
+  color: var(--text-light);
+}
+
+/* ============== Discount Banner ============== */
+.discount-section {
+  padding: 40px 20px;
+  text-align: center;
+  background: var(--white);
+}
+
+.discount-section img {
+  width: 100%;
+  max-width: 900px;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+
+/* ============== Newsletter Section ============== */
+.newsletter-section {
+  background: var(--primary);
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.newsletter-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.newsletter-section p {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.newsletter-section form {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.newsletter-section input[type="email"] {
+  padding: 12px 16px;
+  border: none;
+  border-radius: 8px;
+  width: 280px;
+  max-width: 100%;
+}
+
+.newsletter-section button {
+  padding: 12px 20px;
+  background-color: var(--secondary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.newsletter-section button:hover {
+  background-color: #ff4c4c;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+  .features-grid,
+  .category-grid,
+  .blog-grid {
+    flex-direction: column;
     align-items: center;
-    flex-direction: row;
-    flex-wrap: wrap;
   }
-  
-  .product-card {
-    padding: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background: #fff;
+
+  .newsletter-section form {
+    flex-direction: column;
   }
-  
-  .product-card img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
+
+  .testimonial-card {
+    padding: 20px;
   }
-  
-  button {
-    margin-top: 0.5rem;
-    padding: 0.4rem 1rem;
-    background-color: #28a745;
-    color: white;
-    border: none;
-  }
-  
+}

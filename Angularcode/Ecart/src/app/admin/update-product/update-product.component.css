@@ -1,10 +1,11 @@
+/* Update Product Component */
 .update-product {
   max-width: 600px;
   margin: 40px auto;
   padding: 30px;
   background: var(--card-bg);
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow);
 }
 
 .update-product h2 {
@@ -28,23 +29,30 @@ input, textarea {
 button {
   padding: 10px;
   background-color: var(--primary-color);
-  color: white;
+  color: var(--header-text);
   border: none;
   border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--primary-dark-color);
 }
 
 button:disabled {
   background-color: #ccc;
+  cursor: not-allowed;
 }
 
 .success {
   text-align: center;
-  color: green;
+  color: var(--success-color);
 }
 
 .error {
   text-align: center;
-  color: red;
+  color: var(--error-color);
 }
+

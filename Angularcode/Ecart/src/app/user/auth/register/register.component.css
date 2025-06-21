@@ -1,45 +1,37 @@
-.header {
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem;
-  background: #0f172a;
-  color: white;
+/* Login/Register Form */
+.login-container,
+.register-container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 2rem;
+  border: 1px solid var(--light-border);
+  border-radius: 8px;
+  background-color: var(--bg-color);
 }
 
-nav a, nav button {
-  margin-left: 1rem;
+input {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+}
+
+button {
+  width: 100%;
+  padding: 0.7rem;
+  background: var(--primary-color);
   color: white;
-  text-decoration: none;
   border: none;
-  background: none;
   cursor: pointer;
 }
-.register-container {
-    max-width: 500px;
-    margin: 40px 30%;
-    padding: 2rem;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-  }
-  
-  input {
-    width: 100%;
-    margin-bottom: 1rem;
-    padding: 0.5rem;
-  }
-  
-  button {
-    width: 100%;
-    padding: 0.7rem;
-    background: #007bff;
-    color: white;
-    border: none;
-  }
-  
-  .success {
-    color: green;
-  }
-  .error {
-    color: red;
-  }
-  
+
+button:hover {
+  background: var(--secondary-color);
+}
+
+.error {
+  color: var(--error-color);
+}
+
+.success {
+  color: var(--success-color);
+}

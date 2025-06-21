@@ -1,10 +1,11 @@
+/* Login Component */
 .login-container {
   max-width: 400px;
   margin: 60px auto;
   padding: 30px;
   border-radius: 12px;
   background-color: var(--card-bg);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow);
 }
 
 .login-container h2 {
@@ -35,7 +36,7 @@ button {
   padding: 10px;
   border-radius: 8px;
   background-color: var(--primary-color);
-  color: white;
+  color: var(--header-text);
   font-weight: bold;
   border: none;
   cursor: pointer;
@@ -48,5 +49,5 @@ button:disabled {
 
 .error {
   text-align: center;
-  color: red;
+  color: var(--error-color);
 }

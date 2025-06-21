@@ -1,8 +1,7 @@
 <app-header></app-header>
 
-<!-- Start Main Banner Area -->
+<!-- ================= Hero Banner / Carousel ================= -->
 <section class="home-slides-three hero-banner owl-carousel owl-theme">
-  
   <!-- Slide 1 -->
   <div class="container">
     <div class="main-banner-content">
@@ -33,14 +32,31 @@
     </div>
     <div class="banner-image">
       <div class="circle"></div>
-      <img src="../../../assets/images/banner/banner-img1.png" alt="Fashion Model" >
+      <img src="../../../assets/images/banner/banner-img1.png" alt="Fashion Model">
     </div>
   </div>
-
 </section>
-<!-- End Main Banner Area -->
 
-<!-- Product Listing -->
+<!-- ================= Featured Categories ================= -->
+<section class="category-section">
+  <h2 class="section-title">Shop by Category</h2>
+  <div class="category-grid">
+    <div class="category-card">
+      <img src="../../../assets/images/categories/women.jpg" alt="Women's Fashion">
+      <h3>Women</h3>
+    </div>
+    <div class="category-card">
+      <img src="../../../assets/images/categories/men.jpg" alt="Men's Fashion">
+      <h3>Men</h3>
+    </div>
+    <div class="category-card">
+      <img src="../../../assets/images/categories/accessories.jpg" alt="Accessories">
+      <h3>Accessories</h3>
+    </div>
+  </div>
+</section>
+
+<!-- ================= Product Listing ================= -->
 <div class="home-container">
   <h2>Available Products</h2>
 
@@ -57,8 +73,76 @@
   <p *ngIf="error" class="error">{{ error }}</p>
 </div>
 
+<!-- ================= Why Shop With Us ================= -->
+<section class="features-section">
+  <div class="features-grid">
+    <div class="feature-box">
+      <img src="../../../assets/icons/truck.svg" alt="">
+      <h3>Free Shipping</h3>
+      <p>On all orders above ₹999</p>
+    </div>
+    <div class="feature-box">
+      <img src="../../../assets/icons/refund.svg" alt="">
+      <h3>Easy Returns</h3>
+      <p>7-day hassle-free return policy</p>
+    </div>
+    <div class="feature-box">
+      <img src="../../../assets/icons/secure.svg" alt="">
+      <h3>Secure Payments</h3>
+      <p>100% secure checkout</p>
+    </div>
+  </div>
+</section>
 
+<!-- ================= Testimonials ================= -->
+<section class="testimonial-section">
+  <h2 class="section-title">What Our Customers Say</h2>
+  <div class="testimonial-slider owl-carousel">
+    <div class="testimonial-card">
+      <p>"Great experience! Fast delivery and beautiful packaging. Will order again!"</p>
+      <h4>- Priya Sharma</h4>
+    </div>
+    <div class="testimonial-card">
+      <p>"Loved the product quality and discounts. Highly recommend!"</p>
+      <h4>- Rohan Mehta</h4>
+    </div>
+    <div class="testimonial-card">
+      <p>"Easy checkout and smooth tracking. 5 stars!"</p>
+      <h4>- Ananya Patel</h4>
+    </div>
+  </div>
+</section>
+
+<!-- ================= Blog Section ================= -->
+<section class="blog-section">
+  <h2 class="section-title">From Our Blog</h2>
+  <div class="blog-grid">
+    <div class="blog-card">
+      <img src="../../../assets/images/banner/mmb2.jpg" alt="">
+      <h3>Top 10 Summer Styles for 2025</h3>
+      <p>Discover trending outfits for warm weather. Lightweight, bright, and bold.</p>
+    </div>
+    <div class="blog-card">
+      <img src="../../../assets/images/banner/mmb1.jpg" alt="">
+      <h3>Accessorize Like a Pro</h3>
+      <p>Level up your look with perfect accessories that speak your style.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= Discount Promo Banner ================= -->
 <div class="discount-section">
-  <img src="../../../assets/images/banner/add.jpg" alt="">
+  <img src="../../../assets/images/banner/add.jpg" alt="Promo Banner">
 </div>
+
+<!-- ================= Newsletter Signup ================= -->
+<!-- <section class="newsletter-section">
+  <h2>Stay Updated!</h2>
+  <p>Subscribe for exclusive offers and latest trends</p>
+  <form>
+    <input type="email" placeholder="Enter your email" />
+    <button type="submit">Subscribe</button>
+  </form>
+</section> -->
+
 <app-footer></app-footer>

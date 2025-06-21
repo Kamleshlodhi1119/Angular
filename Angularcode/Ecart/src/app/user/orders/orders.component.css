@@ -1,32 +1,32 @@
 /* Container for each order */
 .order-wrapper {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 800px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  }
-  
-  /* Order heading */
-  .order-wrapper h3 {
-    margin-top: 0;
-    font-size: 1.25rem;
-    color: #333;
-  }
-  
-  /* Order details */
-  .order-wrapper p {
-    margin: 5px 0;
-    font-size: 0.95rem;
-    color: #555;
-  }
-  
-  /* Items container */
-  .order-items {
-    margin-top: 15px;
-    padding-left: 15px;
-    border-left: 3px solid #ccc;
-  }
-  
+  background-color: var(--card-bg);
+  border: 1px solid #ddd;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 800px;
+  box-shadow: var(--shadow);
+  font-family: var(--font);
+}
+
+/* Order heading */
+.order-wrapper h3 {
+  margin-top: 0;
+  font-size: 1.25rem;
+  color: var(--text-color);
+}
+
+/* Order details */
+.order-wrapper p {
+  margin: 5px 0;
+  font-size: 0.95rem;
+  color: var(--label-color);
+}
+
+/* Items container */
+.order-items {
+  margin-top: 15px;
+  padding-left: 15px;
+  border-left: 3px solid var(--primary-color);
+}

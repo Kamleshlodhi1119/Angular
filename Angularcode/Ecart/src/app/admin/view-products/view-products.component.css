@@ -1,10 +1,11 @@
+/* Product List Component */
 .product-list {
   max-width: 1000px;
   margin: 40px auto;
   background-color: var(--card-bg);
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow);
 }
 
 .product-list h2 {
@@ -13,14 +14,9 @@
   margin-bottom: 25px;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
 thead {
   background-color: var(--primary-color);
-  color: white;
+  color: var(--header-text);
 }
 
 th, td {
@@ -37,8 +33,13 @@ button {
   margin-right: 5px;
   padding: 6px 10px;
   background-color: var(--primary-color);
-  color: white;
+  color: var(--header-text);
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--primary-dark-color);
 }
