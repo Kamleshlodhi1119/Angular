@@ -81,7 +81,7 @@ constructor(
   }
 
   remove({ productId, customerEmail }: { productId: number; customerEmail: string }) {
-    this.cartService.deleteCartItemByProduct(productId, customerEmail, 0).subscribe(() => {
+    this.cartService.deleteCartItemByProduct(productId, customerEmail).subscribe(() => {
       this.items = this.items.filter(i => i.productId !== productId);
       this.calculateTotal();
     });

@@ -1,9 +1,37 @@
-.footer {
-  background-color: var(--text-color);
+/* .footer {
+  background-color: var( --primary-color);
+
   color: var(--bg-color);
   padding: 40px 20px;
   font-family: var(--font);
+} */
+.footer {
+  position: relative;
+  background: url('../../../assets/images/banner/main-banner2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: var(--bg-color);
+  padding: 40px 20px;
+  font-family: var(--font);
+  z-index: 1;
+  overflow: hidden;
 }
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: var(--primary-color); /* Global color overlay */
+  opacity: 0.9; /* Adjust overlay strength */
+  z-index: -1;
+}
+
+
+
 
 .footer-container {
   display: grid;

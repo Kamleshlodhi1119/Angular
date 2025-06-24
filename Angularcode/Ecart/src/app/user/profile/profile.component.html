@@ -1,117 +1,109 @@
-<app-header></app-header><div class="dashboard-layout">
-    <!-- SIDEBAR -->
-    <nav class="sidebar">
-      <div class="logo"> <img class="avatar" src="../../../assets/images/instagram/7.jpg">{{ customer?.name }}</div>
-      
-      <ul class="nav-list">
-        <li class="active"><i class="icon-dashboard"></i> Dashboard</li>
-        <!-- <li><i class="icon-lab"></i> Lab Test</li>
-        <li><i class="icon-appointment"></i> Appointment</li>
-        <li><i class="icon-medicine"></i> Medicine Order</li>
-        <li><i class="icon-message"></i> Message</li>
-        <li><i class="icon-payment"></i> Payment</li> -->
-        <li><i class="icon-settings"></i> Settings</li>
-      </ul>
-      <ul class="nav-list bottom">
-        <li><i class="icon-help"></i> Help</li>
-        <li><i class="icon-logout"></i> Log Out</li>
-      </ul>
-    </nav>
-  
-    <!-- MAIN CONTENT -->
-    <main class="main-content">
-      <!-- <header class="top-bar">
-        <h1>Welcome, {{ customer?.name }}.</h1>
-        <span class="date">{{ 'EEEE, dd MMMM yyyy' }}</span>
-        <div class="search-wrap">
-          <input type="text" placeholder="Search…" />
-          <i class="icon-search"></i>
+<app-header></app-header>
+
+<div class="dashboard-layout">
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="logo">
+      <img class="avatar" src="../../../assets/images/instagram/7.jpg">
+    </div>
+    <div class="logo">{{ customer?.name }}</div>
+
+    <ul class="nav-list">
+      <li class="active"><i class="icon-dashboard"></i> Dashboard</li>
+      <li (click)="toggleToPasswordForm()">
+        <i class="icon-settings" ></i> Settings
+      </li>
+    </ul>
+
+    <ul class="nav-list bottom">
+      <li><i class="icon-help"></i> Help</li>
+      <li><i class="icon-logout"></i> Log Out</li>
+    </ul>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+    <!-- ACCOUNT INFO FORM -->
+    <section class="profile-card" *ngIf="showAccountInfo">
+      <div class="card-header">
+        <h2>Account Information</h2>
+        <button class="btn edit" (click)="toggleEdit()" type="button">
+          <i class="icon-edit"></i> {{ isEditMode ? 'Cancel' : 'Edit' }}
+        </button>
+      </div>
+      <p class="subtitle">Update your account information</p>
+
+      <form class="profile-form" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" [(ngModel)]="customer.name" name="firstName" [disabled]="!isEditMode" />
         </div>
-        <i class="icon-bell"></i>
-        <img class="avatar" src="../../../assets/img/Cardigan.jpg" alt="avatar">
-      </header> -->
-  
-      <section class="profile-card">
-        <div class="card-header">
-          <h2>Account Information</h2>
-          <button class="btn edit" (click)="toggleEdit()" type="button">
-            <i class="icon-edit"></i> {{ isEditMode ? 'Cancel' : 'Edit' }}
-          </button>
-          
+
+        <div class="form-group">
+          <label>Mobile Phone</label>
+          <input type="tel" [(ngModel)]="customer.phoneNumber" name="phone" [disabled]="!isEditMode" />
         </div>
-        <p class="subtitle">Update your account information</p>
-  
-        <form class="profile-form" (ngSubmit)="onSubmit()">
-            <div class="form-group">
-              <label> Name</label>
-              <input type="text" [(ngModel)]="customer.name" name="firstName" [disabled]="!isEditMode" />
-            </div>
-<!--           
-            <div class="form-group">
-              <label>Last Name</label>
-              <input type="text" [(ngModel)]="customer.lastName" name="lastName" [disabled]="!isEditMode" />
-            </div> -->
-          
-            <!-- <div class="form-group">
-              <label>Date of Birth</label>
-              <input type="date" [(ngModel)]="customer.dob" name="dob" [disabled]="!isEditMode" />
-            </div> -->
-          
-            <div class="form-group">
-              <label>Mobile Phone</label>
-              <input type="tel" [(ngModel)]="customer.phoneNumber" name="phone" [disabled]="!isEditMode" />
-            </div>
-          
-            <div class="form-group full">
-              <label>Email</label>
-              <input type="email" [(ngModel)]="customer.email" name="email" [disabled]="!isEditMode" />
-            </div>
-          
-            <div class="form-group full">
-              <label>Address Line 1</label>
-              <input type="text" [(ngModel)]="customer.address1" name="address1" [disabled]="!isEditMode" />
-            </div>
-          
-            <div class="form-group full">
-              <label>Address Line 2</label>
-              <input type="text" [(ngModel)]="customer.address2" name="address2" [disabled]="!isEditMode" />
-            </div>
-          
-            <div class="form-group">
-              <label>City</label>
-              <input type="text" [(ngModel)]="customer.city" name="city" [disabled]="!isEditMode" />
-            </div>
-          
-            <div class="form-group">
-              <label>State</label>
-              <input type="text" [(ngModel)]="customer.state" name="state" [disabled]="!isEditMode" />
-            </div>
-          
-            <div class="form-group">
-              <label>Country</label>
-              <input type="text" [(ngModel)]="customer.country" name="country" [disabled]="!isEditMode" />
-            </div>
-          
-            <div class="form-group">
-              <label>Zip Code</label>
-              <input type="text" [(ngModel)]="customer.zipCode" name="zipCode" [disabled]="!isEditMode" />
-            </div>
-          
-            <div class="form-group">
-              <label>New Password</label>
-              <input type="password" [(ngModel)]="customer.password" name="newPassword" [disabled]="!isEditMode" />
-            </div>
-          
-            <div class="form-group">
-              <label>Confirm Password</label>
-              <input type="password" [(ngModel)]="customer.confirmPassword" name="confirmPassword" [disabled]="!isEditMode" />
-            </div>
-          
-            <button type="submit" class="btn update" [disabled]="!isEditMode">Update</button>
-          </form>
-          
-      </section>
-    </main>
-  </div>
-  
-  <app-footer></app-footer>
+
+        <div class="form-group full">
+          <label>Email</label>
+          <input type="email" [(ngModel)]="customer.email" name="email" [disabled]="!isEditMode" />
+        </div>
+
+        <div class="form-group full">
+          <label>Address Line 1</label>
+          <input type="text" [(ngModel)]="customer.address1" name="address1" [disabled]="!isEditMode" />
+        </div>
+
+        <div class="form-group full">
+          <label>Address Line 2</label>
+          <input type="text" [(ngModel)]="customer.address2" name="address2" [disabled]="!isEditMode" />
+        </div>
+
+        <div class="form-group">
+          <label>City</label>
+          <input type="text" [(ngModel)]="customer.city" name="city" [disabled]="!isEditMode" />
+        </div>
+
+        <div class="form-group">
+          <label>State</label>
+          <input type="text" [(ngModel)]="customer.state" name="state" [disabled]="!isEditMode" />
+        </div>
+
+        <div class="form-group">
+          <label>Country</label>
+          <input type="text" [(ngModel)]="customer.country" name="country" [disabled]="!isEditMode" />
+        </div>
+
+        <div class="form-group">
+          <label>Zip Code</label>
+          <input type="text" [(ngModel)]="customer.zipCode" name="zipCode" [disabled]="!isEditMode" />
+        </div>
+
+        <button type="submit" class="btn update" [disabled]="!isEditMode">Update</button>
+      </form>
+    </section>
+
+    <!-- PASSWORD FORM -->
+    <section class="profile-card" *ngIf="showPasswordForm">
+      <div class="card-header">
+        <h2>Set New Password</h2>
+        <button class="btn edit" (click)="toggleToAccountInfo()" type="button">
+          <i class="icon-edit"></i> Back
+        </button>
+      </div>
+      <form class="profile-form" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label>New Password</label>
+          <input type="password" [(ngModel)]="customer.password" name="newPassword" required />
+        </div>
+        <div class="form-group">
+          <label>Confirm Password</label>
+          <input type="password" [(ngModel)]="customer.confirmPassword" name="confirmPassword" required />
+        </div>
+        <button type="submit" class="btn update">Update</button>
+      </form>
+    </section>
+  </main>
+</div>
+
+<app-footer></app-footer>

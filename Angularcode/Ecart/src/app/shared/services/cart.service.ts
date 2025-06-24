@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { CartItem } from '../models/cart.model';
 import { Observable } from 'rxjs';
 
@@ -11,9 +11,13 @@ export class CartService {
     () {
     throw new Error('Method not implemented.');
   }
-  clearCart() {
-    throw new Error('Method not implemented.');
+
+  clearCart(email: string): Observable<void> { 
+  const params = new HttpParams().set('customerEmail', email);
+  return this.http.delete<void>('http://localhost:8080/cart/clearCart', { params, responseType: 'text' as 'json'  });
   }
+   
+  
   private baseUrl = 'http://localhost:8080/cart';
 
   constructor(private http: HttpClient) {}
@@ -39,13 +43,13 @@ updateCartItemQuantity(productId: number, email: string, quantity: number): Obse
 
 /** Delete cart item by productId and email */
 
-deleteCartItemByProduct(productId: number, email: string,quantity: number): Observable<void> {
-  return this.http.post<void>(
-    `http://localhost:8080/cart/update/quantity`,
-    { productId, customerEmail: email, quantity }
-  );
-}
+deleteCartItemByProduct(productId: number, email: string): Observable<void> {
+  const params = new HttpParams()
+    .set('productId', productId.toString())
+    .set('customerEmail', email);
 
+  return this.http.delete<void>('http://localhost:8080/cart/delete', { params, responseType: 'text' as 'json'  });
+}
   /** Delete cart item */
   // deleteCartItem(id: number): Observable<void> {
   //   return this.http.delete<void>(`http://localhost:8080/cart/delete/${id}`);

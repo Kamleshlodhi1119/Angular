@@ -2,15 +2,18 @@
   <div class="image-container">
     <img [src]="'http://localhost:8080/products/' + product.id + '.jpg'" alt="{{ product.name }}" />
     <div class="overlay">
+      <abbr title="view Product">
       <button class="icon-btn" (click)="viewProduct()">
         <i class="fa fa-search"></i>
-      </button>
+      </button></abbr>
+       <abbr title="Add To Cart">
       <button class="icon-btn" (click)="onAddToCart()">
         <i class="fa fa-shopping-cart"></i>
-      </button>
+      </button></abbr>
+       <abbr title="Add To Wishlist">
       <button class="icon-btn" (click)="addToWishlist()">
         <i class="fa fa-heart"></i>
-      </button>
+      </button></abbr>
     </div>
   </div>
   <h3>{{ product.name }}</h3>

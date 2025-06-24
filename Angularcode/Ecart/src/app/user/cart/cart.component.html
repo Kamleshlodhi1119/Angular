@@ -7,6 +7,8 @@
   <!-- Product List Section -->
   <div class="cart-container">
     <h2 class="cart-title">Shopping Bag</h2>
+   <!-- Button to clear entire cart -->
+<button (click)="clearCart()" class="remove-button">Clear Cart</button>
     <p class="cart-subtitle">{{ items.length }} items in your bag.</p>
 
     <div *ngFor="let item of items">

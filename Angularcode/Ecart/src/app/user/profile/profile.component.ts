@@ -43,4 +43,19 @@ export class ProfileComponent implements OnInit {
       error: (err) => console.error('Update failed', err)
     });
   }
+
+
+  showAccountInfo: boolean = true;
+showPasswordForm: boolean = false;
+
+toggleToPasswordForm() {
+  this.showAccountInfo = false;
+  this.showPasswordForm = true;
+}
+
+toggleToAccountInfo() {
+  this.showAccountInfo = true;
+  this.showPasswordForm = false;
+}
+
 }
