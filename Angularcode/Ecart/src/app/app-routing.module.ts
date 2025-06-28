@@ -28,6 +28,7 @@ import { AdminHeaderComponent } from './admin/admin-header/admin-header.componen
 import { AdminGuard } from './shared/guards/admin.guard';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { SingleProductComponent } from './components/single-product/single-product.component';
+import { ShopComponent } from './user/shop/shop.component';
 
 const routes: Routes = [
 
@@ -58,6 +59,7 @@ const routes: Routes = [
     children: [
       { path: 'cart', component: CartComponent },
       { path: 'orders', component: OrdersComponent },
+      { path: 'shop', component: ShopComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'orders', component: ViewOrdersComponent },
       { path: 'checkout', component: CheckoutComponent },
@@ -81,9 +83,11 @@ const routes: Routes = [
       { path: 'feedbacks', component: ViewFeedbacksComponent },
       { path: 'products', component: ViewProductsComponent },
       { path: 'products/add', component: AddProductComponent },
-      { path: 'products/update/:id', component: UpdateProductComponent }
+      // { path: 'products/update/:id', component: UpdateProductComponent }
+      
+      
     ]
-  },
+  },{ path: 'admin/products/update/:id', component: UpdateProductComponent },
 
   // Default Redirect
   { path: '', redirectTo: '/home', pathMatch: 'full' },

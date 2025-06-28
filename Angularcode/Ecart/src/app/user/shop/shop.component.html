@@ -1,0 +1,52 @@
+<app-header></app-header>
+
+<section class="shop-hero">
+  <h1>Shop</h1>
+  <p>Discover the latest trends at the best prices</p>
+</section>
+
+<div class="shop-container">
+  <!-- Filter Section -->
+  <div class="shop-filters">
+    <input
+      type="text"
+      placeholder="Search products..."
+      [(ngModel)]="searchTerm"
+      (input)="applyFilters()" />
+
+    <select [(ngModel)]="selectedCategory" (change)="applyFilters()">
+      <option value="">All Categories</option>
+      <option *ngFor="let c of categories" [value]="c">{{ c }}</option>
+    </select>
+
+    <select [(ngModel)]="sortOption" (change)="applyFilters()">
+      <option value="">Sort By</option>
+      <option value="price-asc">Price: Low to High</option>
+      <option value="price-desc">Price: High to Low</option>
+      <option value="name-asc">Name: A-Z</option>
+      <option value="name-desc">Name: Z-A</option>
+    </select>
+  </div>
+
+  <!-- Product List -->
+  <div *ngIf="filteredProducts.length === 0" class="no-results">
+    No matching products found.
+  </div>
+
+  <div class="product-grid">
+    <app-product-card
+      *ngFor="let product of pagedProducts"
+      [product]="product"
+      (addToCart)="handleAddToCart($event)">
+    </app-product-card>
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination-controls" *ngIf="filteredProducts.length > pageSize">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">Prev</button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+  </div>
+</div>
+
+<app-footer></app-footer>

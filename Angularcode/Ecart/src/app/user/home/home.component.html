@@ -1,5 +1,8 @@
 <app-header></app-header>
 
+
+
+
 <!-- ================= Hero Banner / Carousel ================= -->
 <section class="home-slides-three hero-banner owl-carousel owl-theme">
   <!-- Slide 1 -->
@@ -37,20 +40,21 @@
   </div>
 </section>
 
+
 <!-- ================= Featured Categories ================= -->
 <section class="category-section">
   <h2 class="section-title">Shop by Category</h2>
   <div class="category-grid">
     <div class="category-card">
-      <img src="../../../assets/images/categories/women.jpg" alt="Women's Fashion">
+      <img src="../../../assets/images/banner/s3.jpg" alt="Women's Fashion">
       <h3>Women</h3>
     </div>
     <div class="category-card">
-      <img src="../../../assets/images/categories/men.jpg" alt="Men's Fashion">
+      <img src="../../../assets/images/banner/s3.jpg" alt="Men's Fashion">
       <h3>Men</h3>
     </div>
     <div class="category-card">
-      <img src="../../../assets/images/categories/accessories.jpg" alt="Accessories">
+      <img src="../../../assets/images/banner/s1.jpg" alt="Accessories">
       <h3>Accessories</h3>
     </div>
   </div>
@@ -59,12 +63,14 @@
 <!-- ================= Product Listing ================= -->
 <div class="home-container">
   <h2>Available Products</h2>
+  <p>FASHION CLOTHES</p>
 
   <div *ngIf="products.length === 0 && !error">No products available.</div>
 
   <div class="product-grid">
     <app-product-card
       *ngFor="let p of products"
+      
       [product]="p"
       (addToCart)="handleAddToCart($event)">
     </app-product-card>
@@ -73,8 +79,60 @@
   <p *ngIf="error" class="error">{{ error }}</p>
 </div>
 
+
+
+<div class="ecart-marquee-banner">
+  <div class="ecart-marquee-banner__track">
+    <span class="ecart-marquee-banner__item">
+      <svg class="ecart-marquee-banner__icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" viewBox="0 0 24 24">
+        <path d="M6 2l1.5 2h9L18 2h2v2h-1.1l-1.7 17H6.8L5.1 4H4V2h2zm2.3 2l-.7 14h8.8l-.7-14H8.3z"/>
+      </svg>
+      <span class="ecart-marquee-banner__fancy">Summer Sale!</span>
+      &nbsp;Up to <b>60% OFF</b> on all latest arrivals&nbsp;|&nbsp;
+      <span class="ecart-marquee-banner__highlight">Exclusive Styles</span>
+      &nbsp;|&nbsp;Free Shipping on orders over $50
+    </span>
+    <span class="ecart-marquee-banner__item">
+      <svg class="ecart-marquee-banner__icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" viewBox="0 0 24 24">
+        <path d="M6 2l1.5 2h9L18 2h2v2h-1.1l-1.7 17H6.8L5.1 4H4V2h2zm2.3 2l-.7 14h8.8l-.7-14H8.3z"/>
+      </svg>
+      <span class="ecart-marquee-banner__fancy">Summer Sale!</span>
+      &nbsp;Up to <b>60% OFF</b> on all latest arrivals&nbsp;|&nbsp;
+      <span class="ecart-marquee-banner__highlight">Exclusive Styles</span>
+      &nbsp;|&nbsp;Free Shipping on orders over $50
+    </span>
+    <!-- Repeat as needed for seamless marquee -->
+  </div>
+</div>
+<div class="ecart-marquee-banner1">
+  <div class="ecart-marquee-banner__track1">
+    <span class="ecart-marquee-banner__item">
+      <svg class="ecart-marquee-banner__icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" viewBox="0 0 24 24">
+        <path d="M6 2l1.5 2h9L18 2h2v2h-1.1l-1.7 17H6.8L5.1 4H4V2h2zm2.3 2l-.7 14h8.8l-.7-14H8.3z"/>
+      </svg>
+      <span class="ecart-marquee-banner__fancy">Summer Sale!</span>
+      &nbsp;Up to <b>60% OFF</b> on all latest arrivals&nbsp;|&nbsp;
+      <span class="ecart-marquee-banner__highlight">Exclusive Styles</span>
+      &nbsp;|&nbsp;Free Shipping on orders over $50
+    </span>
+    <span class="ecart-marquee-banner__item">
+      <svg class="ecart-marquee-banner__icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" viewBox="0 0 24 24">
+        <path d="M6 2l1.5 2h9L18 2h2v2h-1.1l-1.7 17H6.8L5.1 4H4V2h2zm2.3 2l-.7 14h8.8l-.7-14H8.3z"/>
+      </svg>
+      <span class="ecart-marquee-banner__fancy">Summer Sale!</span>
+      &nbsp;Up to <b>60% OFF</b> on all latest arrivals&nbsp;|&nbsp;
+      <span class="ecart-marquee-banner__highlight">Exclusive Styles</span>
+      &nbsp;|&nbsp;Free Shipping on orders over $50
+    </span>
+    <!-- Repeat as needed for seamless marquee -->
+  </div>
+</div>
+
+
 <!-- ================= Why Shop With Us ================= -->
 <section class="features-section">
+  <h1>Feature Products</h1>
+  <p>Top view in this week</p>
   <div class="features-grid">
     <div class="feature-box">
       <img src="../../../assets/icons/truck.svg" alt="">
@@ -93,6 +151,33 @@
     </div>
   </div>
 </section>
+
+
+
+<div class="marquee-section">
+  <div class="marquee marquee--back">
+    <div class="marquee__content">
+      BOOSTING &nbsp; INCREASING &nbsp; BOOSTING &nbsp; INCREASING &nbsp;
+    </div>
+    <div class="marquee__content">
+      BOOSTING &nbsp; INCREASING &nbsp; BOOSTING &nbsp; INCREASING &nbsp;
+    </div>
+  </div>
+  
+  <div class="can-foreground">
+    <img src="../../../assets/images/instagram/pngegg.png" alt="GOAT FUEL Can">
+  </div>
+  
+  <div class="marquee marquee--front">
+    <div class="marquee__content1">
+      BOOSTING &nbsp; INCREASING &nbsp; BOOSTING &nbsp; INCREASING &nbsp;
+    </div>
+    <div class="marquee__content1">
+      BOOSTING &nbsp; INCREASING &nbsp; BOOSTING &nbsp; INCREASING &nbsp;
+    </div>
+  </div>
+</div>
+
 
 <!-- ================= Testimonials ================= -->
 <section class="testimonial-section">

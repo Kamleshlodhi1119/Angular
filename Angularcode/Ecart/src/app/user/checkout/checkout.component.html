@@ -1,109 +1,88 @@
-<!-- <app-cart></app-cart> -->
 <app-header></app-header>
 
-<pre>
-
-
-</pre>
 <div class="cart-page">
   <!-- Product List Section -->
   <div class="cart-container">
     <h2 class="cart-title">Shopping Bag</h2>
     <p class="cart-subtitle">{{ items.length }} items in your bag.</p>
-  <h3>Cart Total</h3>
+    <h3>Cart Total</h3>
     <div class="summary">
       <div><span>Cart Subtotal:</span><span>₹{{ total }}</span></div>
       <div><span>Shipping:</span><span>Free</span></div>
       <div class="total"><span>Grand Total:</span><span>₹{{ total }}</span></div>
     </div>
     <button class="checkout-btn" (click)="goToCheckout()">Proceed to Checkout</button>
-    <!-- <div *ngFor="let item of items">
-      <app-cart-item
-        [item]="item"
-        (remove)="remove($event)"
-        (quantityChange)="change($event)"
-      ></app-cart-item>
-    </div> -->
   </div>
 
-  <!-- Checkout Summary Section -->
-  <!-- <div class="checkout-section">
-  <form [formGroup]="form" (ngSubmit)="placeOrder()" class="order-form">
-  <input formControlName="address1" placeholder="Address">
-  <input formControlName="city" placeholder="City">
-  <input formControlName="state" placeholder="State">
-  <input formControlName="zipCode" placeholder="ZIP Code">
-  <button type="submit">Place Order</button>
-</form>
-  </div> -->
-
-<div class="checkout-section">
-  <h2>Checkout</h2>
-  <form [formGroup]="form" (ngSubmit)="placeOrder()" class="checkout-form">
-    <div class="form-row">
-      <div>
-        <label for="firstName">First Name</label>
-        <input formControlName="firstName" id="firstName" placeholder="John">
+  <div class="checkout-section">
+    <h2>Checkout</h2>
+    <form [formGroup]="form" (ngSubmit)="placeOrder()" class="checkout-form">
+      <div class="form-row">
+        <div>
+          <label for="firstName">First Name</label>
+          <input formControlName="firstName" id="firstName" placeholder="John">
+          <small *ngIf="form.get('firstName')?.touched && form.get('firstName')?.invalid" class="error">First name is required</small>
+        </div>
+        <div>
+          <label for="lastName">Last Name</label>
+          <input formControlName="lastName" id="lastName" placeholder="Doe">
+          <small *ngIf="form.get('lastName')?.touched && form.get('lastName')?.invalid" class="error">Last name is required</small>
+        </div>
       </div>
-      <div>
-        <label for="lastName">Last Name</label>
-        <input formControlName="lastName" id="lastName" placeholder="Doe">
+
+      <label for="email">Email</label>
+      <input formControlName="email" id="email" placeholder="john@example.com">
+      <small *ngIf="form.get('email')?.touched && form.get('email')?.invalid" class="error">
+        Valid email is required
+      </small>
+
+      <label for="phone">Phone Number</label>
+      <input formControlName="phone" id="phone" placeholder="9876543210">
+      <small *ngIf="form.get('phone')?.touched && form.get('phone')?.invalid" class="error">Phone number is required</small>
+
+      <label for="address1">Address Line 1</label>
+      <input formControlName="address1" id="address1" placeholder="123 Main St">
+      <small *ngIf="form.get('address1')?.touched && form.get('address1')?.invalid" class="error">Address is required</small>
+
+      <label for="address2">Address Line 2</label>
+      <input formControlName="address2" id="address2" placeholder="Apt, Suite, etc.">
+
+      <div class="form-row">
+        <div>
+          <label for="city">City</label>
+          <input formControlName="city" id="city">
+          <small *ngIf="form.get('city')?.touched && form.get('city')?.invalid" class="error">City is required</small>
+        </div>
+        <div>
+          <label for="state">State</label>
+          <input formControlName="state" id="state">
+          <small *ngIf="form.get('state')?.touched && form.get('state')?.invalid" class="error">State is required</small>
+        </div>
       </div>
-    </div>
 
-    <label for="email">Email</label>
-    <input formControlName="email" id="email" placeholder="john@example.com">
-
-    <label for="phone">Phone Number</label>
-    <input formControlName="phone" id="phone" placeholder="9876543210">
-
-    <label for="address1">Address Line 1</label>
-    <input formControlName="address1" id="address1" placeholder="123 Main St">
-
-    <label for="address2">Address Line 2</label>
-    <input formControlName="address2" id="address2" placeholder="Apt, Suite, etc.">
-
-    <div class="form-row">
-      <div>
-        <label for="city">City</label>
-        <input formControlName="city" id="city">
+      <div class="form-row">
+        <div>
+          <label for="zipCode">ZIP Code</label>
+          <input formControlName="zipCode" id="zipCode">
+          <small *ngIf="form.get('zipCode')?.touched && form.get('zipCode')?.invalid" class="error">ZIP code is required</small>
+        </div>
+        <div>
+          <label for="country">Country</label>
+          <input formControlName="country" id="country" placeholder="India">
+          <small *ngIf="form.get('country')?.touched && form.get('country')?.invalid" class="error">Country is required</small>
+        </div>
       </div>
-      <div>
-        <label for="state">State</label>
-        <input formControlName="state" id="state">
-      </div>
-    </div>
 
-    <div class="form-row">
-      <div>
-        <label for="zipCode">ZIP Code</label>
-        <input formControlName="zipCode" id="zipCode">
-      </div>
-      <div>
-        <label for="country">Country</label>
-        <input formControlName="country" id="country" placeholder="India">
-      </div>
-    </div>
+      <label for="paymentMethod">Payment Method</label>
+      <select formControlName="paymentMethod" id="paymentMethod">
+        <option value="CASH_ON_DELIVERY">Cash on Delivery</option>
+        <option value="UPI">UPI</option>
+        <option value="CARD">Credit/Debit Card</option>
+      </select>
 
-    <label for="paymentMethod">Payment Method</label>
-    <select formControlName="paymentMethod" id="paymentMethod">
-      <option value="CASH_ON_DELIVERY">Cash on Delivery</option>
-      <option value="UPI">UPI</option>
-      <option value="CARD">Credit/Debit Card</option>
-    </select>
-
-    <button type="submit">Place Order</button>
-  </form>
+      <button type="submit">Place Order</button>
+    </form>
+  </div>
 </div>
-
-</div>
-<!-- 
-<app-footer></app-footer> -->
-<pre>
-
-  
-</pre>
-
-
 
 <app-footer></app-footer>

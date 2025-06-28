@@ -1,3 +1,50 @@
+.hero-vshape {
+  position: relative;
+  height: 400px;
+  background: url('../../../assets/images/banner/mod2.jpg') no-repeat center center / cover;
+  color: var(--color-light);
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+  font-family: var(--font);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.6); /* keeps the text readable */
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--color-light);
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 2px var(--color-dark);
+}
+
+.breadcrumb {
+  font-size: 1.1rem;
+  color: var(--color-light);
+}
+
+.breadcrumb a {
+  color: var(--color-light);
+  text-decoration: none;
+  margin-right: 5px;
+  font-weight: 500;
+}
+
+.breadcrumb span {
+  margin-left: 5px;
+  color: var(--accent-color);
+  font-weight: 600;
+}
 .cart-page {
   display: grid;
   grid-template-columns: 2fr 1fr;

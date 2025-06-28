@@ -21,6 +21,7 @@
  */
 :root {
   --primary-color: #c5a159;       /* Metallic Gold */
+  --secondary-color: #e7ab31;
   --accent-color: #d9b24c;        /* Warm Gold */
   --text-color: #3d3d3d;          /* Dark Gray */
   --color-dark: #000000;          /* Ivory background */
@@ -29,6 +30,7 @@
   --color-error: #d9534f;         /* Bootstrap Red */
   --shadow: 0 6px 18px rgba(197, 161, 89, 0.15);
   --font: 'Poppins', sans-serif;
+   --success-color: #2ecc71;
 
 
   

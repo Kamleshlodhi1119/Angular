@@ -1,0 +1,66 @@
+.shop-hero {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(to right, var(--primary-color), var(--color-light));
+  color: #fff;
+}
+.shop-hero h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+.shop-hero p {
+  font-size: 1.2rem;
+}
+
+.shop-container {
+  padding: 50px 120px;
+}
+
+.shop-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.shop-filters input,
+.shop-filters select {
+  padding: 10px 15px;
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  font-size: 1rem;
+}
+
+.no-results {
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--text-color);
+  margin-top: 40px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(230px, 1fr));
+  gap: 1.5rem;
+}
+
+.pagination-controls {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.pagination-controls button {
+  padding: 8px 16px;
+  margin: 0 10px;
+  border: none;
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.pagination-controls button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

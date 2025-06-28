@@ -22,6 +22,7 @@ body {
   color: var(--text-color);
   line-height: 1.6;
   padding: 20px;
+  overflow: hidden;
 }
 
 h1, h2, h3 {
@@ -288,7 +289,8 @@ a {
 
 .product-grid {
   display: grid;
-  gap: 2rem;
+  margin: 20px 100px;
+  gap: 0rem;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
@@ -339,9 +341,10 @@ a {
 
 /* ============== Features Section ============== */
 .features-section {
-  background: var(--bg-light);
+  /* background: var(--bg-light); */
   padding: 60px 20px;
   text-align: center;
+  background: linear-gradient(to top, #fffae0 0%, #fff 70%);
 }
 
 .features-grid {
@@ -543,5 +546,181 @@ a {
 
   .testimonial-card {
     padding: 20px;
+  }
+}
+
+
+
+/* thos isnew  */
+.marquee-section {
+  position: relative;
+  width: 100vw;
+  height: 420px;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #fffae0 0%, #fff 70%);
+  
+}
+
+/* Common marquee styles */
+.marquee {
+  position: absolute;
+  left: 0;
+  width: 200vw;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  pointer-events: none;
+   transform: rotate(1deg);
+}
+
+.marquee__content {
+  font-size: 7vw;
+  font-weight: bold;
+  letter-spacing: 2px;
+  padding-right: 2vw;
+  animation: marquee-scroll 34s linear infinite;
+  display: inline-block;
+}
+
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee__content1 {
+  font-size: 7vw;
+  font-weight: bold;
+  letter-spacing: 2px;
+  padding-right: 2vw;
+  animation: marquee-scroll1 34s linear infinite;
+  display: inline-block;
+}
+
+@keyframes marquee-scroll1 {
+  100% { transform: translateX(0); }
+  0% { transform: translateX(-50%); }
+}
+
+/* Back marquee: behind the can */
+.marquee--back {
+  top: 35%;
+  z-index: 1;
+  color: #111;
+  opacity: 0.13;
+}
+
+/* Foreground image: centered */
+.can-foreground {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  pointer-events: none;
+}
+.can-foreground img {
+  height: 360px;
+  transform: rotate(-12deg);
+}
+
+.marquee--front {
+  bottom: 25%;
+  z-index: 3;
+  color: var(--primary-color); /* Example: bright color for contrast */
+  opacity: 1;
+  /* mix-blend-mode: lighten; Optional: helps blend with image */
+  pointer-events: none;
+}
+
+
+
+
+
+.ecart-marquee-banner {
+  width: 100%;
+  height: 70px;
+  background: linear-gradient(120deg, var(--primary-color) 0%, var(--primary-color));
+  color: #fff;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+ transform: rotate(-3deg);
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+}
+
+.ecart-marquee-banner__track {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  animation: ecart-marquee-scroll 28s linear infinite;
+}
+.ecart-marquee-banner1{
+  margin-top: -70px !important;
+  width: 100%;
+  height: 70px;
+  background: linear-gradient(120deg, var(--primary-color) 0%, var(--primary-color));
+  color: #fff;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  transform: rotate(3deg);
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+}
+
+.ecart-marquee-banner__track1 {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  animation: ecart-marquee-scroll1 28s linear infinite;
+}
+
+.ecart-marquee-banner__item {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  margin-right: 4rem;
+  overflow: hidden;
+}
+
+.ecart-marquee-banner__icon {
+  margin-right: 1rem;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 4px #fff5);
+}
+
+.ecart-marquee-banner__fancy {
+  font-family: 'Pacifico', cursive;
+  font-size: 2.2rem;
+  color: #fff;
+  margin-right: 1rem;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px #c59d00;
+}
+
+.ecart-marquee-banner__highlight {
+  color: #bfff5f;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+@keyframes ecart-marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes ecart-marquee-scroll1 {
+  100% { transform: translateX(0); }
+  0% { transform: translateX(-50%); }
+}
+
+/* Responsive font size for mobile */
+@media (max-width: 600px) {
+  .ecart-marquee-banner__item {
+    font-size: 1.1rem;
+  }
+  .ecart-marquee-banner__fancy {
+    font-size: 1.3rem;
   }
 }
