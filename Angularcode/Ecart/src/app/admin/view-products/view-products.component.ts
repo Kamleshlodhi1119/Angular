@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../shared/services/product.service';
 import { Product } from '../../shared/models/product.model';
 import { Router } from '@angular/router';
+import { AlertService } from 'src/app/shared/services/alert.service';
 
 @Component({
   selector: 'app-view-products',
@@ -13,7 +14,7 @@ export class ViewProductsComponent implements OnInit {
   products: Product[] = [];
   error: string = '';
 
-  constructor(private productService: ProductService, private router: Router) {}
+  constructor(private productService: ProductService, private router: Router,private alertService: AlertService) {}
 
   ngOnInit(): void {
     this.loadProducts();
@@ -29,7 +30,7 @@ export class ViewProductsComponent implements OnInit {
   toggleStatus(productId: number): void {
     this.productService.toggleProductStatus(productId).subscribe({
       next: () => this.loadProducts(),
-      error: () => alert('Failed to update product status.')
+      error: () => this.alertService.show('Failed to update product status.')
     });
   }
 
@@ -40,7 +41,7 @@ export class ViewProductsComponent implements OnInit {
    deleteProduct(productId: number): void {
      this.productService.deleteProduct(productId).subscribe({
       next: () => this.loadProducts(),
-      error: () => alert('Failed to Delete product.')
+      error: () => this.alertService.show('Failed to Delete product.')
     });
   }
 }

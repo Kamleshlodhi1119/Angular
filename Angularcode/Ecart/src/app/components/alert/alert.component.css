@@ -1,0 +1,20 @@
+.alert-popup {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  background-color: #c2ffc1;
+  border: 1px solid #4bf542;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.alert-box button {
+  background-color: transparent;
+  border: none;
+  color: #333;
+  font-weight: bold;
+  margin-left: 10px;
+  cursor: pointer;
+}

@@ -3,6 +3,7 @@ import { OrderService } from '../../shared/services/order.service';
 import { CommonModule } from '@angular/common';
 import { ProductCardComponent } from '../../components/product-card/product-card.component';
 import { OrderItemComponent } from '../../components/order-item/order-item.component';
+import { AlertService } from 'src/app/shared/services/alert.service';
 
 @Component({
   selector: 'app-view-orders',
@@ -16,7 +17,7 @@ export class ViewOrdersComponent implements OnInit {
 
   statusOptions = ['CONFIRMED', 'SHIPPED', 'DELIVERED', 'CANCELLED'];
 
-  constructor(private orderService: OrderService) {}
+  constructor(private orderService: OrderService,private alertService: AlertService) {}
 
   ngOnInit(): void {
     this.loadOrders();
@@ -32,7 +33,7 @@ export class ViewOrdersComponent implements OnInit {
   updateStatus(orderId: number, status: string): void {
     this.orderService.updateOrderStatus(orderId, status).subscribe({
       next: () => this.loadOrders(),
-      error: () => alert('Failed to update order status')
+      error: () =>this.alertService.show('Failed to update order status')
     });
   }
 }

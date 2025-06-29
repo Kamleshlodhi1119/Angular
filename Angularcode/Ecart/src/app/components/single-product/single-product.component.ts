@@ -7,6 +7,7 @@ import { UserSessionService } from 'src/app/shared/services/user-session.service
 import { Product } from 'src/app/shared/models/product.model';
 import { User } from 'src/app/shared/models/user.model';
 import { CartItem } from 'src/app/shared/models/cart.model';
+import { AlertService } from 'src/app/shared/services/alert.service';
 
 @Component({
   selector: 'app-single-product',
@@ -27,7 +28,8 @@ export class SingleProductComponent implements OnInit {
       private cartService: CartService,
       private userSession: UserSessionService,
       private route: ActivatedRoute, 
-      private http: HttpClient
+      private http: HttpClient,
+      private alertService: AlertService
     ) {}
   
     ngOnInit(): void {
@@ -44,7 +46,7 @@ export class SingleProductComponent implements OnInit {
   
     handleAddToCart(product: Product) {
       if (!this.currentUser) {
-        alert('Please login to add items to cart.');
+       this.alertService.show('Please login to add items to cart.');
         return;
       }
   
@@ -60,8 +62,8 @@ export class SingleProductComponent implements OnInit {
       };
   
       this.cartService.addToCart(cartItem).subscribe({
-        next: () => alert('Added to cart'),
-        error: () => alert('Product Already In Cart')
+        next: () => this.alertService.show('Added to cart'),
+        error: () =>this.alertService.show('Product Already In Cart')
       });
     }
 

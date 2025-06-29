@@ -59,7 +59,6 @@ const routes: Routes = [
     children: [
       { path: 'cart', component: CartComponent },
       { path: 'orders', component: OrdersComponent },
-      { path: 'shop', component: ShopComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'orders', component: ViewOrdersComponent },
       { path: 'checkout', component: CheckoutComponent },
@@ -68,6 +67,7 @@ const routes: Routes = [
       {path: 'user/nav-bar', component: NavBarComponent }
     ]
   },
+  { path: 'shop', component: ShopComponent },
   // Admin Auth
   { path: 'admin/admin-login', component: AdminLoginComponent },
 
