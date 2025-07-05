@@ -29,7 +29,7 @@
   --color-border: #e0d9c8;        /* Subtle border */
   --color-error: #d9534f;         /* Bootstrap Red */
   --shadow: 0 6px 18px rgba(197, 161, 89, 0.15);
-  --font: 'Poppins', sans-serif;
+  --font:  "Kaisei Opti", serif !important;
    --success-color: #2ecc71;
 
 
@@ -42,4 +42,10 @@
 body{
   margin: 0;
   padding: 0;
+  font-family: "Kaisei Opti", serif !important;
+}
+.kaisei-opti-regular {
+  font-family: "Kaisei Opti", serif;
+  font-weight: 400;
+  font-style: normal;
 }

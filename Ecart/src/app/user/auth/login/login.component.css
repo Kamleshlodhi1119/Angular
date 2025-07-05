@@ -1,5 +1,5 @@
 /* Login/Register Form */
-.login-container,
+/* .login-container,
 .register-container {
   max-width: 500px;
   margin: 40px auto;
@@ -35,4 +35,58 @@ button:hover {
 
 .success {
   color: var(--success-color);
+} */
+ 
+/* Login Component */
+.login-container {
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 30px;
+  border-radius: 12px;
+  background-color: var(--card-bg);
+  box-shadow: var(--shadow);
+}
+
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: var(--primary-color);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  font-weight: 600;
+  color: var(--label-color);
+}
+
+input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: var(--input-bg);
+}
+
+button {
+  padding: 10px;
+  border-radius: 8px;
+  background-color: var(--primary-color);
+  color: var(--header-text);
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:disabled {
+  background-color: #ccc;
+}
+
+.error {
+  text-align: center;
+  color: var(--error-color);
 }

@@ -1,33 +1,86 @@
 <app-header></app-header>
 
 <div class="register-container">
-    <h2>Customer Register</h2>
-  
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-      <label>Name</label>
-      <input formControlName="name" type="text" />
-  
-      <label>Email</label>
-      <input formControlName="email" type="email" />
-  
-      <label>Password</label>
-      <input formControlName="password" type="password" />
-  
-      <label>Phone</label>
-      <input formControlName="phoneNumber" type="text" />
-  
-      <label>Address</label>
-      <input formControlName="address1" type="text" />
-      <input formControlName="city" type="text" placeholder="City" />
-      <input formControlName="state" type="text" placeholder="State" />
-      <input formControlName="zipCode" type="text" placeholder="Zip" />
-      <input formControlName="country" type="text" />
-  
-      <button type="submit" [disabled]="registerForm.invalid">Register</button>
-  
-      <p *ngIf="successMessage" class="success">{{ successMessage }}</p>
-      <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
-    </form>
-  </div>
-  
-  <app-footer></app-footer>
+  <h2>Customer Register</h2>
+
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <!-- Name -->
+    <label>Name</label>
+    <input formControlName="name" type="text" />
+    <div *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.invalid">
+      <small style="color:red;" *ngIf="registerForm.get('name')?.hasError('required')">Name is required</small>
+      <small style="color:red;" *ngIf="registerForm.get('name')?.hasError('pattern')">Name must contain only
+        letters</small>
+    </div>
+
+    <!-- Email -->
+    <label>Email</label>
+    <input formControlName="email" type="email" />
+    <div *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid">
+      <small style="color:red;" *ngIf="registerForm.get('email')?.hasError('required')">Email is required</small>
+      <small style="color:red;" *ngIf="registerForm.get('email')?.hasError('email')">Invalid email format</small>
+    </div>
+
+    <!-- Password -->
+    <label>Password</label>
+    <input type="password" formControlName="password" />
+    <div *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid">
+      <small style="color:red;" *ngIf="registerForm.get('password')?.hasError('required')">Password is required</small>
+      <small style="color:red;" *ngIf="registerForm.get('password')?.hasError('minlength')">Password must be at least 6
+        characters</small>
+    </div>
+
+    <!-- Confirm Password -->
+    <label>Confirm Password</label>
+    <input type="password" formControlName="confirmPassword" />
+    <div
+      *ngIf="registerForm.get('confirmPassword')?.touched && registerForm.get('confirmPassword')?.hasError('required')">
+      <small style="color:red;">Confirm Password is required</small>
+    </div>
+    <div *ngIf="registerForm.errors?.['passwordMismatch'] && registerForm.get('confirmPassword')?.touched">
+      <small style="color:red;">Passwords do not match</small>
+    </div>
+
+    <!-- Phone Number -->
+    <label>Phone</label>
+    <input formControlName="phoneNumber" type="text" />
+    <div *ngIf="registerForm.get('phoneNumber')?.touched && registerForm.get('phoneNumber')?.invalid">
+      <small style="color:red;" *ngIf="registerForm.get('phoneNumber')?.hasError('required')">Phone number is
+        required</small>
+      <small style="color:red;" *ngIf="registerForm.get('phoneNumber')?.hasError('pattern')">Enter a valid 10-digit
+        phone number</small>
+    </div>
+
+    <!-- Address -->
+    <label>Address</label>
+    <input formControlName="address1" type="text" />
+
+    <!-- City -->
+    <input formControlName="city" type="text" placeholder="City" />
+    <div *ngIf="registerForm.get('city')?.touched && registerForm.get('city')?.hasError('pattern')">
+      <small style="color:red;">City must contain only letters</small>
+    </div>
+
+    <!-- State -->
+    <input formControlName="state" type="text" placeholder="State" />
+    <div *ngIf="registerForm.get('state')?.touched && registerForm.get('state')?.hasError('pattern')">
+      <small style="color:red;">State must contain only letters</small>
+    </div>
+
+    <!-- Zip Code -->
+    <input formControlName="zipCode" type="text" placeholder="Zip" />
+    <div *ngIf="registerForm.get('zipCode')?.touched && registerForm.get('zipCode')?.hasError('pattern')">
+      <small style="color:red;">Zip code must be 5 or 6 digits</small>
+    </div>
+
+    <!-- Country -->
+    <input formControlName="country" type="text" />
+
+    <button type="submit" [disabled]="registerForm.invalid">Register</button>
+
+    <p *ngIf="successMessage" class="success">{{ successMessage }}</p>
+    <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+  </form>
+</div>
+
+<app-footer></app-footer>
