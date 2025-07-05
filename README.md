@@ -4,7 +4,6 @@ link: https://kamleshlodhi1119.github.io/Angular/
 This is a full-featured e-commerce platform built with **Angular 15** (frontend) and **Spring Boot 3** (backend). It supports secure user authentication, product management, dynamic cart functionality, order processing, image upload support, and feedback management.
 
 ---
-![screencapture-localhost-4200-home-2025-07-05-19_21_06](https://github.com/user-attachments/assets/bb143769-25d5-442e-8fec-3f3f98c41770)
 
 
 ## 🚀 Features
@@ -47,10 +46,8 @@ Below are screenshots of the homepage and features:
 | Home Page | Product Listing | Cart Page |
 |-----------|-----------------|-----------|
 | ![Home](screenshots/homepage.png) | ![Products](screenshots/products.png) | ![Cart](screenshots/cart.png) |
-![Screenshot 2025-06-28 222457](https://github.com/user-attachments/assets/9770a5ce-3cc8-41cd-a2f5-d042b7afc76d)
-![Screenshot 2025-06-28 222601](https://github.com/user-attachments/assets/8cdc3764-d9d4-4605-a100-8d465bdae65a)
-![Screenshot 2025-06-28 222539](https://github.com/user-attachments/assets/e6162f2a-7a87-4cd1-b643-30cc94fd2411)
-![Screenshot 2025-06-28 222514](https://github.com/user-attachments/assets/778a624f-f8a2-4188-8f24-0c00a329f415)
+
+![screencapture-localhost-4200-home-2025-07-05-19_21_06](https://github.com/user-attachments/assets/bb143769-25d5-442e-8fec-3f3f98c41770)
 
 
 ---
