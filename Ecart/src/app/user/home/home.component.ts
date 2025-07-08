@@ -14,6 +14,7 @@ import { UserSessionService } from 'src/app/shared/services/user-session.service
 import { User } from 'src/app/shared/models/user.model';
 import { Router, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { AlertService } from 'src/app/shared/services/alert.service';
 
 @Component({
   selector: 'app-home',
@@ -30,7 +31,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     private productService: ProductService,
     private cartService: CartService,
     private userSession: UserSessionService,
-    private router: Router
+    private router: Router,private alertService: AlertService
   ) {}
 
   ngOnInit(): void {
@@ -38,7 +39,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.productService.getActiveProducts().subscribe({
       next: (res) => (this.products = res),
-      error: () => (this.error = 'Failed to load products.')
+      error: () =>  this.alertService.show( 'Failed to load products.','error')
     });
 
     // Listen to navigation events to reinit Owl Carousel on return
@@ -87,7 +88,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   handleAddToCart(product: Product) {
     if (!this.currentUser) {
-      alert('Please login to add items to cart.');
+       this.alertService.show('Please login to add items to cart.','error');
       return;
     }
 
@@ -103,8 +104,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     };
 
     this.cartService.addToCart(cartItem).subscribe({
-      next: () => alert('Added to cart'),
-      error: () => alert('Product Already In Cart')
+      next: () =>  this.alertService.show('Added to cart','success'),
+      error: () => this.alertService.show('Product Already In Cart','warning')
     });
   }
 

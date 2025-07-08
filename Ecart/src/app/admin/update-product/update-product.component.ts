@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../shared/services/product.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AlertService } from 'src/app/shared/services/alert.service';
 
 @Component({
   selector: 'app-update-product',
@@ -21,7 +22,7 @@ export class UpdateProductComponent implements OnInit {
     private route: ActivatedRoute,
     private productService: ProductService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,private alertService: AlertService
   ) {}
 
   ngOnInit(): void {
@@ -43,7 +44,7 @@ export class UpdateProductComponent implements OnInit {
   loadProductData(): void {
     this.productService.getProductById(this.productId).subscribe({
       next: (product) => this.productForm.patchValue(product),
-      error: () => this.errorMessage = 'Failed to load product data'
+      error: () => this.alertService.show('Failed to load product data','error')
     });
   }
 
@@ -57,14 +58,14 @@ export class UpdateProductComponent implements OnInit {
         next: () => {
           if (this.selectedFile) {
             this.productService.uploadImage(this.productId, this.selectedFile).subscribe({
-              next: () => this.successMessage = 'Product updated and image uploaded!',
-              error: () => this.errorMessage = 'Image upload failed'
+              next: () =>this.alertService.show( 'Product updated and image uploaded!','success'),
+              error: () =>this.alertService.show('Image upload failed','error')
             });
           } else {
-            this.successMessage = 'Product updated successfully';
+            this.alertService.show('Product updated successfully','success');
           }
         },
-        error: () => this.errorMessage = 'Failed to update product'
+        error: () => this.alertService.show( 'Failed to update product','error')
       });
     }
   }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertService } from '../../shared/services/alert.service';
+import { AlertService, AlertData } from '../../shared/services/alert.service';
 
 @Component({
   selector: 'app-alert',
@@ -8,16 +8,17 @@ import { AlertService } from '../../shared/services/alert.service';
 })
 export class AlertComponent implements OnInit {
   message: string | null = null;
+  type: string = 'info';
   visible = false;
 
   constructor(private alertService: AlertService) {}
 
   ngOnInit() {
-    this.alertService.alert$.subscribe(msg => {
-      this.message = msg;
+    this.alertService.alert$.subscribe((data: AlertData) => {
+      this.message = data.message;
+      this.type = data.type;
       this.visible = true;
 
-      // Auto-close after 3 seconds
       setTimeout(() => {
         this.visible = false;
         this.message = null;

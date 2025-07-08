@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../../shared/services/order.service';
 import { UserSessionService } from 'src/app/shared/services/user-session.service';
+import { AlertService } from 'src/app/shared/services/alert.service';
 
 @Component({
   selector: 'app-orders',
@@ -12,7 +13,7 @@ export class OrdersComponent implements OnInit {
 
   constructor(
     private orderService: OrderService,
-    private userSession: UserSessionService
+    private userSession: UserSessionService,private alertService: AlertService
   ) {}
 
   ngOnInit(): void {
@@ -20,10 +21,10 @@ export class OrdersComponent implements OnInit {
     if (customerId) {
       this.orderService.getUserOrders(customerId).subscribe({
         next: orders => this.orders = orders,
-        error: err => console.error('Error fetching orders', err)
+        error: err =>  this.alertService.show('Error fetching orders', 'error')
       });
     } else {
-      console.error('Customer ID not found in session');
+       this.alertService.show('Customer ID not found in session','error');
     }
   }
 }

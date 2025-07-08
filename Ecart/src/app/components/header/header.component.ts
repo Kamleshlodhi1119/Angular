@@ -8,6 +8,7 @@ import { OrderItemComponent } from '../order-item/order-item.component';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { UserSessionService } from 'src/app/shared/services/user-session.service';
+import { AlertService } from 'src/app/shared/services/alert.service';
 // import { ProfileComponent } from 'src/app/user/profile/profile.component'; 
 
 @Component({
@@ -19,7 +20,7 @@ import { UserSessionService } from 'src/app/shared/services/user-session.service
 export class HeaderComponent {
  customer: any;
 
-  constructor(private http: HttpClient, private userSession: UserSessionService,public authService: AuthService, private router: Router) {}
+  constructor(private http: HttpClient, private userSession: UserSessionService,private alertService: AlertService,public authService: AuthService, private router: Router) {}
   
 
   ngOnInit(): void {
@@ -30,7 +31,7 @@ export class HeaderComponent {
         this.customer = data;
         this.customer.profileImageUrl = this.customer.profileImageUrl || 'assets/default-profile.png';
       },
-      error: (err) => console.error('Error loading customer data', err)
+      error: (err) =>this.alertService.show('Error loading customer data', 'error')
     });
   }
   logout(): void {

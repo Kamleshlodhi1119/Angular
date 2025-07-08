@@ -37,7 +37,7 @@ export class SingleProductComponent implements OnInit {
   
       this.productService.getActiveProducts().subscribe({
         next: (res) => this.products = res,
-        error: () => this.error = 'Failed to load products.'
+        error: () => this.alertService.show('Failed to load products.','error')
       });
 
        this.productId = Number(this.route.snapshot.paramMap.get('productId'));
@@ -46,7 +46,7 @@ export class SingleProductComponent implements OnInit {
   
     handleAddToCart(product: Product) {
       if (!this.currentUser) {
-       this.alertService.show('Please login to add items to cart.');
+       this.alertService.show('Please login to add items to cart.','error');
         return;
       }
   
@@ -62,8 +62,8 @@ export class SingleProductComponent implements OnInit {
       };
   
       this.cartService.addToCart(cartItem).subscribe({
-        next: () => this.alertService.show('Added to cart'),
-        error: () =>this.alertService.show('Product Already In Cart')
+        next: () => this.alertService.show('Added to cart','success'),
+        error: () =>this.alertService.show('Product Already In Cart','warning')
       });
     }
 

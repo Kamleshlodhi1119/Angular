@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../../shared/services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlertService } from 'src/app/shared/services/alert.service';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +17,7 @@ export class RegisterComponent {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,private alertService: AlertService
   ) {
     this.registerForm = this.fb.group(
       {
@@ -48,15 +49,16 @@ export class RegisterComponent {
       const { confirmPassword, ...formData } = this.registerForm.value; // Remove confirmPassword before sending
       this.authService.registerCustomer(formData).subscribe({
         next: () => {
-          this.successMessage = 'Registration successful!';
+          this.alertService.show('Registration successful!','success'),
           this.registerForm.reset();
           this.router.navigate(['/user/auth/login']);
         },
         error: err => {
-          this.errorMessage = err.error?.message || 'Registration failed';
+          this.errorMessage = err.error?.message ||  this.alertService.show('Registration failed','error');
         }
       });
     } else {
+       this.alertService.show('Please fix form errors before submitting.','error'),
       this.errorMessage = 'Please fix form errors before submitting.';
     }
   }

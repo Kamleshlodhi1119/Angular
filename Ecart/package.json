@@ -10,7 +10,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^15.2.0",
+    "@angular/animations": "^15.2.10",
     "@angular/common": "^15.2.0",
     "@angular/compiler": "^15.2.0",
     "@angular/core": "^15.2.0",
@@ -21,6 +21,7 @@
     "crypto-js": "^4.2.0",
     "jspdf": "^3.0.1",
     "jspdf-autotable": "^5.0.2",
+    "ngx-toastr": "^14.3.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "xlsx": "^0.18.5",

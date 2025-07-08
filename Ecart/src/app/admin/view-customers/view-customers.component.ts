@@ -21,14 +21,14 @@ export class ViewCustomersComponent implements OnInit {
   loadCustomers(): void {
     this.customerService.getAllCustomers().subscribe({
       next: (data) => this.customers = data,
-      error: () => this.error = 'Failed to load customer data.'
+      error: () => this.alertService.show('Failed to load customer data.','error')
     });
   }
 
   toggleStatus(customerId: number): void {
     this.customerService.toggleCustomerStatus(customerId).subscribe({
       next: () => this.loadCustomers(),
-      error: () => this.alertService.show('Failed to toggle status')
+      error: () => this.alertService.show('Failed to toggle status','error')
     });
   }
 
@@ -36,7 +36,7 @@ export class ViewCustomersComponent implements OnInit {
     if (confirm('Are you sure you want to delete this customer?')) {
       this.customerService.deleteCustomer(customerId).subscribe({
         next: () => this.loadCustomers(),
-        error: () => this.alertService.show('Failed to delete customer')
+        error: () => this.alertService.show('Failed to delete customer','error')
       });
     }
   }

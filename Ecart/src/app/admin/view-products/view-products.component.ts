@@ -23,14 +23,14 @@ export class ViewProductsComponent implements OnInit {
   loadProducts(): void {
     this.productService.getAllProducts().subscribe({
       next: (data) => this.products = data,
-      error: () => this.error = 'Failed to load products.'
+      error: () => this.alertService.show('Failed to load products.', 'error') //this.error = 'Failed to load products.'
     });
   }
 
   toggleStatus(productId: number): void {
     this.productService.toggleProductStatus(productId).subscribe({
       next: () => this.loadProducts(),
-      error: () => this.alertService.show('Failed to update product status.')
+      error: () => this.alertService.show('Failed to update product status.','error')
     });
   }
 
@@ -41,7 +41,7 @@ export class ViewProductsComponent implements OnInit {
    deleteProduct(productId: number): void {
      this.productService.deleteProduct(productId).subscribe({
       next: () => this.loadProducts(),
-      error: () => this.alertService.show('Failed to Delete product.')
+      error: () => this.alertService.show('Failed to Delete product.','error')
     });
   }
 }

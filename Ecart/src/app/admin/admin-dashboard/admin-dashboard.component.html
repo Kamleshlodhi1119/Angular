@@ -1,21 +1,157 @@
 <app-admin-header></app-admin-header>
-<div class="dashboard-container">
-    <h2>Admin Dashboard</h2>
-  
-    <div class="summary">
-      <div class="card">Total Customers: {{ summary.totalCustomers }}</div>
-      <div class="card">Total Products: {{ summary.totalProducts }}</div>
-      <div class="card">Total Orders: {{ summary.totalOrders }}</div>
-      <div class="card">Total Revenue: ₹{{ summary.totalRevenue }}</div>
+
+<!-- ================= Hero Section ================= -->
+<section class="ecart-hero-wrapper">
+  <!-- Left -->
+  <div class="ecart-hero-left">
+    <p class="ecart-hero-category">👗 Fashion Meets Elegance</p>
+    <h1 class="ecart-hero-title">Step Into Style.</h1>
+    <p class="ecart-hero-desc">
+      Clear Sounds<br />
+      Redefine your wardrobe with our premium selection.
+    </p>
+    <button class="ecart-hero-btn">Explore New Arrivals ↗</button>
+    <div class="ecart-hero-socials">
+      <img src="https://img.icons8.com/ios-glyphs/24/twitter--v1.png" />
+      <img src="https://img.icons8.com/ios-glyphs/24/tiktok.png" />
+      <img src="https://img.icons8.com/ios-glyphs/24/youtube-play.png" />
+      <img src="https://img.icons8.com/ios-glyphs/24/instagram-new.png" />
     </div>
-  
-    <h3>Top Selling Products</h3>
-    <ul>
-      <li *ngFor="let p of topProducts">
-        {{ p.name }}  {{ p.product }} - Sold: {{ p.totalSold }}
-      </li>
-    </ul>
-  
-    <p *ngIf="error" class="error">{{ error }}</p>
   </div>
-  <app-footer></app-footer>
+
+  <!-- Center -->
+  <div class="ecart-hero-center">
+    <div class="ecart-product-placeholder">
+      <img src="../../../assets/images/banner/vecteezy_a-vibrant-watercolor-illustration-featuring-a-sewing-machine_51337212.png" alt="">
+    </div>
+  </div>
+
+  <!-- Right -->
+  <div class="ecart-hero-right">
+    <!-- <div class="ecart-color-box">
+      <h4>Popular Colors</h4>
+      <div class="ecart-color-palette">
+        <span class="ecart-color blue"></span>
+        <span class="ecart-color orange"></span>
+        <span class="ecart-color red"></span>
+        <span class="ecart-color green"></span>
+        <span class="ecart-color teal"></span>
+      </div>
+    </div> -->
+
+    <div class="ecart-right-card">
+      <!-- <div class="ecart-card-img"></div> -->
+       <img src="../../../assets/images/banner/NicePng_fashion-png_88585.png" width="150px" alt="">
+      <p>New Drop: Streetwear Edition</p>
+    </div>
+
+    <div class="ecart-right-card">
+      <div class="ecart-card-img"></div>
+      <p>Unisex Utility Jackets with bold prints</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= Bottom Hero Cards ================= -->
+<section class="ecart-hero-bottom">
+  <div class="ecart-bottom-card">
+    <p class="ecart-muted">More Products</p>
+    <span>460+ items</span>
+  </div>
+  <div class="ecart-bottom-card">
+    <div class="ecart-circle-icon"></div>
+    <div>
+      <p>5M+ Downloads</p>
+      <span>⭐ 4.6 reviews</span>
+    </div>
+  </div>
+  <div class="ecart-bottom-card">
+    <span class="ecart-tag">🔥 Runway-Ready Elegance</span>
+    <p>Premium Designer Gowns Collection</p>
+  </div>
+  <div class="ecart-bottom-card ecart-rounded-img"><img src="../../../assets/images/instagram/pngtree-folded-clothes-isolated-on-white-collection-png-image_10419973.png" width="300px" alt=""></div>
+</section>
+
+<!-- ================= Dashboard Summary ================= -->
+<section class="features-section">
+  <div class="category-section">
+    <h2 class="section-title">Admin Dashboard</h2>
+    <div class="category-grid">
+      <div class="category-card">
+        <h2 style="font-size: 44px;">{{ summary.totalCustomers }}+</h2>
+        <h3>Total Customers</h3>
+        <p>	Active loyal customers</p>
+      </div>
+      <div class="category-card">
+        <h2 style="font-size: 44px;">{{ summary.totalProducts }}+</h2>
+        <h3>Total Products</h3>
+        <p>Styles across 25+ categories</p>
+      </div>
+      <div class="category-card">
+        <h2 style="font-size: 44px;">{{ summary.totalOrders }}+</h2>
+        <h3>Total Orders</h3>
+        <p>Fulfilled fashion deliveries</p>
+      </div>
+      <div class="category-card">
+        <h2 style="font-size: 44px;">₹{{ summary.totalRevenue }}</h2>
+        <h3>Total Revenue</h3>
+        <p>Lifetime store earnings</p>
+      </div>
+    </div>
+
+       
+  </div>
+</section>
+
+<!-- ================= Marquee Section ================= -->
+<div class="marquee-section">
+  <div class="marquee marquee--back">
+    <div class="marquee__content">
+      BOOSTING &nbsp; INCREASING &nbsp; BOOSTING &nbsp; INCREASING &nbsp;
+    </div>
+    <div class="marquee__content">
+      BOOSTING &nbsp; INCREASING &nbsp; BOOSTING &nbsp; INCREASING &nbsp;
+    </div>
+  </div>
+
+  <div class="can-foreground">
+    <img src="../../../assets/images/instagram/pngegg.png" alt="GOAT FUEL Can" />
+  </div>
+
+  <div class="marquee marquee--front">
+    <div class="marquee__content1">
+      BOOSTING &nbsp; INCREASING &nbsp; BOOSTING &nbsp; INCREASING &nbsp;
+    </div>
+    <div class="marquee__content1">
+      BOOSTING &nbsp; INCREASING &nbsp; BOOSTING &nbsp; INCREASING &nbsp;
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- ================= Additional Top Products List ================= -->
+
+
+ <!-- ================= Optional Product Listing (Commented Out) ================= -->
+
+<div class="home-container">
+  <h2>Top Selling Products</h2>
+  <p>FASHION CLOTHES</p>
+
+  <div *ngIf="products.length === 0 && !error">No products available.</div>
+
+  <div class="product-grid">
+    <app-product-card
+      *ngFor="let p of products | slice:0:4"
+      [product]="p">
+    </app-product-card>
+  </div>
+
+  <p *ngIf="error" class="error">{{ error }}</p>
+</div>
+  
+
+
+<app-footer></app-footer>

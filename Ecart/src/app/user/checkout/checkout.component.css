@@ -218,3 +218,35 @@
 .checkout-form button:hover {
   background-color: #e8a836;
 }
+
+
+
+
+.couponCodeForm{
+  display: flex;
+  background-color: var(--bg-color);
+  /* border-radius: 10px; */
+  padding: 8px 0px !important;
+  overflow: hidden;
+}
+
+.couponCodeForm input {
+  flex: .5;
+  padding: 12px 10px;
+  border: 1px solid var(--color-primary);
+  /* border-radius: 4px; */
+  font-size: 14px;
+  color: var(--text-color);
+  outline: 1px;
+}
+
+.couponCodeForm button {
+  padding: 12px 7px;
+  min-width: 70px !important;
+  background-color: var(--color-primary);
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+}

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FeedbackService } from '../../shared/services/feedback.service';
 import { HttpClient } from '@angular/common/http';
+import { AlertService } from 'src/app/shared/services/alert.service';
 
 @Component({
   selector: 'app-view-feedbacks',
@@ -11,12 +12,12 @@ export class ViewFeedbacksComponent implements OnInit {
   feedbacks: any[] = [];
   error = '';
 
-  constructor(private http: HttpClient,private feedbackService: FeedbackService) {}
+  constructor(private http: HttpClient,private feedbackService: FeedbackService,private alertService: AlertService) {}
 
   ngOnInit(): void {
     this.feedbackService.getAllFeedbacks().subscribe({
       next: data => this.feedbacks = data,
-      error: () => this.error = 'Failed to load feedbacks.'
+      error: () =>this.alertService.show('Failed to load feedbacks.','error')
     });
   }
 
@@ -32,7 +33,7 @@ export class ViewFeedbacksComponent implements OnInit {
       },
       error: (err) => {
         console.error('Error deleting feedback:', err);
-        this.error = 'Failed to delete feedback.';
+        this.alertService.show('Failed to delete feedback.','error');
       }
     });
   }

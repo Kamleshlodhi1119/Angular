@@ -6,6 +6,7 @@ import { OrderItemComponent } from '../../components/order-item/order-item.compo
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductService } from 'src/app/shared/services/product.service';
 import { Router } from '@angular/router';
+import { AlertService } from 'src/app/shared/services/alert.service';
 
 @Component({
   selector: 'app-add-product',
@@ -21,7 +22,7 @@ export class AddProductComponent {
   constructor(
     private fb: FormBuilder,
     private productService: ProductService,
-    private router: Router
+    private router: Router,private alertService: AlertService
   ) {
     this.productForm = this.fb.group({
       name: ['', Validators.required],
@@ -43,7 +44,7 @@ export class AddProductComponent {
           if (this.selectedFile) {
             this.productService.uploadImage(createdProduct.id, this.selectedFile).subscribe({
               next: () => {
-                this.successMessage = 'Product created successfully with image!';
+                this.alertService.show( 'Product created successfully with image!','success');
                 this.productForm.reset();
               },
               error: (err) => {
@@ -52,7 +53,7 @@ export class AddProductComponent {
               }
             });
           } else {
-            this.successMessage = 'Product created successfully (no image)';
+            this.alertService.show('Product created successfully (no image)',"success");
             this.productForm.reset();
           }
         },

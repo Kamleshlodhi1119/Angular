@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CustomerService } from '../../../shared/services/customer.service';
 import { User } from '../../../shared/models/user.model';
+import { AlertService } from 'src/app/shared/services/alert.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,7 @@ export class LoginComponent {
     private fb: FormBuilder,
     private authService: AuthService,
     private customerService: CustomerService,
-    private router: Router
+    private router: Router,private alertService: AlertService
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -37,7 +38,7 @@ export class LoginComponent {
               this.router.navigate(['/user/profile']);
             },
             error: () => {
-              this.errorMessage = 'Login succeeded, but failed to load user profile.';
+              this.alertService.show('Login succeeded, but failed to load user profile.','warning');
               this.router.navigate(['/user/profile']); // fallback navigation
             }
           });
@@ -48,7 +49,7 @@ export class LoginComponent {
   });
         },
         error: err => {
-          this.errorMessage = err.error?.message || 'Login failed';
+          this.errorMessage = err.error?.message || this.alertService.show('Login failed','error');
         }
       });
     }

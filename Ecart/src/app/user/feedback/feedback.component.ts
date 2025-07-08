@@ -5,6 +5,7 @@ import { FeedbackService } from '../../shared/services/feedback.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UserSessionService } from 'src/app/shared/services/user-session.service';
 import { User } from 'src/app/shared/models/user.model';
+import { AlertService } from 'src/app/shared/services/alert.service';
 
 @Component({
   selector: 'app-feedback',
@@ -23,7 +24,8 @@ export class FeedbackComponent implements OnInit {
     private productService: ProductService,
     private feedbackService: FeedbackService,
     private fb: FormBuilder,
-    private userSession: UserSessionService // ✅ Inject user session service
+    private userSession: UserSessionService // ✅ Inject user session service,
+    ,private alertService: AlertService
   ) {}
 
   ngOnInit(): void {
@@ -37,7 +39,7 @@ export class FeedbackComponent implements OnInit {
     if (this.currentUser) {
       this.loadDeliveredProductDetails(this.currentUser.id); // ✅ pass dynamic id
     } else {
-      console.error('No customer is currently logged in.');
+       this.alertService.show('No customer is currently logged in.','error');
     }
   }
 
@@ -71,7 +73,7 @@ export class FeedbackComponent implements OnInit {
 
   submitFeedback(): void {
     if (!this.currentUser) {
-      alert('User not logged in');
+       this.alertService.show('User not logged in','error');
       return;
     }
 
@@ -82,7 +84,7 @@ export class FeedbackComponent implements OnInit {
     };
 
     this.feedbackService.submitFeedback(feedback).subscribe(() => {
-      alert('Feedback submitted successfully!');
+       this.alertService.show('Feedback submitted successfully!','success');
       this.feedbackForm.reset();
       this.showForm = false;
     });

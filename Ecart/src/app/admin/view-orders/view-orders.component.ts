@@ -26,14 +26,14 @@ export class ViewOrdersComponent implements OnInit {
   loadOrders(): void {
     this.orderService.getAllOrders().subscribe({
       next: (data) => this.orders = data,
-      error: () => this.error = 'Failed to load orders.'
+      error: () => this.alertService.show('Failed to load orders.','error')
     });
   }
 
   updateStatus(orderId: number, status: string): void {
     this.orderService.updateOrderStatus(orderId, status).subscribe({
       next: () => this.loadOrders(),
-      error: () =>this.alertService.show('Failed to update order status')
+      error: () =>this.alertService.show('Failed to update order status','error')
     });
   }
 }

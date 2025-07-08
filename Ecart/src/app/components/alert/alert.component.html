@@ -1,6 +1,3 @@
-<div *ngIf="visible" class="alert-popup">
-  <div class="alert-box">
-    <p>{{ message }}</p>
-    <button (click)="close()">Close</button>
-  </div>
+<div *ngIf="visible" class="alert-popup" [ngClass]="type" (click)="close()">
+  {{ message }}
 </div>

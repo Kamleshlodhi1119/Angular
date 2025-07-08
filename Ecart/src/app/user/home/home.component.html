@@ -71,7 +71,7 @@
 
   <div class="product-grid">
     <app-product-card
-      *ngFor="let p of products"
+      *ngFor="let p of products | slice:0:10"
       
       [product]="p"
       (addToCart)="handleAddToCart($event)">

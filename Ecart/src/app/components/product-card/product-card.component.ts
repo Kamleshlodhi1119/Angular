@@ -26,7 +26,8 @@ export class ProductCardComponent {
    const email = this.userSession.getUserEmail();
 
     if (!email) {
-      this.alertService.show('Please login again.');
+      
+      this.alertService.show('Please login.', 'error');
       // alert('Please login again.');
       return;
     }
@@ -44,8 +45,8 @@ export class ProductCardComponent {
     };
 
     this.cartService.addToCart(cartItem).subscribe({
-      next: () => alert('✅ Product added to cart'),
-      error: () => alert('❌ Failed to add product to cart')
+      next: () =>this.alertService.show('✅ Product added to cart', 'success'),
+      error: () => this.alertService.show('Product Already in cart','warning')
     });
   }
 

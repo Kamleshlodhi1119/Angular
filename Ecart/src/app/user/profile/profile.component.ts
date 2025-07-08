@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UserSessionService } from 'src/app/shared/services/user-session.service';
+import { AlertService } from 'src/app/shared/services/alert.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,18 +13,18 @@ export class ProfileComponent implements OnInit {
   customer: any = null;
   isEditMode = false;
 
-  constructor(private http: HttpClient,  private userSession: UserSessionService // ✅ inject user session service
-) {}
+  constructor(private http: HttpClient, private userSession: UserSessionService, private alertService: AlertService
+  ) { }
 
   ngOnInit(): void {
-    const costomerId=this.userSession.getUserId();
+    const costomerId = this.userSession.getUserId();
     const url = `http://localhost:8080/api/auth/customers/${costomerId}`;
     this.http.get(url).subscribe({
       next: (data) => {
         this.customer = data;
         this.customer.profileImageUrl = this.customer.profileImageUrl || 'assets/default-profile.png';
       },
-      error: (err) => console.error('Error loading customer data', err)
+      error: (err) => this.alertService.show('Error loading customer data', 'error')
     });
   }
 
@@ -33,29 +34,29 @@ export class ProfileComponent implements OnInit {
 
   onSubmit() {
     if (!this.isEditMode) return;
-    const costomerId=this.userSession.getUserId();
+    const costomerId = this.userSession.getUserId();
     const updateUrl = `http://localhost:8080/api/auth/customers/update/${costomerId}`;
     this.http.put(updateUrl, this.customer).subscribe({
       next: (response) => {
         console.log('Customer updated:', response);
         this.isEditMode = false;
       },
-      error: (err) => console.error('Update failed', err)
+      error: (err) => this.alertService.show('Update failed', 'error')
     });
   }
 
 
   showAccountInfo: boolean = true;
-showPasswordForm: boolean = false;
+  showPasswordForm: boolean = false;
 
-toggleToPasswordForm() {
-  this.showAccountInfo = false;
-  this.showPasswordForm = true;
-}
+  toggleToPasswordForm() {
+    this.showAccountInfo = false;
+    this.showPasswordForm = true;
+  }
 
-toggleToAccountInfo() {
-  this.showAccountInfo = true;
-  this.showPasswordForm = false;
-}
+  toggleToAccountInfo() {
+    this.showAccountInfo = true;
+    this.showPasswordForm = false;
+  }
 
 }
