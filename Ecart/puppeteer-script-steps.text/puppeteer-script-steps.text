@@ -1,0 +1,615 @@
+i prefer this " Alternative: Automate Login in Puppeteer"
+
+ChatGPT said:
+Great choice! Automating login with Puppeteer is clean, safe, and replicates real user behavior without messing with your backend security.
+
+Here’s a simple Puppeteer script example to automate login and then take screenshots of your Angular app pages:
+
+Puppeteer Script to Automate Login & Screenshot Pages
+javascript
+Copy
+Edit
+const puppeteer = require('puppeteer');
+
+(async () => {
+  const browser = await puppeteer.launch({ headless: true }); // headless false if you want to see browser
+  const page = await browser.newPage();
+
+  // Go to login page
+  await page.goto('http://localhost:4200/login', { waitUntil: 'networkidle2' });
+
+  // Fill username and password fields — update selectors to match your page
+  await page.type('#username', 'yourUsername');
+  await page.type('#password', 'yourPassword');
+
+  // Click login button — update selector
+  await Promise.all([
+    page.click('#loginButton'),
+    page.waitForNavigation({ waitUntil: 'networkidle2' }),
+  ]);
+
+  console.log('Logged in successfully.');
+
+  // Now navigate to pages and take screenshots
+  const pagesToCapture = [
+    { url: 'http://localhost:4200/dashboard', name: 'dashboard' },
+    { url: 'http://localhost:4200/cart', name: 'cart' },
+    { url: 'http://localhost:4200/checkout', name: 'checkout' },
+    // Add other URLs you want to capture here
+  ];
+
+  for (const p of pagesToCapture) {
+    await page.goto(p.url, { waitUntil: 'networkidle2' });
+    await page.screenshot({ path: `${p.name}.png`, fullPage: true });
+    console.log(`Captured screenshot for ${p.name}`);
+  }
+
+  await browser.close();
+})();
+How to use:
+Install Puppeteer if you haven't already:
+
+bash
+Copy
+Edit
+npm install puppeteer
+Update the script:
+
+Change URL for login and other pages to your actual URLs.
+
+Replace #username, #password, #loginButton selectors with your real form input/button selectors.
+
+Update username/password with a valid test user.
+
+Run the script:
+
+bash
+Copy
+Edit
+node your-script-file.js
+You’ll get screenshots saved as dashboard.png, cart.png, checkout.png, etc.
+
+Advantages:
+No need to touch backend security.
+
+Mimics real user login/session.
+
+Screenshots are from real authenticated sessions.
+
+Can be automated anytime, even in CI/CD pipelines.
+
+If you want, I can help you customize this for your specific Angular app’s login form and pages! Just share your login page HTML or selectors.
+
+
+
+You said:
+where and when i write this code and run this command like my current location of application is"/c/Users/hp/Desktop/Angular/Ecart"
+
+ChatGPT said:
+Got it! Here’s exactly what you do step-by-step, assuming your Angular app is in:
+
+swift
+Copy
+Edit
+/c/Users/hp/Desktop/Angular/Ecart
+Step 1: Create a folder for Puppeteer scripts (optional but neat)
+Open your terminal (e.g., Command Prompt, PowerShell, or Git Bash) and navigate to your Angular project directory:
+
+bash
+Copy
+Edit
+cd /c/Users/hp/Desktop/Angular/Ecart
+Now, create a new folder to keep your Puppeteer script separate:
+
+bash
+Copy
+Edit
+mkdir puppeteer-scripts
+cd puppeteer-scripts
+Step 2: Initialize a new Node.js project here
+This creates a package.json for managing Puppeteer and dependencies:
+
+bash
+Copy
+Edit
+npm init -y
+Step 3: Install Puppeteer
+Run this in the same puppeteer-scripts folder:
+
+bash
+Copy
+Edit
+npm install puppeteer
+Step 4: Create your Puppeteer script file
+Create a file, for example take-screenshots.js, in puppeteer-scripts folder:
+
+You can create the file with a text editor like VSCode or use the terminal:
+
+bash
+Copy
+Edit
+touch take-screenshots.js
+Or just create the file manually in your file explorer.
+
+Step 5: Paste this example code inside take-screenshots.js
+javascript
+Copy
+Edit
+const puppeteer = require('puppeteer');
+
+(async () => {
+  const browser = await puppeteer.launch({ headless: true });
+  const page = await browser.newPage();
+
+  // Navigate to login page
+  await page.goto('http://localhost:4200/login', { waitUntil: 'networkidle2' });
+
+  // Fill in login details - adjust selectors to match your login form
+  await page.type('#username', 'yourUsername');
+  await page.type('#password', 'yourPassword');
+
+  // Submit the form and wait for navigation
+  await Promise.all([
+    page.click('#loginButton'),
+    page.waitForNavigation({ waitUntil: 'networkidle2' }),
+  ]);
+
+  console.log('Logged in successfully.');
+
+  // List of pages to screenshot
+  const pagesToCapture = [
+    { url: 'http://localhost:4200/dashboard', name: 'dashboard' },
+    { url: 'http://localhost:4200/cart', name: 'cart' },
+    { url: 'http://localhost:4200/checkout', name: 'checkout' },
+  ];
+
+  for (const p of pagesToCapture) {
+    await page.goto(p.url, { waitUntil: 'networkidle2' });
+    await page.screenshot({ path: `${p.name}.png`, fullPage: true });
+    console.log(`Screenshot taken for ${p.name}`);
+  }
+
+  await browser.close();
+})();
+Important:
+
+Replace 'http://localhost:4200/login' and other URLs if your app uses different routes.
+
+Replace selectors (#username, #password, #loginButton) with the actual element IDs or classes of your login form.
+
+Replace 'yourUsername' and 'yourPassword' with a valid user account for your app.
+
+Step 6: Run your Angular app locally
+Make sure your Angular app is running on localhost:4200 (or your port):
+
+bash
+Copy
+Edit
+cd /c/Users/hp/Desktop/Angular/Ecart
+ng serve
+Keep this running while you run the Puppeteer script in another terminal.
+
+Step 7: Run your Puppeteer script
+Open a new terminal tab or window, navigate to your puppeteer-scripts folder:
+
+bash
+Copy
+Edit
+cd /c/Users/hp/Desktop/Angular/Ecart/puppeteer-scripts
+Run the script with Node.js:
+
+bash
+Copy
+Edit
+node take-screenshots.js
+Step 8: Check the screenshots
+After the script finishes, you’ll find dashboard.png, cart.png, checkout.png inside the puppeteer-scripts folder.
+
+Summary:
+Puppeteer script lives separately (or you can put it anywhere).
+
+Angular app must be running to allow Puppeteer to connect.
+
+Adjust the URLs, selectors, and login info in the Puppeteer script.
+
+Run the Puppeteer script via Node.js after your app is live.
+
+If you want, I can help you identify the exact selectors or URLs from your app — just share your login page HTML or Angular template snippet!
+
+
+
+You said:
+this is pages routes "import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+
+// User Components
+import { LoginComponent } from './user/auth/login/login.component';
+import { RegisterComponent } from './user/auth/register/register.component';
+import { HomeComponent } from './user/home/home.component';
+import { ProductsComponent } from './user/products/products.component';
+import { CartComponent } from './user/cart/cart.component';
+import { OrdersComponent } from './user/orders/orders.component';
+import { ProfileComponent } from './user/profile/profile.component';
+import { CheckoutComponent } from './user/checkout/checkout.component';
+import { FeedbackComponent } from './user/feedback/feedback.component';
+import { NavBarComponent } from './user/nav-bar/nav-bar.component';
+
+// Admin Components
+import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
+import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
+import { ViewCustomersComponent } from './admin/view-customers/view-customers.component';
+import { ViewOrdersComponent } from './admin/view-orders/view-orders.component';
+import { ViewFeedbacksComponent } from './admin/view-feedbacks/view-feedbacks.component';
+import { AddProductComponent } from './admin/add-product/add-product.component';
+import { UpdateProductComponent } from './admin/update-product/update-product.component';
+import { ViewProductsComponent } from './admin/view-products/view-products.component';
+import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
+
+// Guards
+import { AdminGuard } from './shared/guards/admin.guard';
+import { AuthGuard } from './shared/guards/auth.guard';
+import { SingleProductComponent } from './components/single-product/single-product.component';
+import { ShopComponent } from './user/shop/shop.component';
+
+const routes: Routes = [
+
+   // Publicly accessible
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'products', component: ProductsComponent },
+  { path: 'product/:productId', component: SingleProductComponent },
+  { path: 'user/auth/login', component: LoginComponent },
+  { path: 'user/auth/register', component: RegisterComponent },
+
+  
+  // User-protected routes
+  // { path: 'cart', component: CartComponent},
+  // { path: 'orders', component: OrdersComponent},
+  // { path: 'profile', component: ProfileComponent },
+  // { path: 'checkout', component: CheckoutComponent },
+  // { path: 'feedback', component: FeedbackComponent},
+  // { path: 'customer/profile', component: ProfileComponent },
+  // { path: 'user/nav-bar', component: NavBarComponent },
+ // User Auth
+  { path: 'admin/admin-login', component: AdminLoginComponent },
+
+  // User Protected Routes
+  {
+    path: '',
+    canActivate: [AuthGuard],
+    children: [
+      { path: 'cart', component: CartComponent },
+      { path: 'orders', component: OrdersComponent },
+      { path: 'profile', component: ProfileComponent },
+      { path: 'orders', component: ViewOrdersComponent },
+      { path: 'checkout', component: CheckoutComponent },
+      { path: 'feedback', component: FeedbackComponent },
+      {path: 'customer/profile', component: ProfileComponent},
+      {path: 'user/nav-bar', component: NavBarComponent }
+    ]
+  },
+  { path: 'shop', component: ShopComponent },
+  // Admin Auth
+  { path: 'admin/admin-login', component: AdminLoginComponent },
+
+  // Admin Protected Routes
+  {
+    path: 'admin',
+    canActivate: [AdminGuard],
+    children: [
+      { path: 'dashboard', component: AdminDashboardComponent },
+      { path: 'admin-header', component: AdminHeaderComponent },
+      { path: 'customers', component: ViewCustomersComponent },
+      { path: 'orders', component: ViewOrdersComponent },
+      { path: 'feedbacks', component: ViewFeedbacksComponent },
+      { path: 'products', component: ViewProductsComponent },
+      { path: 'products/add', component: AddProductComponent },
+      // { path: 'products/update/:id', component: UpdateProductComponent }
+      
+      
+    ]
+  },{ path: 'admin/products/update/:id', component: UpdateProductComponent },
+
+  // Default Redirect
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '**', redirectTo: '/home' }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { } "
+and currently username passoword is 
+
+for customer:
+username: k@gmail.com
+password : 123456
+
+for Admin
+username: admin123@gmail.com
+password: password123
+
+ChatGPT said:
+Thanks for sharing the routes and credentials! Here's a complete Puppeteer script tailored for your Angular app with those routes and login details.
+
+Puppeteer Script: take-screenshots.js
+js
+Copy
+Edit
+const puppeteer = require('puppeteer');
+
+(async () => {
+  const browser = await puppeteer.launch({ headless: true });
+  const page = await browser.newPage();
+
+  // Login as customer
+  await page.goto('http://localhost:4200/user/auth/login', { waitUntil: 'networkidle2' });
+
+  // Fill login form (adjust selectors if needed)
+  await page.type('input[type="email"]', 'k@gmail.com');
+  await page.type('input[type="password"]', '123456');
+
+  // Click login button - update selector based on your login button
+  await Promise.all([
+    page.click('button[type="submit"]'),  // assuming login button is a submit button
+    page.waitForNavigation({ waitUntil: 'networkidle2' }),
+  ]);
+
+  console.log('Customer logged in successfully.');
+
+  // List of routes to screenshot after login
+  const pagesToCapture = [
+    { url: 'http://localhost:4200/home', name: 'home' },
+    { url: 'http://localhost:4200/products', name: 'products' },
+    { url: 'http://localhost:4200/cart', name: 'cart' },
+    { url: 'http://localhost:4200/checkout', name: 'checkout' },
+    { url: 'http://localhost:4200/orders', name: 'orders' },
+    { url: 'http://localhost:4200/profile', name: 'profile' },
+    { url: 'http://localhost:4200/feedback', name: 'feedback' },
+  ];
+
+  for (const p of pagesToCapture) {
+    await page.goto(p.url, { waitUntil: 'networkidle2' });
+    await page.screenshot({ path: `../screenshots/customer-${p.name}.png`, fullPage: true });
+    console.log(`Screenshot taken for ${p.name}`);
+  }
+
+  // Log out or close browser before admin login
+  // For simplicity, close and open new browser session:
+  await browser.close();
+
+  // --- Admin login ---
+
+  const browserAdmin = await puppeteer.launch({ headless: true });
+  const pageAdmin = await browserAdmin.newPage();
+
+  await pageAdmin.goto('http://localhost:4200/admin/admin-login', { waitUntil: 'networkidle2' });
+
+  await pageAdmin.type('input[type="email"]', 'admin123@gmail.com');
+  await pageAdmin.type('input[type="password"]', 'password123');
+
+  await Promise.all([
+    pageAdmin.click('button[type="submit"]'),
+    pageAdmin.waitForNavigation({ waitUntil: 'networkidle2' }),
+  ]);
+
+  console.log('Admin logged in successfully.');
+
+  // Admin pages to capture
+  const adminPages = [
+    { url: 'http://localhost:4200/admin/dashboard', name: 'dashboard' },
+    { url: 'http://localhost:4200/admin/customers', name: 'customers' },
+    { url: 'http://localhost:4200/admin/orders', name: 'orders' },
+    { url: 'http://localhost:4200/admin/feedbacks', name: 'feedbacks' },
+    { url: 'http://localhost:4200/admin/products', name: 'products' },
+  ];
+
+  for (const p of adminPages) {
+    await pageAdmin.goto(p.url, { waitUntil: 'networkidle2' });
+    await pageAdmin.screenshot({ path: `../screenshots/admin-${p.name}.png`, fullPage: true });
+    console.log(`Screenshot taken for admin ${p.name}`);
+  }
+
+  await browserAdmin.close();
+})();
+Instructions
+Create a folder for screenshots:
+
+In your Angular project folder (/c/Users/hp/Desktop/Angular/Ecart), create a folder named screenshots:
+
+bash
+Copy
+Edit
+mkdir screenshots
+Save the above Puppeteer script as take-screenshots.js inside puppeteer-scripts folder (as previously discussed).
+
+Check and adjust selectors in the script if your login page uses different input/button selectors.
+
+Run your Angular app:
+
+bash
+Copy
+Edit
+cd /c/Users/hp/Desktop/Angular/Ecart
+ng serve
+In another terminal, run the Puppeteer script:
+
+bash
+Copy
+Edit
+cd /c/Users/hp/Desktop/Angular/Ecart/puppeteer-scripts
+node take-screenshots.js
+Screenshots for both customer and admin views will be saved inside the screenshots folder at the root of your Angular project.
+
+Notes:
+Adjust selectors (input[type="email"], button[type="submit"]) if your login form uses different HTML.
+
+Make sure your Angular app is running before running Puppeteer.
+
+This script logs in with your credentials for both customer and admin, takes screenshots of main routes, and saves them with appropriate names.
+
+You can add or remove routes in the pagesToCapture and adminPages arrays as needed.
+
+If you want me to help customize it further (like handling modals, waiting for specific elements, etc.), just ask!
+
+
+
+
+
+
+edit js file
+
+// const puppeteer = require('puppeteer');
+
+// (async () => {
+//   const browser = await puppeteer.launch({ headless: true });
+//   const page = await browser.newPage();
+
+//   // Login as customer
+//   await page.goto('http://localhost:4200/user/auth/login', { waitUntil: 'networkidle2' });
+
+//   // Fill login form (adjust selectors if needed)
+//   await page.type('input[type="email"]', 'k@gmail.com');
+//   await page.type('input[type="password"]', '123456');
+
+//   // Click login button - update selector based on your login button
+//   await Promise.all([
+//     page.click('button[type="submit"]'),  // assuming login button is a submit button
+//     page.waitForNavigation({ waitUntil: 'networkidle2' }),
+//   ]);
+
+//   console.log('Customer logged in successfully.');
+
+//   // List of routes to screenshot after login
+//   const pagesToCapture = [
+//     { url: 'http://localhost:4200/home', name: 'home' },
+//     { url: 'http://localhost:4200/products', name: 'products' },
+//     { url: 'http://localhost:4200/cart', name: 'cart' },
+//     { url: 'http://localhost:4200/checkout', name: 'checkout' },
+//     { url: 'http://localhost:4200/orders', name: 'orders' },
+//     { url: 'http://localhost:4200/profile', name: 'profile' },
+//     { url: 'http://localhost:4200/feedback', name: 'feedback' },
+//   ];
+
+//   for (const p of pagesToCapture) {
+//     await page.goto(p.url, { waitUntil: 'networkidle2' });
+//     await page.screenshot({ path: `../screenshots/customer-${p.name}.png`, fullPage: true });
+//     console.log(`Screenshot taken for ${p.name}`);
+//   }
+
+//   // Log out or close browser before admin login
+//   // For simplicity, close and open new browser session:
+//   await browser.close();
+
+//   // --- Admin login ---
+
+//   const browserAdmin = await puppeteer.launch({ headless: true });
+//   const pageAdmin = await browserAdmin.newPage();
+
+//   await pageAdmin.goto('http://localhost:4200/admin/admin-login', { waitUntil: 'networkidle2' });
+
+//   await pageAdmin.type('input[type="email"]', 'admin123@gmail.com');
+//   await pageAdmin.type('input[type="password"]', 'password123');
+
+//   await Promise.all([
+//     pageAdmin.click('button[type="submit"]'),
+//     pageAdmin.waitForNavigation({ waitUntil: 'networkidle2' }),
+//   ]);
+
+//   console.log('Admin logged in successfully.');
+
+//   // Admin pages to capture
+//   const adminPages = [
+//     { url: 'http://localhost:4200/admin/dashboard', name: 'dashboard' },
+//     { url: 'http://localhost:4200/admin/customers', name: 'customers' },
+//     { url: 'http://localhost:4200/admin/orders', name: 'orders' },
+//     { url: 'http://localhost:4200/admin/feedbacks', name: 'feedbacks' },
+//     { url: 'http://localhost:4200/admin/products', name: 'products' },
+//   ];
+
+//   for (const p of adminPages) {
+//     await pageAdmin.goto(p.url, { waitUntil: 'networkidle2' });
+//     await pageAdmin.screenshot({ path: `../screenshots/admin-${p.name}.png`, fullPage: true });
+//     console.log(`Screenshot taken for admin ${p.name}`);
+//   }
+
+//   await browserAdmin.close();
+// })();
+const puppeteer = require('puppeteer');
+
+(async () => {
+  const browser = await puppeteer.launch({ headless: true });
+  const page = await browser.newPage();
+
+  // Set viewport to typical laptop screen size
+  await page.setViewport({ width: 1366, height: 768 });
+
+  // Login as customer
+  await page.goto('http://localhost:4200/user/auth/login', { waitUntil: 'networkidle2' });
+
+  // Fill login form
+  await page.type('input[type="email"]', 'k@gmail.com');
+  await page.type('input[type="password"]', '123456');
+
+  // Click login button
+  await Promise.all([
+    page.click('button[type="submit"]'),
+    page.waitForNavigation({ waitUntil: 'networkidle2' }),
+  ]);
+
+  console.log('Customer logged in successfully.');
+
+  const pagesToCapture = [
+    { url: 'http://localhost:4200/home', name: 'home' },
+    { url: 'http://localhost:4200/products', name: 'products' },
+    { url: 'http://localhost:4200/cart', name: 'cart' },
+    { url: 'http://localhost:4200/checkout', name: 'checkout' },
+    { url: 'http://localhost:4200/orders', name: 'orders' },
+    { url: 'http://localhost:4200/profile', name: 'profile' },
+    { url: 'http://localhost:4200/feedback', name: 'feedback' },
+  ];
+
+  for (const p of pagesToCapture) {
+    await page.goto(p.url, { waitUntil: 'networkidle2' });
+    await page.screenshot({ path: `../screenshots/customer-${p.name}.png`, fullPage: true });
+    console.log(`Screenshot taken for ${p.name}`);
+  }
+
+  await browser.close();
+
+  // Admin login
+  const browserAdmin = await puppeteer.launch({ headless: true });
+  const pageAdmin = await browserAdmin.newPage();
+
+  // Set same viewport for admin
+  await pageAdmin.setViewport({ width: 1366, height: 768 });
+
+  await pageAdmin.goto('http://localhost:4200/admin/admin-login', { waitUntil: 'networkidle2' });
+
+  await pageAdmin.type('input[type="email"]', 'admin123@gmail.com');
+  await pageAdmin.type('input[type="password"]', 'password123');
+
+  await Promise.all([
+    pageAdmin.click('button[type="submit"]'),
+    pageAdmin.waitForNavigation({ waitUntil: 'networkidle2' }),
+  ]);
+
+  console.log('Admin logged in successfully.');
+
+  const adminPages = [
+    { url: 'http://localhost:4200/admin/dashboard', name: 'dashboard' },
+    { url: 'http://localhost:4200/admin/customers', name: 'customers' },
+    { url: 'http://localhost:4200/admin/orders', name: 'orders' },
+    { url: 'http://localhost:4200/admin/feedbacks', name: 'feedbacks' },
+    { url: 'http://localhost:4200/admin/products', name: 'products' },
+  ];
+
+  for (const p of adminPages) {
+    await pageAdmin.goto(p.url, { waitUntil: 'networkidle2' });
+    await pageAdmin.screenshot({ path: `../screenshots/admin-${p.name}.png`, fullPage: true });
+    console.log(`Screenshot taken for admin ${p.name}`);
+  }
+
+  await browserAdmin.close();
+})();

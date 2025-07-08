@@ -74,3 +74,12 @@
 .search-bar button:hover {
   background-color: #66bb6a; /* Slightly darker green for hover */
 }
+
+
+.product-grid{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
