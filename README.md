@@ -50,6 +50,23 @@ Below are screenshots of the homepage and features:
 ![screencapture-localhost-4200-home-2025-07-05-19_21_06](https://github.com/user-attachments/assets/bb143769-25d5-442e-8fec-3f3f98c41770)
 
 
+
+
+
+
+# new Images:--![customer-orders](https://github.com/user-attachments/assets/adff37c5-4836-4d52-b1e1-7fdc615edaa7)
+![customer-home](https://github.com/user-attachments/assets/fd7f16a5-a8f3-4c64-baf8-9f72e9318497)
+![customer-feedback](https://github.com/user-attachments/assets/cdd8a826-de54-4772-bee8-0d09388cff8f)
+![customer-checkout](https://github.com/user-attachments/assets/a8f5fe40-c396-4a67-96ad-22f5d0bae532)
+![customer-cart](https://github.com/user-attachments/assets/f9e5d5c1-6e12-492f-8992-c1432f458d97)
+![admin-products](https://github.com/user-attachments/assets/c9e46f90-41da-4f68-ae9d-6b73a9bf4a1b)
+![admin-orders](https://github.com/user-attachments/assets/17bb85f4-1fa5-42b6-b85d-c21e1c3d197f)
+![admin-feedbacks](https://github.com/user-attachments/assets/c171d106-df89-4da8-9960-d889276cf17c)
+![admin-dashboard](https://github.com/user-attachments/assets/c4ba92f7-ac04-450f-bbe1-d5d716eaaf69)
+![admin-customers](https://github.com/user-attachments/assets/16d35601-6e58-4527-a7cf-484b2c2753f8)
+![customer-profile](https://github.com/user-attachments/assets/121a09ee-183c-4166-b8e3-941ff4fbfb21)
+![customer-products](https://github.com/user-attachments/assets/39667062-b93f-4e21-9e09-3502ce7a3de8)
+
 ---
 
 ## 🛠️ Tech Stack
