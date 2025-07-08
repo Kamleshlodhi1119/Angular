@@ -47,7 +47,7 @@ Below are screenshots of the homepage and features:
 |-----------|-----------------|-----------|
 | ![Home](screenshots/homepage.png) | ![Products](screenshots/products.png) | ![Cart](screenshots/cart.png) |
 
-![screencapture-localhost-4200-home-2025-07-05-19_21_06](https://github.com/user-attachments/assets/bb143769-25d5-442e-8fec-3f3f98c41770)
+
 
 
 
