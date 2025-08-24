@@ -1,9 +1,8 @@
 <!-- Top Bar -->
 <div class="top-bar">
   <div class="top-left">
-
     <a routerLink="/user/auth/login">Login</a> |
-    <a routerLink="/user/auth/register">register</a>
+    <a routerLink="/user/auth/register">Register</a>
   </div>
   <div class="top-right">
     <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -16,58 +15,39 @@
 
 <!-- Main Header -->
 <header class="main-header">
-  <div class="logo"> <img src="../../../assets/images/icon/logo.png" alt="Logo"> </div>
+  <div class="logo">
+    <img src="../../../assets/images/icon/logo.png" alt="Logo" />
+  </div>
+
   <nav class="main-nav">
     <ul class="menu">
-      <li> <a routerLink="/home">Home</a></li>
-      <li class="has-mega-menu">
-        <a routerLink="/cart">Cart</a>
-        <!-- <div class="mega-menu">
-          <div>
-            <h4>Welcome, {{ customer?.name }}.</h4>
-            <a href="#">Sharee 01</a>
-            <a href="#">Sharee 02</a>
-            <a href="#">Sharee 03</a>
-            <a href="#">Sharee 04</a>
-            <a href="#">Sharee 05</a>
-          </div>
-          
-        </div> -->
-      </li>
-      <li>
-        <a routerLink="/shop">Shop</a>
-      </li>
-       <li>
-        <a routerLink="/orders">Orders</a>
-      </li>
-      <li>
-        <a routerLink="/profile">Profile</a>
-      </li>
-      <li>
-        <a routerLink="/feedback">Feedback</a>
-      </li>
-      <li>
-        <a routerLink="/admin/admin-login">Admin</a>
-      </li>
+      <li><a routerLink="/home">Home</a></li>
+      <li><a routerLink="/cart">Cart</a></li>
+      <li><a routerLink="/shop">Shop</a></li>
+      <li><a routerLink="/orders">Orders</a></li>
+      <li><a routerLink="/profile">Profile</a></li>
+      <li><a routerLink="/feedback">Feedback</a></li>
+      <li><a routerLink="/admin/admin-login">Admin</a></li>
     </ul>
   </nav>
 
   <div class="search-cart">
-    <input type="text" placeholder="Search anything">
-    <i class="fas fa-search"></i>
+    <!-- header.component.html -->
+<input type="text" [(ngModel)]="searchQuery" placeholder="Search Products..." />
+<!-- <button >Search</button> -->
+
+    <i (click)="submitSearch()" class="fas fa-search"></i>
     <span class="currency">USD</span>
     <span class="cart"><i class="fas fa-shopping-cart"></i> <sup>2</sup></span>
-    <ul class="menu1">
-      <li class="has-mega-menu">
-
-        <img class="avatar" src="../../../assets/images/icon/undraw_pic-profile_nr49.png" alt="avatar">
-        <div class="mega-menu1">
-          <h4>{{ customer?.name }}</h4><br>
-          <button (click)="logout()">Logout</button>
-        </div>
-      </li>
-
-    </ul>
+    
+    <div class="profile-menu">
+      <img class="avatar" src="../../../assets/images/icon/undraw_pic-profile_nr49.png" alt="avatar" />
+      <div class="dropdown-menu">
+        <h4>{{ customer?.name }}</h4>
+        <button (click)="logout()">Logout</button>
+      </div>
+    </div>
   </div>
 </header>
+
 <app-alert></app-alert>

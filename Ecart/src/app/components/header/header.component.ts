@@ -19,7 +19,7 @@ import { AlertService } from 'src/app/shared/services/alert.service';
 })
 export class HeaderComponent {
  customer: any;
-
+ searchQuery = '';
   constructor(private http: HttpClient, private userSession: UserSessionService,private alertService: AlertService,public authService: AuthService, private router: Router) {}
   
 
@@ -33,6 +33,14 @@ export class HeaderComponent {
       },
       error: (err) =>this.alertService.show('Error loading customer data', 'error')
     });
+  }
+  
+  submitSearch(): void {
+    if (this.searchQuery.trim()) {
+      this.router.navigate(['/products'], {
+        queryParams: { q: this.searchQuery }
+      });
+    }
   }
   logout(): void {
     this.authService.customerLogout().subscribe(() => {
