@@ -1,6 +1,6 @@
 [build]
   base = "Ecart"
-  publish = "Ecart/dist/ecart"
+  publish = "dist/ecart"
   command = "ng build --configuration production --base-href=/"
 
 [functions]
