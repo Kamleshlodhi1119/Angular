@@ -158,3 +158,17 @@
     align-items: flex-start;
   }
 }
+
+
+.social-icons i {
+  font-size: 14px;
+  margin: 0 8px;
+  cursor: pointer;
+  color: #fcfeff;
+  transition: color 0.3s;
+}
+
+.social-icons i:hover {
+  color: var(--bg-color);
+}
+

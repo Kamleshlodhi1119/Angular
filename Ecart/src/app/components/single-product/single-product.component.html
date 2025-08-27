@@ -1,28 +1,30 @@
 <app-header></app-header>
-<pre>
 
-
-</pre><div class="product-details">
+<div class="product-details">
+  <!-- LEFT: Image Gallery -->
   <div class="image-gallery">
     <div class="main-image">
-     <img [src]="'http://localhost:8080/products/' + product.id + '.jpg'" alt="{{ product.name }}" />
+      <img [src]="'http://localhost:8080/products/' + product.id + '.jpg'" alt="{{ product.name }}" />
     </div>
     <div class="thumbnails">
-     <img [src]="'http://localhost:8080/products/' + product.id + '.jpg'" alt="{{ product.name }}" />    </div>
+      <img [src]="'http://localhost:8080/products/' + product.id + '.jpg'" alt="{{ product.name }}" />
+    </div>
   </div>
 
+  <!-- RIGHT: Product Info -->
   <div class="details-section">
     <span class="badge">CONSTRUCTION</span>
-    <div class="rating">★ ★ ★ ★ ☆ <span>{{ product?.reviews }} Reviews</span></div>
+    <div class="rating">★ ★ ★ ★ ☆ <span>{{ feedbacks.length }} Reviews</span></div>
     <div class="rating"><span>{{ product?.category }}</span></div>
     <h2>{{ product?.name }}</h2>
+
     <div class="price">
       <span class="original">$30.35</span>
       <span class="sale">${{ product?.price }}</span>
     </div>
+
     <p class="short-desc">
-       <span class="sale">${{ product?.description }}</span>
-     <br> Priyoshop has brought you the Hijab 3 Pieces Combo Pack PS23. It is a completely modern design and you feel comfortable to put on this hijab. Buy it at the best price.
+      <span class="sale">{{ product?.description }}</span>
     </p>
 
     <div class="quantity-section">
@@ -31,9 +33,7 @@
       <button (click)="increment()">+</button>
     </div>
 
-    <!-- <button class="add-cart-btn"  (addToCart)="handleAddToCart()">ADD TO CART</button> -->
     <button class="add-cart-btn" (click)="handleAddToCart(product)">ADD TO CART</button>
-
 
     <div class="product-meta">
       <p><strong>SKU:</strong> {{ product?.sku }}</p>
@@ -51,19 +51,65 @@
   </div>
 </div>
 
+<!-- ✅ Tabs Section -->
 <div class="tabs">
-  <button class="active">DESCRIPTION</button>
-  <button>ADDITIONAL INFORMATION</button>
-  <button>REVIEWS (3)</button>
+  <button [class.active]="activeTab === 'description'" (click)="setTab('description')">
+    DESCRIPTION
+  </button>
+  <button [class.active]="activeTab === 'additional'" (click)="setTab('additional')">
+    ADDITIONAL INFORMATION
+  </button>
+  <button [class.active]="activeTab === 'reviews'" (click)="setTab('reviews')">
+    REVIEWS ({{ feedbacks.length }})
+  </button>
 
-  <div class="tab-content">
+  <!-- Tab Content -->
+  <div class="tab-content" *ngIf="activeTab === 'description'">
     <p>
-      In marketing a product is an object or system made available for consumer use. Products are often referred to as merchandise...
+      In marketing a product is an object or system made available for consumer use.
+      Products are often referred to as merchandise...
     </p>
   </div>
+
+  <div class="tab-content" *ngIf="activeTab === 'additional'">
+    <p><strong>Material:</strong> Cotton, Polyester</p>
+    <p><strong>Weight:</strong> 1.2kg</p>
+  </div>
+
+  <div class="tab-content" *ngIf="activeTab === 'reviews'">
+    <div class="feedback-section">
+      <h3>{{ feedbacks.length }} Reviews for "{{ product?.name }}"</h3>
+
+      <div *ngIf="feedbacks.length === 0" class="no-feedback">
+        No feedback yet.
+      </div>
+
+      <div *ngFor="let fb of feedbacks" class="feedback-item">
+        <div class="feedback-left">
+          <!-- Inline SVG Avatar -->
+          <svg class="avatar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <circle cx="12" cy="7" r="5" />
+            <path d="M12 14c-5 0-9 2.5-9 5.5V22h18v-2.5c0-3-4-5.5-9-5.5z"/>
+          </svg>
+        </div>
+
+        <div class="feedback-right">
+          <div class="feedback-header">
+            <div>
+              <strong class="customer-name">{{ fb.customer.name | uppercase }}</strong>
+              <div class="feedback-date">{{ fb.feedbackDate | date:'MMMM d, y, h:mm a' }}</div>
+            </div>
+            <div class="rating">
+              <ng-container *ngFor="let star of [1,2,3,4,5]">
+                <i class="fa" [ngClass]="star <= fb.rating ? 'fa-star' : 'fa-star-o'"></i>
+              </ng-container>
+            </div>
+          </div>
+          <p class="feedback-text">{{ fb.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<pre>
 
-
-</pre>
 <app-footer></app-footer>

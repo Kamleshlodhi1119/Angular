@@ -3,6 +3,22 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../models/product.model';
 
+export interface Feedback {
+  id: number;
+  description: string;
+  rating: number;
+  feedbackDate: string;
+  customer: {
+    id: number;
+    name: string;
+    email: string;
+  };
+  product: {
+    id: number;
+    name: string;
+  };
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -25,5 +41,10 @@ export class FeedbackService {
 
   getProductById(productId: number): Observable<Product> {
     return this.http.get<Product>(`http://localhost:8080/api/products/${productId}`);
+  }
+
+
+  getFeedbacksByProductId(productId: number): Observable<Feedback[]> {
+    return this.http.get<Feedback[]>(`${this.baseUrl}/product/${productId}`);
   }
 }

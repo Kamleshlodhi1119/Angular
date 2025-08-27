@@ -4,12 +4,15 @@
     <a routerLink="/user/auth/login">Login</a> |
     <a routerLink="/user/auth/register">Register</a>
   </div>
-  <div class="top-right">
-    <a href="#"><i class="fab fa-facebook-f"></i></a>
-    <a href="#"><i class="fab fa-twitter"></i></a>
-    <a href="#"><i class="fab fa-dribbble"></i></a>
-    <a href="#"><i class="fab fa-behance"></i></a>
-    <a href="#"><i class="fas fa-rss"></i></a>
+
+  <div class="social-icons">
+
+    <i class="fab fa-facebook"></i>
+    <i class="fab fa-google"></i>
+    <i class="fab fa-twitter"></i>
+    <i class="fab fa-github"></i>
+    <i class="fab fa-slack"></i>
+
   </div>
 </div>
 
@@ -33,13 +36,13 @@
 
   <div class="search-cart">
     <!-- header.component.html -->
-<input type="text" [(ngModel)]="searchQuery" placeholder="Search Products..." />
-<!-- <button >Search</button> -->
+    <input type="text" [(ngModel)]="searchQuery" placeholder="Search Products..." />
+    <!-- <button >Search</button> -->
 
     <i (click)="submitSearch()" class="fas fa-search"></i>
     <span class="currency">USD</span>
     <span class="cart"><i class="fas fa-shopping-cart"></i> <sup>2</sup></span>
-    
+
     <div class="profile-menu">
       <img class="avatar" src="../../../assets/images/icon/undraw_pic-profile_nr49.png" alt="avatar" />
       <div class="dropdown-menu">

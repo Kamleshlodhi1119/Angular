@@ -8,6 +8,7 @@ import { Product } from 'src/app/shared/models/product.model';
 import { User } from 'src/app/shared/models/user.model';
 import { CartItem } from 'src/app/shared/models/cart.model';
 import { AlertService } from 'src/app/shared/services/alert.service';
+import { FeedbackService } from 'src/app/shared/services/feedback.service';
 
 @Component({
   selector: 'app-single-product',
@@ -22,14 +23,18 @@ export class SingleProductComponent implements OnInit {
     productId!: number;
     product: any;
     quantity: number = 1;
+    feedbacks: any[] = [];
   
+    activeTab: string = 'description';
+
     constructor(
       private productService: ProductService,
       private cartService: CartService,
       private userSession: UserSessionService,
       private route: ActivatedRoute, 
       private http: HttpClient,
-      private alertService: AlertService
+      private alertService: AlertService,
+      private feedbackService: FeedbackService   
     ) {}
   
     ngOnInit(): void {
@@ -42,6 +47,7 @@ export class SingleProductComponent implements OnInit {
 
        this.productId = Number(this.route.snapshot.paramMap.get('productId'));
     this.loadProduct();
+     this.loadFeedbacks(); 
     }
   
     handleAddToCart(product: Product) {
@@ -95,6 +101,10 @@ export class SingleProductComponent implements OnInit {
     });
   }
 
+   setTab(tab: string) {
+    this.activeTab = tab;
+  }
+  
   increment() {
     this.quantity++;
   }
@@ -105,5 +115,12 @@ export class SingleProductComponent implements OnInit {
 
   addToCart() {
     console.log(`Added to cart.`);
+  }
+
+   loadFeedbacks() {
+    this.feedbackService.getFeedbacksByProductId(this.productId).subscribe({
+      next: (res) => this.feedbacks = res,
+      error: () => this.alertService.show('Failed to load feedbacks','error')
+    });
   }
 }
