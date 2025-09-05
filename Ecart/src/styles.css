@@ -50,19 +50,32 @@ body{
   font-style: normal;
 }
 
-
-
-.snowflake {
-  
-  position: absolute;
-  color: rgba(6, 197, 255);
-  font-size: 14px;
-  pointer-events: none;
-  animation: fall 4s linear forwards;
-  z-index: 30;
+@keyframes breathe {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+  }
 }
 
-@keyframes fall {
-  0% { transform: translateY(0) rotate(0); opacity: 1; }
-  100% { transform: translateY(100px) rotate(360deg); opacity: 0; }
+.cursor-circle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(197, 161, 89, 0.8);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  backdrop-filter: blur(2px);
+  background-color: rgba(255, 255, 255, 0.05);
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 0.2s ease-out;
+}
+
+/* Add breathing animation when idle */
+.cursor-circle.idle {
+  animation: breathe 2.5s ease-in-out infinite;
 }
